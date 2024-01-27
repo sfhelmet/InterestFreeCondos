@@ -16,13 +16,3 @@ We sell Condos at dirt cheap interest.
 | Kevin Duong   | 40209877  | KD54321 |
 | Eric Tan  | 40208502  | EricTan19 |
 | Binal Patel  | 40212973  | binal011 |
-
- 
- 
- 
-
- 
- 
-
- 
-  - 
