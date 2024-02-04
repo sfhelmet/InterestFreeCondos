@@ -16,3 +16,30 @@ We sell Condos at dirt cheap interest.
 | Kevin Duong                  | 40209877  | KD54321          | - |
 | Eric Tan                     | 40208502  | EricTan19        | - |
 | Binal Patel                  | 40212973  | binal011         | - |
+
+## Usage
+
+### To create a new screen
+
+1. Create a new component in `src/screens`.
+
+2. In your `src/config/routes.ts`.
+
+```js
+{
+    path: "/your-route",
+    component: YourScreenComponentName,
+    name: "Screen Name For Reference",
+    protected: false, // if user needs to be authenticated to access this screen
+}
+```
+
+### How to Run
+
+Please email Simon for env variables.
+
+```bash
+npm i -g serve
+npm run build
+serve -s build
+```
