@@ -2,9 +2,12 @@ import { useState } from "react";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, Providers } from "../../config/firebase";
-import { Button, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
+import LoginIcon from '@mui/icons-material/Login';
 import Center from "../utils/Center";
+
+import "./AuthContainer.css";
 
 const AuthContainer = (props) => {
   const navigate = useNavigate();
@@ -27,18 +30,33 @@ const AuthContainer = (props) => {
 
   return (
     <Center height={"auto"}>
-      <Button
-        startIcon={<GoogleIcon />}
-        size="large"
-        disabled={disabled}
-        variant="contained"
-        onClick={signInWithGoogle}
-      >
-        Sign In With Google
-      </Button>
-      <Typography sx={{ mt: 2 }} color={"red"}>
-        {errorMessage}
-      </Typography>
+      <Box className="auth-container">
+        <Box className={"simple-login-container"}>
+          <Box className={"login-inputs"} display={"flex"} flexDirection={"column"}>
+            <TextField className={"login-email"} label="Email:" size="small"/>
+            <TextField className={"login-password"} type="password" label="Password:" size="small"/>
+          </Box>
+          <Button className={"login-btn"} startIcon={<LoginIcon/>} size="medium" variant="contained">
+            Sign In
+          </Button>
+        </Box>
+        <hr/>
+        <Box className={"sso-logins-container"}>
+          <Button
+            startIcon={<GoogleIcon />}
+            size="medium"
+            disabled={disabled}
+            variant="contained"
+            onClick={signInWithGoogle}
+            className="goolge-sso-login-btn"
+          >
+            Sign In With Google
+          </Button>
+        </Box>
+        <Typography sx={{ mt: 2 }} color={"red"}>
+          {errorMessage}
+        </Typography>
+      </Box>
     </Center>
   );
 };
