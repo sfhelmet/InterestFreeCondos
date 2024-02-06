@@ -35,6 +35,7 @@ We sell Condos at dirt cheap interest.
 ```
 
 ### How to Run
+You will need to create a .env file outside the src folder to run the app.
 
 Please email Simon for env variables.
 
