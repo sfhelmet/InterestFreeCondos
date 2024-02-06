@@ -21,7 +21,7 @@ const Logout = ({ navigateTo = "/login" }) => {
 
   return (
     <div>
-      <Button disabled={disabled} onClick={logout}>
+      <Button disabled={disabled} onClick={logout} variant="contained">
         Logout
       </Button>
     </div>
