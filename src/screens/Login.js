@@ -3,6 +3,7 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import AuthContainer from "../components/auth/AuthContainer";
 import Center from "../components/utils/Center";
+import Register from "../components/auth/Register/Register";
 
 const tabIdToURL = {
   0: "login",
@@ -52,7 +53,7 @@ const Login = (props) => {
         </TabPanel>
         {/* register */}
         <TabPanel value={value} index={1}>
-          <AuthContainer />
+          <Register/>
         </TabPanel>
       </Box>
     </Center>

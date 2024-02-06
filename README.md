@@ -35,11 +35,18 @@ We sell Condos at dirt cheap interest.
 ```
 
 ### How to Run
+You will need to create a .env file outside the src folder to run the app.
 
 Please email Simon for env variables.
 
+Note: These commands are for making a production build/version of the app.
 ```bash
 npm i -g serve
 npm run build
 serve -s build
+```
+
+Note 2: Use this for normal development.
+```bash
+npm start
 ```
