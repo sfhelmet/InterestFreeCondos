@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import Login from "../screens/Login";
 import { BrowserRouter } from "react-router-dom";
 
-it("Non SSO Login works", async () => {
+test("Non SSO Login works", async () => {
     const user = userEvent.setup();
     render(<BrowserRouter><Login /></BrowserRouter>);
 
