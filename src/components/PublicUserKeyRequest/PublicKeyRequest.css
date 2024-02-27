@@ -1,0 +1,55 @@
+.home-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background); /* Dark background color */
+    color: var(--text); /* Light text color */
+  }
+  
+  .company-info {
+    text-align: center;
+    margin-right: 50px;
+  }
+  
+  .company-info img {
+    max-width: 200px;
+  }
+  
+  .authentication {
+    text-align: center;
+    margin-left: 50px;
+  }
+  
+  .authentication h2 {
+    color: var(--alt_text); /* Light blue for headings */
+    margin-bottom: 10px;
+  }
+  
+  .authentication input {
+    margin-bottom: 10px; /* Increase margin for more space */
+    padding-left: 50px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 1px solid var(--alt_text);
+    border-radius: 5px;
+    background-color: var(--alt_background);
+    color: var(--text);
+  }
+  
+  .authentication button {
+    margin-top: 10px; /* Add margin between input and button */
+    margin-left: 5px;
+    padding: 10px 20px;
+    background-color: var(--alt_text);
+    color: var(--accent2);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .authentication button:hover {
+    background-color: var(--accent1); /* Darker blue on hover */
+    color: var(--text)
+  }
+  
