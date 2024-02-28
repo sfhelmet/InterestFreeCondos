@@ -64,8 +64,6 @@ const PropertyFilesView = (props) =>
       
 
     const handleUploadFileClick = (property) => {
-        console.log("Upload file button clicked for property:", property);
-
         document.getElementById(`fileInput_${property.id}`).click();
     };
 
@@ -75,20 +73,21 @@ const PropertyFilesView = (props) =>
 
         // Process each selected file
         Array.from(selectedFiles).forEach(async (file) => {
-            console.log(file);
 
-            // Upload to storage
+            // Rename with timestamp
             const timestamp = new Date().getTime();
             const formattedTimestamp = new Date(timestamp).toISOString().replace(/[-T:.Z]/g, '_');
-
-
             const filename = `${formattedTimestamp}_${file.name.replace(/ /g, '_')}`;
+
+            // Upload new file in storage
             const property_files_ref = ref(storage, `property_files/${filename}`)
             uploadBytes(property_files_ref, file).then((snapshot) => {
 
+                // Upload file array of properties table
                 const docRef = doc(db, "properties", property.id);
                 updateDoc(docRef, {files: [...property.files, filename]}).then(async () =>
                     {
+                        // Modify file list
                         const newproperties = propertyProfiles.map(item => {
                             if (item.id === property.id && item.files) {
                               item.files.push(filename);
@@ -96,13 +95,14 @@ const PropertyFilesView = (props) =>
                             return item;
                           });
                         setPropertyProfiles(newproperties);
+
+                        // Modify in-place the anchor of the file
                         await getDownloadURL(ref(storage, `property_files/${filename}`)).then(url =>
                             {
                                 const fileanchor = document.getElementById(filename);
                                 fileanchor.setAttribute('href', url);
                             })
                     }
-
                 )
 
                 console.log("File upload - OK")
@@ -151,51 +151,39 @@ const PropertyFilesView = (props) =>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossOrigin="anonymous"></script>
       <Center>
         <div className="properties" style={{ width: "80%"}}>
-            <div className="card-group" >
-                
-                {propertyProfiles ? (propertyProfiles.map( property => (
-                    <div className="card" >
-                    <h5 className="card-header">{property.propertyName}</h5>
-                    <div className="card-body">
-                    <div className="d-flex justify-content-between">
-                        <div className="propertyAddress">{property.fullAddress}</div>
-                        <button type="button" className="btn btn-primary" 
-                                style={{ backgroundColor: "#317995", color: "#F4F9F9", border: "none"}}
-                                onClick={() => handleUploadFileClick(property)}>
-                            Upload File
-                            </button>
-                            <input
-                                            type="file"
-                                            id={`fileInput_${property.id}`}
-                                            style={{ display: 'none' }}
-                                            onChange={(e) => handleFileSelection(property, e)}
-                                            multiple
-                                        />
-                    </div>
-                        <p className="card-text">Files</p>
-                        <ul className="fileList list-group">
-                            {
-                                 property.files && property.files.length > 0 ? (property.files.map( file =>
-                                    <li className="list-group-item">
-                                    <div className="d-flex justify-content-between">
-                                        <div>
-                                        <i className={`fas fa-${getFileIcon(file)} mr-2`}></i>
-                                        <a id={file} target="_blank" download>{file}</a>
-                                        </div>
-                                    <button type="button" aria-label="Close" style={{border: "none", backgroundColor: "transparent"}}                                       
-                                    onClick={() => handleDeleteConfirmation(file, property) }
-                                    >
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    </div>
-                                   
-                                    </li>
-                                    )) : <li className="list-group-item"><a>No files in directory</a></li>
-                            }
-                        </ul>
-                    </div>
+          <div className="card-group" >
+          {propertyProfiles ? (propertyProfiles.map( property => (
+            <div className="card" >
+              <h5 className="card-header">{property.propertyName}</h5>
+              <div className="card-body">
+                <div className="d-flex justify-content-between">
+                  <div className="propertyAddress">{property.fullAddress}</div>
+                  <button type="button" className="btn btn-primary" 
+                          style={{ backgroundColor: "#317995", color: "#F4F9F9", border: "none"}}
+                          onClick={() => handleUploadFileClick(property)}>
+                  Upload File
+                  </button>
+                  <input type="file" id={`fileInput_${property.id}`} style={{ display: 'none' }}
+                  onChange={(e) => handleFileSelection(property, e)} multiple/>
                 </div>
-                ))) : (<></>)}
+                  <p className="card-text">Files</p>
+                  <ul className="fileList list-group">
+                  {property.files && property.files.length > 0 ? (property.files.map( file =>
+                    <li className="list-group-item">
+                      <div className="d-flex justify-content-between">
+                        <div>
+                          <i className={`fas fa-${getFileIcon(file)} mr-2`}></i>
+                          <a id={file} target="_blank" download>{file}</a>
+                        </div>
+                        <button type="button" aria-label="Close" style={{border: "none", backgroundColor: "transparent"}}                                       
+                                onClick={() => handleDeleteConfirmation(file, property) }>
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div> 
+                    </li>)) : <li className="list-group-item"><a>No files in directory</a></li>}
+                  </ul>
+                </div>
+                </div>))) : (<></>)}
             </div>
         </div>
       </Center>
