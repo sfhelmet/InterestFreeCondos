@@ -4,7 +4,7 @@ import { query, collection, getDocs, updateDoc, doc} from "firebase/firestore"
 import { getStorage, uploadBytes, ref, getDownloadURL, deleteObject } from "firebase/storage"
 import { useEffect } from "react";
 import Center from "../components/utils/Center";
-import '@fortawesome/fontawesome-free/css/all.css';
+import FileIcon from "../components/utils/FileIcons"
 
 
 const PropertyFilesView = (props) =>
@@ -13,24 +13,6 @@ const PropertyFilesView = (props) =>
     const [propertyProfiles, setPropertyProfiles] = useState(null);
 
     const storage = getStorage();
-
-    const getFileIcon = (file) => {
-        let extension = file.split('.').pop();
-        switch (extension.toLowerCase()) {
-            case 'pdf':
-              return 'file-pdf';
-            case 'doc':
-            case 'docx':
-              return 'file-word';
-            case 'xls':
-            case 'xlsx':
-              return 'file-excel';
-            case 'txt':
-                return 'file-text'
-              default:
-              return 'file';
-          }
-    }
 
     const handleDeleteConfirmation = (file, property) => {
         if (window.confirm(`Are you sure you want to delete ${file}?`)) {
@@ -172,7 +154,7 @@ const PropertyFilesView = (props) =>
                     <li className="list-group-item">
                       <div className="d-flex justify-content-between">
                         <div>
-                          <i className={`fas fa-${getFileIcon(file)} mr-2`}></i>
+                          <FileIcon filename={file}></FileIcon>
                           <a id={file} target="_blank" download>{file}</a>
                         </div>
                         <button type="button" aria-label="Close" style={{border: "none", backgroundColor: "transparent"}}                                       
