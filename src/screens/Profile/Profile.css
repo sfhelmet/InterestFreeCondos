@@ -51,7 +51,7 @@
 
 .user-profile-container .selected-stack-option-wrapper {
     min-width: 660px;
-    min-height: 613px;
+    min-height: 550px;
     max-width: 940px;
     max-height: 893px;
     text-align: left;
@@ -61,4 +61,24 @@
 
 .user-profile-container .selected-stack-option-wrapper .stack-option-title {
     margin-bottom: 1rem;
+}
+
+.user-profile-container .options-stack .currently-selected {
+    background-color: #193446;
+    color: #F4F9F9 !important;
+}
+
+.user-profile-container .profile-img-box .upload-btn {
+    margin-top: 1rem;
+    width: auto;
+    height: 36px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #F4F9F9;
+    border-color: #193446;
+    border-radius: 0;
+    border: solid 1px;
+    color: #193446;
+    white-space: nowrap;
+    text-transform: none;
 }

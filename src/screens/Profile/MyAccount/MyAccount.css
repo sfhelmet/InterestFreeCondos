@@ -1,0 +1,72 @@
+.myaccount-container {
+    color: #193446;
+}
+
+.myaccount-container .title-buttons-container {
+    display: flex;
+}
+
+.myaccount-container .info-container {
+    margin-bottom: 2rem;
+}
+
+.myaccount-container .btns-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.myaccount-container .btns-container button {
+    width: 100px;
+    height: 36px;
+    font-size: 1rem;
+    border-color: #193446;
+    border-radius: 0;
+    color: #193446;
+}
+
+.myaccount-container .btns-container .save-btn {
+    width: 150px;
+    white-space: nowrap;
+    background-color: #193446;
+    color: #F4F9F9;
+}
+
+.myaccount-container .stack-option-subtitle {
+    margin-bottom: 1.5rem;
+}
+
+.myaccount-container .separator {
+    background-color: #193446;
+    height: 1px;
+    margin-bottom: 2rem;
+}
+
+.myaccount-container .info-container .contact-info {
+    margin-top: 2rem;
+}
+
+.myaccount-container .info-container .vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.myaccount-container .info-container .horizontal {
+    display: flex;
+    gap: 4rem;
+}
+
+.myaccount-container .info-container .field-input fieldset {
+    border-radius: 0;
+    border-color: #193446;
+}
+
+.myaccount-container .info-container .edit-note {
+    margin-bottom: 1.5rem;
+}
+
+.myaccount-container .force-flex-right {
+    justify-content: end;
+}

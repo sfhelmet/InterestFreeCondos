@@ -2,10 +2,10 @@ import { useState, useEffect, createContext } from "react";
 import { auth, db } from "../config/firebase";
 import { query, collection, where, getDocs} from "firebase/firestore";
 
-export const UserProfileContext = createContext(null);
+export const AuthenticatedUserContext = createContext(null);
 
-export const UserProfileProvider = ({ children }) => {
-    const [userProfile, setUserProfile] = useState(null);
+export const AuthenticatedUserProvider = ({ children }) => {
+    const [authenticatedUser, setAuthenticatedUser] = useState(null);
 
     const fetchUser = async (userID) => {
         const usersRef = collection(db, "users");
@@ -13,11 +13,11 @@ export const UserProfileProvider = ({ children }) => {
         const results = getDocs(userQuery);
         await results.then(docs => {
             docs.forEach(doc => {
-                setUserProfile(doc.data());
+                setAuthenticatedUser(doc.data());
             })
         }).catch(err => {
             console.error(err.message);
-            setUserProfile(null);
+            setAuthenticatedUser(null);
         })
     }
 
@@ -26,7 +26,7 @@ export const UserProfileProvider = ({ children }) => {
             if (authUser) {
                 fetchUser(authUser.uid)
             } else {
-                setUserProfile(null);
+                setAuthenticatedUser(null);
             }
         });
 
@@ -34,9 +34,10 @@ export const UserProfileProvider = ({ children }) => {
     }, [])
 
     return (
-        <UserProfileContext.Provider value={userProfile}>
+        <AuthenticatedUserContext.Provider value={authenticatedUser}>
             {children}
-        </UserProfileContext.Provider>
+        </AuthenticatedUserContext.Provider>
     );
 }
 
+export default AuthenticatedUserContext;

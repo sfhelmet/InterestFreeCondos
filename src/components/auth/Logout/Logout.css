@@ -1,0 +1,10 @@
+.logout-btn-container .logout-btn {
+    width: 100px;
+    height: 36px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #193446;
+    border-color: #193446;
+    border-radius: 0;
+    color: #F4F9F9;
+}

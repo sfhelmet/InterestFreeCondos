@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Logout from "../components/auth/Logout";
+import Logout from "../components/auth/Logout/Logout";
 import Center from "../components/utils/Center";
 import Profile from "./Profile/Profile";
 

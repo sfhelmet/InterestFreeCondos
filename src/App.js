@@ -5,7 +5,7 @@ import { auth } from "./config/firebase";
 import routes from "./config/routes";
 import Center from "./components/utils/Center";
 import AuthChecker from "./components/auth/AuthChecker";
-import { UserProfileProvider } from "./contexts/UserProfileContext";
+import { AuthenticatedUserProvider } from "./contexts/AuthenticatedUserContext";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -31,7 +31,7 @@ function App() {
   return (
     <div>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <UserProfileProvider>
+        <AuthenticatedUserProvider>
           <Routes>
             {routes.map((route, index) => (
               <Route
@@ -49,7 +49,7 @@ function App() {
               />
             ))}
           </Routes>
-        </UserProfileProvider>
+        </AuthenticatedUserProvider>
       </BrowserRouter>
     </div>
   );

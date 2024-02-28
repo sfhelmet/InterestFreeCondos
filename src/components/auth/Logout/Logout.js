@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../config/firebase";
+import { auth } from "../../../config/firebase";
+
+import "./Logout.css";
 
 const Logout = ({ navigateTo = "/login" }) => {
   const [disabled, setDisabled] = useState(false);
@@ -20,8 +22,8 @@ const Logout = ({ navigateTo = "/login" }) => {
   };
 
   return (
-    <div>
-      <Button disabled={disabled} onClick={logout} variant="contained">
+    <div className="logout-btn-container">
+      <Button className="logout-btn" disabled={disabled} onClick={logout} variant="contained">
         Logout
       </Button>
     </div>
