@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { auth, db } from "../config/firebase";
-import { query, collection, getDocs, updateDoc, doc} from "firebase/firestore" 
+import { query, collection, getDocs, updateDoc, doc, where} from "firebase/firestore" 
 import { getStorage, uploadBytes, ref, getDownloadURL, deleteObject } from "firebase/storage"
 import { useEffect } from "react";
 import Center from "../components/utils/Center";
 import FileIcon from "../components/utils/FileIcons"
+import { useNavigate } from "react-router-dom";
+
 
 
 const PropertyFilesView = (props) =>
 {
 
     const [propertyProfiles, setPropertyProfiles] = useState(null);
-
+    const navigate = useNavigate();
     const storage = getStorage();
 
     const handleDeleteConfirmation = (file, property) => {
@@ -93,9 +95,14 @@ const PropertyFilesView = (props) =>
     };
 
     useEffect(() => {
-
         const fetchAllProperties = async () => {
             if (!propertyProfiles && auth.currentUser) {
+                // Make sure non-management users can't land here
+                getDocs(query(collection(db, "users"),where("userID", "==", auth.currentUser.uid))).then(
+                  docs =>{docs.forEach(doc =>{if (doc.data().userType !== "MANAGEMENT") {navigate("/unauthorized")}})}
+                )
+
+                // Get properties
                 const usersRef = collection(db, "properties");
                 const userQuery = query(usersRef);
                 getDocs(userQuery).then(docs => {
@@ -118,6 +125,8 @@ const PropertyFilesView = (props) =>
             }
         };
 
+        
+
         fetchAllProperties();
     }, []);
 
@@ -131,11 +140,10 @@ const PropertyFilesView = (props) =>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossOrigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossOrigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossOrigin="anonymous"></script>
-      <Center>
-        <div className="properties" style={{ width: "80%"}}>
-          <div className="card-group" >
+        <div className="container-fluid" style={{ width: "80%"}}>
           {propertyProfiles ? (propertyProfiles.map( property => (
-            <div className="card" >
+            <div className="row"><div className="col">
+            <div className="card m-2">
               <h5 className="card-header">{property.propertyName}</h5>
               <div className="card-body">
                 <div className="d-flex justify-content-between">
@@ -165,10 +173,8 @@ const PropertyFilesView = (props) =>
                     </li>)) : <li className="list-group-item"><a>No files in directory</a></li>}
                   </ul>
                 </div>
-                </div>))) : (<></>)}
-            </div>
-        </div>
-      </Center>
+                </div></div></div>))) : (<></>)}
+              </div>
     </div>
     )
 }
