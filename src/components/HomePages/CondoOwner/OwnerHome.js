@@ -96,9 +96,11 @@ const OwnerHome = () => {
         {/* Left panel */}
         <div className="left-panel">
           <ul>
-            <li><a href="#fun1">Functionality 1</a></li>
-            <li><a href="#fun2">Functionality 2</a></li>
-            <li><a href="#fun3">Functionality 3</a></li>
+            <li><Link to="/profile">My Profle</Link></li>
+            <li><Link to="/manage-properties">Manage Properties</Link></li>
+            <li><Link to="/financial-status">Financial Status</Link></li>
+            <li><Link to="/manage-properties">View Requests</Link></li>
+            {/*Add functionalities here*/}
           </ul>
         </div>
         {/* Right panel */}
