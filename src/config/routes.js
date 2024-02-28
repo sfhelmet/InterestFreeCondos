@@ -24,6 +24,12 @@ const routes = [
     protected: false,
   },
   {
+    path: "/property-files",
+    component: PropertyFilesView,
+    name: "Property Files Management",
+    protected: true,
+  },
+  {
     path: "*",
     component: NotFoundPage,
     name: "Not Found",
