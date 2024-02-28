@@ -16,12 +16,14 @@
     left: 0; /* Stick to the left side */
     top: 20px; /* Adjust the top position to start below the navbar. Top should be the height of the navbar +20px. If no navbar then set top to 20px */
     width: 10%; /* Ten percent of the screen's width */
-    border-top: 2px solid var(--accent1); /* Add top border */
-    border-right: 2px solid var(--accent1); /* Add right border */
+    border-top: 2px solid var(--accent2); /* Add top border */
+    border-right: 2px solid var(--accent2); /* Add right border */
     box-sizing: border-box; /* Include border in width/height calculations */
     height: 100%; /* Full height of viewport minus the height of the navbar */
     display: flex;
     flex-direction: column; /* Stack items vertically */
+    background-color: rgba(49, 121, 149, 0.2);
+    align-items: center;
   }
     
   
@@ -37,6 +39,7 @@
   
   .left-panel ul li {
     margin-bottom: 10px;
+    text-align: center;
   }
   
   .left-panel ul li a {
@@ -45,8 +48,8 @@
   }
   
   .right-panel {
-    width: 75%; /* Two-thirds of the screen */
-    margin-left: 200px;
+    width: 80%; /* Two-thirds of the screen */
+    margin-left: 15%;
     height: 100vh; /* Full height of viewport */
     display: flex; /* Use flexbox */
     flex-direction: column; /* Stack items vertically */
@@ -118,4 +121,6 @@
     content: "View more ⋀"; /* Change text on hover */
   }
 
-  
+  .logo{
+    width: 95%;
+  }

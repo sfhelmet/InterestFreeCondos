@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for redirection
 import './OwnerHome.css'; // Import CSS file for styling
-
+import logo from '../../../imgs/Logos/Nexus-clear-noText.png';
 
 
 
@@ -95,11 +95,13 @@ const OwnerHome = () => {
         <div className='panel-container'>
         {/* Left panel */}
         <div className="left-panel">
+        <img src={logo} alt="Company Logo" className='logo'/>
+        <h3 className='nexus' style={{fontFamily: 'telemarines', fontSize: '24px'}}>Nexus</h3>
           <ul>
             <li><Link to="/profile">My Profle</Link></li>
             <li><Link to="/manage-properties">Manage Properties</Link></li>
             <li><Link to="/financial-status">Financial Status</Link></li>
-            <li><Link to="/manage-properties">View Requests</Link></li>
+            <li><Link to="/requests">View Requests</Link></li>
             {/*Add functionalities here*/}
           </ul>
         </div>
@@ -127,7 +129,7 @@ const OwnerHome = () => {
             </div>
           ))}
           <div className="view-more">
-            <Link className="view-more-button" to="/all-properties">
+            <Link className="view-more-button" to="/manage-properties">
               
             </Link>
           </div>
