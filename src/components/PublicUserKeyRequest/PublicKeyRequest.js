@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './PublicKeyRequest.css';
-import '../../components/Styling/Fonts/fonts.css'
+import '../../Styling/Fonts/fonts.css';
 
 const PublicKeyRequest = () => {
   const [keyNumber, setKeyNumber] = useState('');

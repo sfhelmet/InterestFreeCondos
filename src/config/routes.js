@@ -1,10 +1,8 @@
-import Home from "../screens/Home";
-import Login from "../screens/Login";
-import NotFound from "../components/NotFound/NotFound";
+import Home from "../Pages/HomePage/Home";
+import Login from "../Pages/LoginPage/Login";
+import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
 import PublicKeyRequest from "../components/PublicUserKeyRequest/PublicKeyRequest";
-import CompanyHome from "../components/HomePages/Dashboards/CompanyDashboard";
-import OwnerHome from "../components/HomePages/Dashboards/OwnerDashboard";
-import Profile from "../screens/Profile";
+import OwnerHome from "../components/HomePages/CondoOwner/OwnerHome"
 
 const routes = [
   {
@@ -27,7 +25,7 @@ const routes = [
   },
   {
     path: "*",
-    component: NotFound,
+    component: NotFoundPage,
     name: "Not Found",
     protected: false,
   },
