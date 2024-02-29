@@ -5,7 +5,7 @@ import { auth, Providers } from "../../../config/firebase";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import LoginIcon from '@mui/icons-material/Login';
-import Center from "../../Utils/Center";
+import Center from "../../utils/Center";
 
 import "./AuthContainer.css";
 
