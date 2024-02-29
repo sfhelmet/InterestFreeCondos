@@ -1,7 +1,7 @@
 import Home from "../Pages/HomePage/Home";
 import Login from "../Pages/LoginPage/Login";
 import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
-import PublicKeyRequest from "../Components/PublicUserKeyRequest/PublicKeyRequest";
+import PublicKeyRequest from "../components/PublicUserKeyRequest/PublicKeyRequest";
 import OwnerHome from "../Pages/HomePage/Dashboards/CondoOwner/OwnerHome";
 
 const routes = [

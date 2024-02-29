@@ -1,5 +1,5 @@
 import nexus_logo from "../../Images/nexus_logo.png";
-import Center from "../../Components/Utils/Center";
+import Center from "../../components/utils/Center";
 
 import "./NotFoundPage.css";
 
