@@ -1,9 +1,9 @@
 import { Box, Tab, Tabs } from "@mui/material";
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import AuthContainer from "../components/auth/AuthContainer";
-import Center from "../components/utils/Center";
-import Register from "../components/auth/Register/Register";
+import AuthContainer from "../../Components/Auth/AuthContainer/AuthContainer";
+import Center from "../../Components/Utils/Center";
+import Register from "../../Components/Auth/Register/Register";
 
 const tabIdToURL = {
   0: "login",
