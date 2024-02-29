@@ -3,9 +3,9 @@ import { CircularProgress } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { auth } from "./config/firebase";
 import routes from "./config/routes";
-import Center from "./components/utils/Center";
-import AuthChecker from "./components/auth/AuthChecker";
-import { AuthenticatedUserProvider } from "./contexts/AuthenticatedUserContext";
+import Center from "./Components/Utils/Center";
+import AuthChecker from "./Components/Auth/AuthChecker";
+import { AuthenticatedUserProvider } from "./Contexts/AuthenticatedUserContext";
 
 function App() {
   const [loading, setLoading] = useState(true);

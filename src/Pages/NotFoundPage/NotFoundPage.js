@@ -1,9 +1,9 @@
-import nexus_logo from "../../imgs/nexus_logo.png";
-import Center from "../utils/Center";
+import nexus_logo from "../../Images/nexus_logo.png";
+import Center from "../../Components/Utils/Center";
 
-import "./NotFound.css";
+import "./NotFoundPage.css";
 
-const NotFound = () => {
+const NotFoundPage = () => {
     return (
         <Center>
             <div className="not-found-container">
@@ -14,4 +14,4 @@ const NotFound = () => {
     )
 }
 
-export default NotFound;
+export default NotFoundPage;

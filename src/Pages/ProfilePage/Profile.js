@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { AuthenticatedUserContext } from "../../contexts/AuthenticatedUserContext";
+import { AuthenticatedUserContext } from "../../Contexts/AuthenticatedUserContext";
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import MyAccount from "./MyAccount/MyAccount";
