@@ -142,7 +142,8 @@ const PropertyFilesView = (props) =>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossOrigin="anonymous"></script>
         <div className="container-fluid" style={{ width: "80%"}}>
           {propertyProfiles ? (propertyProfiles.map( property => (
-            <div className="row"><div className="col">
+            <div className="row">
+            <div className="col">
             <div className="card m-2">
               <h5 className="card-header">{property.propertyName}</h5>
               <div className="card-body">
@@ -172,9 +173,11 @@ const PropertyFilesView = (props) =>
                       </div> 
                     </li>)) : <li className="list-group-item"><a>No files in directory</a></li>}
                   </ul>
-                </div>
-                </div></div></div>))) : (<></>)}
               </div>
+            </div>
+            </div>
+            </div>))) : (<></>)}
+        </div>
     </div>
     )
 }
