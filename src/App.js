@@ -5,7 +5,7 @@ import { auth } from "./config/firebase";
 import routes from "./config/routes";
 import Center from "./Components/Utils/Center";
 import AuthChecker from "./Components/Auth/AuthChecker";
-import { AuthenticatedUserProvider } from "./Contexts/AuthenticatedUserContext";
+import { AuthenticatedUserProvider } from "./contexts/AuthenticatedUserContext";
 
 function App() {
   const [loading, setLoading] = useState(true);

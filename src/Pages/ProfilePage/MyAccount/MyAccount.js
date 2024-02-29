@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useContext } from "react";
-import AuthenticatedUserContext from '../../../Contexts/AuthenticatedUserContext';
+import AuthenticatedUserContext from '../../../contexts/AuthenticatedUserContext';
 
 import "./MyAccount.css";
 
