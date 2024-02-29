@@ -41,18 +41,6 @@ const routes = [
     name: "Owner Home",
     protected: false,
   },
-  {
-    path: "/company-home",
-    component: CompanyHome,
-    name: "Company Home",
-    protected: false,
-  },
-  {
-    path: "/profile",
-    component: Profile,
-    name: "Profile",
-    protected: false,
-  },
 ];
 
 export default routes;

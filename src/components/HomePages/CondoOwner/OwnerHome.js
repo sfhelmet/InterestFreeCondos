@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for redirection
-import './Dashboard.css'; // Import CSS file for styling
+import './OwnerHome.css'; // Import CSS file for styling
 import logo from '../../../imgs/Logos/Nexus-clear-noText.png';
 
 
@@ -78,7 +78,7 @@ const properties = [
   // Add more properties as needed
 ];
 
-const CompanyHome = () => {
+const OwnerHome = () => {
   //Caps the number of properties to be shown on the owner dashboard to 4. Takes the properties array defined above and selects the first 4 elements (in theory the 4 most recent properties).
   const limitedProperties = properties.slice(0, 4);
 
@@ -140,4 +140,4 @@ const CompanyHome = () => {
   );
 };
 
-export default CompanyHome;
+export default OwnerHome;
