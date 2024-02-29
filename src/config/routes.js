@@ -2,7 +2,9 @@ import Home from "../screens/Home";
 import Login from "../screens/Login";
 import NotFound from "../components/NotFound/NotFound";
 import PublicKeyRequest from "../components/PublicUserKeyRequest/PublicKeyRequest";
-import OwnerHome from "../components/HomePages/CondoOwner/OwnerHome"
+import CompanyHome from "../components/HomePages/Dashboards/CompanyDashboard";
+import OwnerHome from "../components/HomePages/Dashboards/OwnerDashboard";
+import Profile from "../screens/Profile";
 
 const routes = [
   {
@@ -39,6 +41,18 @@ const routes = [
     path: "/owner-home",
     component: OwnerHome,
     name: "Owner Home",
+    protected: false,
+  },
+  {
+    path: "/company-home",
+    component: CompanyHome,
+    name: "Company Home",
+    protected: false,
+  },
+  {
+    path: "/profile",
+    component: Profile,
+    name: "Profile",
     protected: false,
   },
 ];
