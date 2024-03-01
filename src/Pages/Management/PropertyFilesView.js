@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { auth, db } from "../config/firebase";
+import { auth, db } from "../../config/firebase";
 import { query, collection, getDocs, updateDoc, doc, where} from "firebase/firestore" 
 import { getStorage, uploadBytes, ref, getDownloadURL, deleteObject } from "firebase/storage"
 import { useEffect } from "react";
-import Center from "../components/utils/Center";
-import FileIcon from "../components/utils/FileIcons"
+import FileIcon from "../../components/utils/FileIcons"
 import { useNavigate } from "react-router-dom";
 
 

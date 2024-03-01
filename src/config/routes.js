@@ -3,6 +3,7 @@ import Login from "../Pages/LoginPage/Login";
 import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
 import PublicKeyRequest from "../components/PublicUserKeyRequest/PublicKeyRequest";
 import OwnerHome from "../Pages/HomePage/Dashboards/CondoOwner/OwnerHome";
+import PropertyFilesView from "../Pages/Management/PropertyFilesView"
 
 const routes = [
   {
