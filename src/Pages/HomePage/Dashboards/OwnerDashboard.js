@@ -111,7 +111,9 @@ const OwnerHome = () => {
           {limitedProperties.map(property => (
             <div key={property.id} className="property-card" onClick={() => console.log(`Redirect to unit ${property.unit}`)}>
               <div className='property-content'>
-              <img src={property.image} alt="Property" className='property-image'/>
+              <div className='image-container'>
+                <img src={property.image} alt="Property" className='property-image'/>
+              </div>
               <div className="property-details">
                 <div>
                   <h3>{property.buildingName}</h3>
