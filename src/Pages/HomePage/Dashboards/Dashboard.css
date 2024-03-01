@@ -1,0 +1,137 @@
+/* html, body{
+  height: 100%; /* Ensure html takes up full viewport height */
+  /* background-color: var(--background); /* Set background color */
+/* } */ 
+.home-page {
+  display: flex;
+  background-color: var(--alt_background); /* Dark background color */
+  color: var(--text); /* Light text color */
+  padding-top: 20px; /* Add padding to the top */
+  height: 100%;
+}
+
+.panel-container {
+  display: flex;
+  height: 100%; /* Ensure container takes full height */
+}
+
+.left-panel {
+  position: absolute; /* Fixed positioning */
+  left: 0; /* Stick to the left side */
+  top: 20px; /* Adjust the top position to start below the navbar. Top should be the height of the navbar +20px. If no navbar then set top to 20px */
+  width: 10%; /* Ten percent of the screen's width */
+  border-top: 2px solid var(--accent2); /* Add top border */
+  border-right: 2px solid var(--accent2); /* Add right border */
+  border-bottom: 2px solid var(--accent2); /* Add right border */
+  box-sizing: border-box; /* Include border in width/height calculations */
+  height: 100%; /* Full height of viewport minus the height of the navbar */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  background-color: rgba(49, 121, 149, 0.2);
+  align-items: center;
+}
+  
+
+.left-panel ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  height: 100%; /* Make the list take up the full height of the left panel */
+}
+
+
+.left-panel ul li {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.left-panel ul li a {
+  color: var(--alt_text); /* Light blue */
+  text-decoration: none;
+}
+
+.right-panel {
+  width: 80%; /* Two-thirds of the screen */
+  margin-left: 15%;
+  /*height: 100vh; /* Full height of viewport */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack items vertically */
+}
+
+.property-card {
+  background-color: rgba(126, 230, 239, 0.3); /* Transparent background color */
+  margin-bottom: 20px;
+  cursor: pointer;
+  /*flex: 1; /* Make property cards stretch to fill available space */
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.property-card:hover {
+  background-color: rgba(126, 230, 239, 0.5); /* Darker transparent background color on hover */
+}
+
+.property-content {
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center vertically */
+}
+
+.property-card img {
+  width: 100%;
+  height: auto;
+}
+
+.property-details {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.property-details div {
+  flex: 1;
+}
+
+.property-details h3,
+.property-details h4 {
+  margin-bottom: 5px;
+}
+
+.property-details p {
+  margin: 5px 0;
+}
+
+.view-more {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin-bottom: 20px;
+}
+
+
+.view-more-button{
+  text-decoration: none; /* Remove underline */
+  color: var(--alt_text); /* Set color to blue */
+}
+
+.view-more-button::after{
+  content: "View more ⋁";
+}
+
+.view-more-button:hover::after {
+  color: var(--accent1);
+  content: "View more ⋀"; /* Change text on hover */
+}
+
+.logo{
+  width: 95%;
+}
+
+.image-container {
+  width: 20%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-right: 20px;
+}

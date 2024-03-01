@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for redirection
-import './OwnerHome.css'; // Import CSS file for styling
-import logo from '../../../../Images/Logos/Nexus-clear-noText.png';
+import './Dashboard.css'; // Import CSS file for styling
+import logo from '../../../Images/Logos/Nexus-clear-noText.png';
 
 
 
 //Import or fetch images for the condos
-import unit1 from "../../../../Images/CondoImages/Units/Unit1/img1.jpg";
-import unit2 from "../../../../Images/CondoImages/Units/Unit2/img1.jpg";
-import unit3 from "../../../../Images/CondoImages/Units/Unit3/img1.jpg";
-import unit4 from "../../../../Images/CondoImages/Units/Unit4/img1.jpg";
+import unit1 from "../../../Images/CondoImages/Units/Unit1/img1.jpg";
+import unit2 from "../../../Images/CondoImages/Units/Unit2/img1.jpg";
+import unit3 from "../../../Images/CondoImages/Units/Unit3/img1.jpg";
+import unit4 from "../../../Images/CondoImages/Units/Unit4/img1.jpg";
+
 
 
 
