@@ -3,6 +3,7 @@ import Login from "../Pages/LoginPage/Login";
 import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
 import PublicKeyRequest from "../components/PublicUserKeyRequest/PublicKeyRequest";
 import OwnerHome from "../Pages/HomePage/Dashboards/CondoOwner/OwnerHome";
+import PropertyFilesView from "../Pages/Management/PropertyFilesView"
 
 const routes = [
   {
@@ -22,6 +23,12 @@ const routes = [
     component: Login,
     name: "Login Screen",
     protected: false,
+  },
+  {
+    path: "/property-files",
+    component: PropertyFilesView,
+    name: "Property Files Management",
+    protected: true,
   },
   {
     path: "*",
