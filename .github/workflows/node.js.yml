@@ -29,6 +29,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
+      - name: Load .env file
+        run: |
+          set -a
+          [ -f .env ] && . .env
+          set +a
       - name: Run tests
         working-directory: ./
         run: npm test
