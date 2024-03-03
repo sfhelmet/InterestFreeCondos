@@ -29,17 +29,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
-      - name: Load .env file
-        run: |
-          set -a
-          [ -f .env ] && . .env
-          set +a
+      - run: npm run build --if-present
       - name: Run tests
         working-directory: ./
         run: npm test
-        env:
-          REACT_APP_FirebaseAuthDomain: ${{ secrets.REACT_APP_FirebaseAuthDomain }}
-          REACT_APP_FirebaseProjectId: ${{ secrets.REACT_APP_FirebaseProjectId }}
-          REACT_APP_FirebaseStorageBucket: ${{ secrets.REACT_APP_FirebaseStorageBucket }}
-          REACT_APP_FirebaseMessagingSenderId: ${{ secrets.REACT_APP_FirebaseMessagingSenderId }}
-          REACT_APP_FirebaseAppId: ${{ secrets.REACT_APP_FirebaseAppId }}
