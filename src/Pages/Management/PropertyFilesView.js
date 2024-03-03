@@ -127,7 +127,7 @@ const PropertyFilesView = (props) =>
         
 
         fetchAllProperties();
-    }, []);
+    }, [navigate, propertyProfiles, storage]);
 
 
 
@@ -163,7 +163,7 @@ const PropertyFilesView = (props) =>
                       <div className="d-flex justify-content-between">
                         <div>
                           <FileIcon filename={file}></FileIcon>
-                          <a id={file} href="" target="_blank" download>{file}</a>
+                          <a id={file} href={`#${file}`} download>{file}</a>
                         </div>
                         <button type="button" aria-label="Close" style={{border: "none", backgroundColor: "transparent"}}                                       
                                 onClick={() => handleDeleteConfirmation(file, property) }>
