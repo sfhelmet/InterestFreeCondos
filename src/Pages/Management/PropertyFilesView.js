@@ -141,7 +141,7 @@ const PropertyFilesView = (props) =>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossOrigin="anonymous"></script>
         <div className="container-fluid" style={{ width: "80%"}}>
           {propertyProfiles ? (propertyProfiles.map( property => (
-            <div className="row">
+            <div className="row" key={property.id}>
             <div className="col">
             <div className="card m-2">
               <h5 className="card-header">{property.propertyName}</h5>
@@ -159,18 +159,18 @@ const PropertyFilesView = (props) =>
                   <p className="card-text">Files</p>
                   <ul className="fileList list-group">
                   {property.files && property.files.length > 0 ? (property.files.map( file =>
-                    <li className="list-group-item">
+                    <li className="list-group-item" key={`${file}_${property.id}`} >
                       <div className="d-flex justify-content-between">
                         <div>
                           <FileIcon filename={file}></FileIcon>
-                          <a id={file} target="_blank" download>{file}</a>
+                          <a id={file} href="" target="_blank" download>{file}</a>
                         </div>
                         <button type="button" aria-label="Close" style={{border: "none", backgroundColor: "transparent"}}                                       
                                 onClick={() => handleDeleteConfirmation(file, property) }>
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div> 
-                    </li>)) : <li className="list-group-item"><a>No files in directory</a></li>}
+                    </li>)) : <li className="list-group-item">No files in directory</li>}
                   </ul>
               </div>
             </div>
