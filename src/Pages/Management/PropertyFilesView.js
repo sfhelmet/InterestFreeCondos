@@ -172,7 +172,7 @@ const PropertyFilesView = (props) => {
       <div className="container-fluid" style={{ width: "80%" }}>
         {propertyProfiles ? (
           propertyProfiles.map((property) => (
-            <div className="row">
+            <div className="row" key={property.id}>
               <div className="col">
                 <div className="card m-2">
                   <h5 className="card-header">{property.propertyName}</h5>
@@ -205,11 +205,14 @@ const PropertyFilesView = (props) => {
                     <ul className="fileList list-group">
                       {property.files && property.files.length > 0 ? (
                         property.files.map((file) => (
-                          <li className="list-group-item">
+                          <li
+                            className="list-group-item"
+                            key={`${file}_${property.id}`}
+                          >
                             <div className="d-flex justify-content-between">
                               <div>
                                 <FileIcon filename={file}></FileIcon>
-                                <a id={file} target="_blank" download>
+                                <a id={file} href={`#${file}`} download>
                                   {file}
                                 </a>
                               </div>
@@ -231,7 +234,7 @@ const PropertyFilesView = (props) => {
                         ))
                       ) : (
                         <li className="list-group-item">
-                          <a>No files in directory</a>
+                          No files in directory
                         </li>
                       )}
                     </ul>
