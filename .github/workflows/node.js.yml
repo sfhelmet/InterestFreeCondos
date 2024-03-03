@@ -38,9 +38,8 @@ jobs:
         working-directory: ./
         run: npm test
         env:
-        REACT_APP_FirebaseApiKey: ${{env.REACT_APP_FirebaseApiKey}}
-        REACT_APP_FirebaseAuthDomain: ${{env.REACT_APP_FirebaseAuthDomain}}
-        REACT_APP_FirebaseProjectId: ${{env.REACT_APP_FirebaseProjectId}}
-        REACT_APP_FirebaseStorageBucket: ${{env.REACT_APP_FirebaseStorageBucket}}
-        REACT_APP_FirebaseMessagingSenderId: ${{env.REACT_APP_FirebaseMessagingSenderId}}
-        REACT_APP_FirebaseAppId: ${{env.REACT_APP_FirebaseAppId}}
+          REACT_APP_FirebaseAuthDomain: ${{ secrets.REACT_APP_FirebaseAuthDomain }}
+          REACT_APP_FirebaseProjectId: ${{ secrets.REACT_APP_FirebaseProjectId }}
+          REACT_APP_FirebaseStorageBucket: ${{ secrets.REACT_APP_FirebaseStorageBucket }}
+          REACT_APP_FirebaseMessagingSenderId: ${{ secrets.REACT_APP_FirebaseMessagingSenderId }}
+          REACT_APP_FirebaseAppId: ${{ secrets.REACT_APP_FirebaseAppId }}
