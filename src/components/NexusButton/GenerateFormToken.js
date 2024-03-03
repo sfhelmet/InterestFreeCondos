@@ -68,7 +68,7 @@ const GenerateTokenForm = ({ children }) => {
             onChange={handleUnitChange}
           />
         </div>
-        <button type="button" onClick={generateToken}>
+        <button type="button" id="token" onClick={generateToken}>
           Generate JWT Token
         </button>
       </form>
@@ -76,7 +76,13 @@ const GenerateTokenForm = ({ children }) => {
       {generatedToken && (
         <div>
           <h2>Generated JWT Token:</h2>
-          <textarea rows="5" cols="50" value={generatedToken} readOnly />
+          <textarea
+            id="TokenTextArea"
+            rows="5"
+            cols="50"
+            value={generatedToken}
+            readOnly
+          />
         </div>
       )}
       {children}
