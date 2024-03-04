@@ -28,17 +28,26 @@ const Profile = () => {
         const file = e.target.files[0];
         const uploadRef = ref(storage, 'profilePictures/test.png');
         //Uploading code should add a field to the user like profilePicPath
-        await uploadBytes(uploadRef, file).then(() => {
-            console.log("File uploaded!")
-        });
+        await uploadBytes(uploadRef, file)
+            .then(() => {
+                console.log("File uploaded!")
+            })
+            .catch(err => {
+                console.log("Error occurred while uploading profile picture")
+                console.error(err.message)
+            })
     }
 
     const fetchUserProfilePicture = async () => {
         const profilePictureRef = ref(storage, 'profilePictures/test.png');
 
-        await getDownloadURL(profilePictureRef).then((url) => {
-            setProfilePicURL(url);
-        })
+        await getDownloadURL(profilePictureRef)
+            .then((url) => {
+                setProfilePicURL(url);
+            })
+            .catch(err => {
+                console.error(err.message)
+            })
     }
 
     const VisuallyHiddenInput = styled('input')({
@@ -54,9 +63,11 @@ const Profile = () => {
     });
 
     useEffect(() => {
-        setIsPublicUser(false);
-        fetchUserProfilePicture();
-    }, []);
+        if (currentUser) {
+            setIsPublicUser(false);
+            fetchUserProfilePicture();
+        }
+    }, [currentUser]);
 
     return (
         <Box className="user-profile-container">
