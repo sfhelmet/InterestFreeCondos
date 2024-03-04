@@ -3,7 +3,8 @@ import Login from "../Pages/LoginPage/Login";
 import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
 import PublicKeyRequest from "../components/PublicUserKeyRequest/PublicKeyRequest";
 import OwnerHome from "../Pages/HomePage/Dashboards/CondoOwner/OwnerHome";
-import PropertyFilesView from "../Pages/Management/PropertyFilesView"
+import PropertyFilesView from "../Pages/Management/PropertyFilesView";
+import GenerateTokenForm from "../components/NexusButton/GenerateFormToken";
 
 const routes = [
   {
@@ -46,6 +47,12 @@ const routes = [
     path: "/owner-home",
     component: OwnerHome,
     name: "Owner Home",
+    protected: false,
+  },
+  {
+    path: "/token", //for testing
+    component: GenerateTokenForm,
+    name: "Generate Token",
     protected: false,
   },
 ];
