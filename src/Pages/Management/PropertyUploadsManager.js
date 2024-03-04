@@ -6,29 +6,32 @@ class PropertyUploadsManager {
 
     static uploadStorageFile = (storage, {file, filename, property}, propertyProfiles, setPropertyProfiles) => {
         // Upload new file in storage
-
-        const property_files_ref = ref(storage, `property_files/${filename}`)
-        uploadBytes(property_files_ref, file).then((snapshot) => {
-
-            // Upload file array of properties table
-            const docRef = doc(db, "properties", property.id);
-            updateDoc(docRef, {files: [...property.files, filename]}).then(async () =>
-                {
-                    // Modify file list
-                    const newproperties = this.modifyPropertyObjects(propertyProfiles, property, filename);
-                    setPropertyProfiles(newproperties);
-
-                    // Modify in-place the anchor of the file
-                    await getDownloadURL(ref(storage, `property_files/${filename}`)).then(url =>
-                        {
-                            const fileanchor = document.getElementById(filename);
-                            fileanchor.setAttribute('href', url);
-                        })
-                }
-            )
-
-            console.log("File upload - OK")
-          });  
+        try {
+            const property_files_ref = ref(storage, `property_files/${filename}`)
+            uploadBytes(property_files_ref, file).then((snapshot) => {
+    
+                // Upload file array of properties table
+                const docRef = doc(db, "properties", property.id);
+                updateDoc(docRef, {files: [...property.files, filename]}).then(async () =>
+                    {
+                        // Modify file list
+                        const newproperties = this.modifyPropertyObjects(propertyProfiles, property, filename);
+                        setPropertyProfiles(newproperties);
+    
+                        // Modify in-place the anchor of the file
+                        await getDownloadURL(ref(storage, `property_files/${filename}`)).then(url =>
+                            {
+                                const fileanchor = document.getElementById(filename);
+                                fileanchor.setAttribute('href', url);
+                            })
+                    }
+                )
+    
+                console.log("File upload - OK")
+              });  
+        } catch (e) {
+            console.log("File upload - FAIL")
+        }
     }
 
     static filterPropertyObjects = (propertyProfiles, property, file) => {
