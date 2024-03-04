@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import PropertyUploadsManager from "../Pages/Management/PropertyUploadsManager";
+import { getStorage } from "firebase/storage"
 
 
 test("Filtering property objects works", async () => {
