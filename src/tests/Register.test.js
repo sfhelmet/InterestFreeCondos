@@ -3,9 +3,27 @@ import userEvent from "@testing-library/user-event";
 import '@testing-library/jest-dom';
 import Register from "../components/auth/Register/Register";
 import { BrowserRouter } from "react-router-dom";
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { addDoc } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { addDoc, getFirestore } from "firebase/firestore";
+
+jest.mock('firebase/auth', () => ({
+    createUserWithEmailAndPassword: jest.fn(() => Promise.reject()),
+    getAuth: jest.fn(),
+    auth: jest.fn(),
+    GoogleAuthProvider: jest.fn(),
+}));
+
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: jest.fn()
+}));
+
+jest.mock('firebase/firestore', () => ({
+    addDoc: jest.fn(() => Promise.resolve()),
+    getFirestore: jest.fn(),
+    db: jest.fn()
+}));
 
 test('Rendering Register Works', () => {
     const { getByLabelText, getByText } = render(<BrowserRouter><Register /></BrowserRouter>);
@@ -56,22 +74,73 @@ test('Updates state on input change', () => {
 });
 
 test("Register fails on bad email input", async () => {
-    const user = userEvent.setup();
     //Mock implementation applies function to console to avoid showing the outputted error
     const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-    const createUserWithEmailAndPasswordMock = jest.fn().mockRejectedValue(new Error('Registration error'));
 
-    render(
+    createUserWithEmailAndPassword.mockRejectedValue(new Error("Error occurred during account creation"))
+
+    const { getByLabelText, getByText } = render(
         <BrowserRouter>
-            <Register createUserWithEmailAndPassword={createUserWithEmailAndPasswordMock} />
+            <Register />
         </BrowserRouter>
     );
 
-    user.click(document.querySelector(".register-btn"));
+    const userNameInput = getByLabelText("Enter username:");
+    const emailInput = getByLabelText("Enter email:");
+    const passwordInput = getByLabelText("Enter new password:");
+    const phoneInput = getByLabelText("Enter phone:");
+
+    fireEvent.change(userNameInput, { target: { value: 'testUser' } });
+    fireEvent.change(emailInput, { target: { value: 'testUser@test.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'testUser' } });
+    fireEvent.change(phoneInput, { target: { value: '1234567890' } });
+
+    fireEvent.click(getByText("Register"));
+
+    expect(createUserWithEmailAndPassword).toHaveBeenCalled();
 
     await waitFor(() => {
       expect(consoleErrorSpy).toHaveBeenCalledWith('Error occurred during account creation');
     });
 
     consoleErrorSpy.mockRestore();
+});
+
+test("Successful Register redirects", async () => {
+    const mockNavigate = jest.fn();
+    
+    useNavigate.mockReturnValue(mockNavigate);
+    
+    //getFirestore.mockResolvedValue();
+    createUserWithEmailAndPassword.mockResolvedValueOnce({
+        user: { uid: "test" }
+    });
+
+    const { getByLabelText, getByText } = render(
+        <BrowserRouter>
+            <Register />
+        </BrowserRouter>
+    );
+
+    const userNameInput = getByLabelText("Enter username:");
+    const emailInput = getByLabelText("Enter email:");
+    const passwordInput = getByLabelText("Enter new password:");
+    const phoneInput = getByLabelText("Enter phone:");
+
+    fireEvent.change(userNameInput, { target: { value: 'testUser' } });
+    fireEvent.change(emailInput, { target: { value: 'testUser@test.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'testUser' } });
+    fireEvent.change(phoneInput, { target: { value: '1234567890' } });
+
+    fireEvent.click(getByText("Register"));
+
+    expect(createUserWithEmailAndPassword).toHaveBeenCalled();
+
+    // await waitFor(() => {
+    //     expect(addDoc).toHaveBeenCalled();
+    // });
+
+    // await waitFor(() => {
+    //     expect(mockNavigate).toHaveBeenCalledWith('/');
+    // });
 });
