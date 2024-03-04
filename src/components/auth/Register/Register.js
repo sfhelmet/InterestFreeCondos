@@ -8,7 +8,6 @@ import { collection, addDoc } from "firebase/firestore";
 
 import "./Register.css";
 
-
 const Register = () => {
     const [userName, setUsername] = useState("");
     const [userEmail, setUserEmail] = useState("");
