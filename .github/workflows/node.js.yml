@@ -29,4 +29,11 @@ jobs:
       - run: npm run build --if-present
       - name: Run tests
         working-directory: ./
+        env:
+          REACT_APP_FirebaseApiKey: ${{ secrets.REACT_APP_FirebaseApiKey }}
+          REACT_APP_FirebaseAuthDomain: ${{ secrets.REACT_APP_FirebaseAuthDomain }}
+          REACT_APP_FirebaseProjectId: ${{ secrets.REACT_APP_FirebaseProjectId }}
+          REACT_APP_FirebaseStorageBucket: ${{ secrets.REACT_APP_FirebaseStorageBucket }}
+          REACT_APP_FirebaseMessagingSenderId: ${{ secrets.REACT_APP_FirebaseMessagingSenderId }}
+          REACT_APP_FirebaseAppId: ${{ secrets.REACT_APP_FirebaseAppId }}
         run: npm test
