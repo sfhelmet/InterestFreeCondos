@@ -53,13 +53,22 @@ const GenerateTokenForm = ({ children }) => {
           />
         </div>
         <div>
-          <label htmlFor="userType">User Type:</label>
-          <input
-            type="text"
-            id="userType"
-            value={userType}
-            onChange={handleUserTypeChange}
-          />
+          <label>
+            <input
+              type="radio"
+              value="Renter"
+              checked={userType === "Renter"}
+              onChange={handleUserTypeChange}/>
+            Renter
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="Owner"
+              checked={userType === "Owner"}
+              onChange={handleUserTypeChange}/>
+            Owner
+          </label>
         </div>
         <div>
           <label htmlFor="unit">Unit:</label>
