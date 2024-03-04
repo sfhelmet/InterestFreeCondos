@@ -1,5 +1,8 @@
+import { useState } from "react";
 import '@testing-library/jest-dom';
 import PropertyUploadsManager from "../Pages/Management/PropertyUploadsManager";
+import { getStorage, ref, uploadBytes } from "firebase/storage"
+import { storage } from '../config/firebase';
 
 
 test("Filtering property objects works", async () => {
@@ -53,4 +56,21 @@ test("Modifying property objects works", async () => {
 
     expect(propertyWithRemovedFile.files).toContain(filename);
 
+});
+
+test("Remove file from storage works", () => {
+
+    const file = new File([''], 'empty.txt', { type: 'text/plain' })
+
+    expect(PropertyUploadsManager.removeStorafeFile(storage, file, {id: 1000, files: []})).toBeUndefined();
+})
+
+test("Upload file from storage works", () => {
+
+    const file = new File([''], 'empty.txt', { type: 'text/plain' })
+
+    let bundle =  {file: file, filname: file.name, property: {id: 10000, files: []}}
+    let properties = [bundle.property]
+    const setProperties = (properties) => {}
+    expect(PropertyUploadsManager.uploadStorageFile(storage, bundle, properties, setProperties)).toBeUndefined();
 })
