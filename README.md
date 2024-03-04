@@ -1,5 +1,8 @@
 # Interest Free Condos
 ![Nexus CI](https://github.com/sfhelmet/InterestFreeCondos/actions/workflows/node.js.yml/badge.svg)  
+![Coverage](https://img.shields.io/badge/Coverage-93.33%25-brightgreen.svg)
+![Quality](https://img.shields.io/badge/Quality-A-brightgreen.svg)
+
 We sell Condos at dirt cheap interest.
 
 ## Contributors
