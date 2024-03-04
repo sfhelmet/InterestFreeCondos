@@ -3680,320 +3680,398 @@
     tslib "^2.2.0"
 
 "@microsoft/microsoft-graph-clientv1@npm:@microsoft/microsoft-graph-client@1.7.2-spfx":
-  version "1.7.2-spfx"
-  resolved "https://registry.npmjs.org/@microsoft/microsoft-graph-client/-/microsoft-graph-client-1.7.2-spfx.tgz"
-  integrity sha512-BQN50r3tohWYOaQ0de7LJ5eCRjI6eg4RQqLhGDlgRmZIZhWzH0bhR6QBMmmxtYtwKWifhPhJSxYDW+cP67TJVw==
+  version: 1.7.2-spfx
+  resolution: "@microsoft/microsoft-graph-client@npm:1.7.2-spfx"
   dependencies:
-    es6-promise "^4.2.6"
-    isomorphic-fetch "^3.0.0"
-    tslib "^1.9.3"
+    es6-promise: "npm:^4.2.6"
+    isomorphic-fetch: "npm:^3.0.0"
+    tslib: "npm:^1.9.3"
+  checksum: 10c0/ddf2b061cd3c37b50a843ec76acff8b651d571db08e9d7be48c7260c38d54fb8dde840e1d4ed9d054aacc36c6caca48839d801460619217c502a3850964c6a0d
+  languageName: node
+  linkType: hard
 
-"@microsoft/microsoft-graph-types-beta@^0.29.0-preview":
-  version "0.29.0-preview"
-  resolved "https://registry.npmjs.org/@microsoft/microsoft-graph-types-beta/-/microsoft-graph-types-beta-0.29.0-preview.tgz"
-  integrity sha512-83PCHDH7GxW8KM1J+MM6FPbaahIuj7VIgnY4UbMGQkkq2fBaHeKOmgjVbohvLVeIOOCTLmorPh6JtXH0VtFurA==
+"@microsoft/microsoft-graph-types-beta@npm:^0.29.0-preview":
+  version: 0.29.0-preview
+  resolution: "@microsoft/microsoft-graph-types-beta@npm:0.29.0-preview"
+  checksum: 10c0/9efb76a44e4c477c62a712785993e090b30e80ec83a7e26ce48edd395317b117fe157423bad06d8c3b4de319cdbc87a0ce75c75f62a73a355495d950f837b77e
+  languageName: node
+  linkType: hard
 
-"@microsoft/microsoft-graph-types@^2.0.0":
-  version "2.40.0"
-  resolved "https://registry.npmjs.org/@microsoft/microsoft-graph-types/-/microsoft-graph-types-2.40.0.tgz"
-  integrity sha512-1fcPVrB/NkbNcGNfCy+Cgnvwxt6/sbIEEFgZHFBJ670zYLegENYJF8qMo7x3LqBjWX2/Eneq5BVVRCLTmlJN+g==
+"@microsoft/microsoft-graph-types@npm:^2.0.0":
+  version: 2.40.0
+  resolution: "@microsoft/microsoft-graph-types@npm:2.40.0"
+  checksum: 10c0/c6f69a0fe136579d735efafc1375e4540e01d34ea488d987a9b651f7206c40c76991fff56df31e8b2593f16846bd748d0ffcf249d1f2629bb0298e6214fe2fdc
+  languageName: node
+  linkType: hard
 
-"@microsoft/recognizers-text-data-types-timex-expression@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/@microsoft/recognizers-text-data-types-timex-expression/-/recognizers-text-data-types-timex-expression-1.3.0.tgz"
-  integrity sha512-REHUXmMUI1jL3b9v+aSdzKxLxRdejsfg9McYRxY3LW0Gu4UbwD7Q+K6mtSo40cwg8uh6fiV9GY8hDuKXHH6dVA==
+"@microsoft/recognizers-text-data-types-timex-expression@npm:1.3.0":
+  version: 1.3.0
+  resolution: "@microsoft/recognizers-text-data-types-timex-expression@npm:1.3.0"
+  checksum: 10c0/512a9fa0c1c2b28ab3b5201805f76a8770b18cb3d28d6952052c6e0edf8de5fd3380a4df0c21f22b00ade7149ac7ea2fbcbb49afd882131a677577e97587262c
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-adaptive-card-extension-base@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-adaptive-card-extension-base/-/sp-adaptive-card-extension-base-1.18.2.tgz"
-  integrity sha512-nmzmTvMKukGal8yCRAWPLarETVx5tZMgLuCpikhJdUn8FIg/th9Ws1UFYu1SlHGo4ns+j9pS2mjhHVG0zYC0DQ==
+"@microsoft/sp-adaptive-card-extension-base@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-adaptive-card-extension-base@npm:1.18.2"
   dependencies:
-    "@microsoft/sp-component-base" "1.18.2"
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-http" "1.18.2"
-    "@microsoft/sp-http-base" "1.18.2"
-    "@microsoft/sp-loader" "1.18.2"
-    "@microsoft/sp-lodash-subset" "1.18.2"
-    "@microsoft/sp-module-interfaces" "1.18.2"
-    "@microsoft/sp-property-pane" "1.18.2"
-    "@microsoft/teams-js-v2" "npm:@microsoft/teams-js@2.12.0"
-    adaptivecards "2.11.2"
-    tslib "2.3.1"
+    "@microsoft/sp-component-base": "npm:1.18.2"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-http": "npm:1.18.2"
+    "@microsoft/sp-http-base": "npm:1.18.2"
+    "@microsoft/sp-loader": "npm:1.18.2"
+    "@microsoft/sp-lodash-subset": "npm:1.18.2"
+    "@microsoft/sp-module-interfaces": "npm:1.18.2"
+    "@microsoft/sp-property-pane": "npm:1.18.2"
+    "@microsoft/teams-js-v2": "npm:@microsoft/teams-js@2.12.0"
+    adaptivecards: "npm:2.11.2"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/aee56bbb2638073a2550a2e1317732c73eee29ce7bc6624b2f486af9dcec0e1182856377c84cdc44c4ea3d0dd6b52ec2f4e4ebaa144415a408a04f7a4d7f0f7e
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-application-base@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-application-base/-/sp-application-base-1.18.2.tgz"
-  integrity sha512-0/GG1uJaAUKeD/NogisuK3JqIaGb0MLPK4RGK5FgeWONXpAXqG146/hIPdcymhU+Q+IGI7t7WSVPllI4dzLMFg==
+"@microsoft/sp-application-base@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-application-base@npm:1.18.2"
   dependencies:
-    "@microsoft/sp-component-base" "1.18.2"
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-extension-base" "1.18.2"
-    "@microsoft/sp-http" "1.18.2"
-    "@microsoft/sp-http-base" "1.18.2"
-    "@microsoft/sp-loader" "1.18.2"
-    "@microsoft/sp-lodash-subset" "1.18.2"
-    "@microsoft/sp-module-interfaces" "1.18.2"
-    "@microsoft/sp-odata-types" "1.18.2"
-    "@microsoft/sp-page-context" "1.18.2"
-    "@microsoft/sp-search-extensibility" "1.18.2"
-    tslib "2.3.1"
+    "@microsoft/sp-component-base": "npm:1.18.2"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-extension-base": "npm:1.18.2"
+    "@microsoft/sp-http": "npm:1.18.2"
+    "@microsoft/sp-http-base": "npm:1.18.2"
+    "@microsoft/sp-loader": "npm:1.18.2"
+    "@microsoft/sp-lodash-subset": "npm:1.18.2"
+    "@microsoft/sp-module-interfaces": "npm:1.18.2"
+    "@microsoft/sp-odata-types": "npm:1.18.2"
+    "@microsoft/sp-page-context": "npm:1.18.2"
+    "@microsoft/sp-search-extensibility": "npm:1.18.2"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/ce1b968501755935c6acf24b3d10bd998333792de644d532d86426a10673f6f21f861cf5fb39aef00a6989c4087845349b17a99ca2e41a1307f3a88bcf09780d
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-component-base@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-component-base/-/sp-component-base-1.18.2.tgz"
-  integrity sha512-POPKGkI1jZwdBr69lV+6tkpeztDuJHZbvwfU3LKO/fPpxQ8JdCM7Sb76702kLfMCtxXN6MMfUN/UfbilYb6aKg==
+"@microsoft/sp-component-base@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-component-base@npm:1.18.2"
   dependencies:
-    "@fluentui/react" "^8.110.12"
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-dynamic-data" "1.18.2"
-    "@microsoft/sp-http" "1.18.2"
-    "@microsoft/sp-lodash-subset" "1.18.2"
-    "@microsoft/sp-module-interfaces" "1.18.2"
-    "@microsoft/sp-page-context" "1.18.2"
-    tslib "2.3.1"
+    "@fluentui/react": "npm:^8.110.12"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-dynamic-data": "npm:1.18.2"
+    "@microsoft/sp-http": "npm:1.18.2"
+    "@microsoft/sp-lodash-subset": "npm:1.18.2"
+    "@microsoft/sp-module-interfaces": "npm:1.18.2"
+    "@microsoft/sp-page-context": "npm:1.18.2"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/0897c714d02c739ceae3ff33a784834462074e75350aaedd1f10102bdaa8938d019e7652f7db042cb6eaf257628b555a7e90ed915b320d88f0efcc5de6f24488
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-core-library@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-core-library/-/sp-core-library-1.18.2.tgz"
-  integrity sha512-CBhJiGw8vo/ZUEYG/uRDtceLxqs1xduCW1pAFOVGfnNH6ilw4NS8zT3PCptYUsqQzuvSQtKak7T7E5pb+jlCVA==
+"@microsoft/sp-core-library@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-core-library@npm:1.18.2"
   dependencies:
-    "@microsoft/sp-lodash-subset" "1.18.2"
-    "@microsoft/sp-module-interfaces" "1.18.2"
-    "@microsoft/sp-odata-types" "1.18.2"
-    tslib "2.3.1"
+    "@microsoft/sp-lodash-subset": "npm:1.18.2"
+    "@microsoft/sp-module-interfaces": "npm:1.18.2"
+    "@microsoft/sp-odata-types": "npm:1.18.2"
+    tslib: "npm:2.3.1"
+  peerDependencies:
+    "@types/react": ">=16.9.51 <18.0.0"
+    "@types/react-dom": ">=16.9.8 <18.0.0"
+    react: ">=16.13.1 <18.0.0"
+    react-dom: ">=16.13.1 <18.0.0"
+  checksum: 10c0/1165657a29a0bb24a4ebc9da22e8b825a15a0bf7fad2acc3feed40c403f5c1d001a03f305cf0633056097a5f0bd42ac2d319b004d6aa6236293a205ff717c939
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-diagnostics@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-diagnostics/-/sp-diagnostics-1.18.2.tgz"
-  integrity sha512-DfjtB2WdsPfPp+/e/OUu70UFflXgDSPIIH5ZnVUpNCImRIjD4g1FNd1XFIhkp6ih+SyZSYlDAWNBthM+0iTFqg==
+"@microsoft/sp-diagnostics@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-diagnostics@npm:1.18.2"
   dependencies:
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-lodash-subset" "1.18.2"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-lodash-subset": "npm:1.18.2"
+  checksum: 10c0/7649a87f6a92c20ffc99eb02f3215f404131a3637e40d7fd4c8b7e9e2be5d0cacba2155dafd84775673e99ea387810fd6e409104d1299f2686861c190ab3dda2
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-dialog@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-dialog/-/sp-dialog-1.18.2.tgz"
-  integrity sha512-+3l26Um0+a4KhUcPgx/tHpR/x1wSFsYE389TzDUpN94PY6LXYpYgV7n6tWSRCVEcaQCb374ApmSKgrcHXeEQ5g==
+"@microsoft/sp-dialog@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-dialog@npm:1.18.2"
   dependencies:
-    "@fluentui/react" "^8.110.12"
-    "@microsoft/sp-application-base" "1.18.2"
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    react "17.0.1"
-    react-dom "17.0.1"
-    tslib "2.3.1"
+    "@fluentui/react": "npm:^8.110.12"
+    "@microsoft/sp-application-base": "npm:1.18.2"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    react: "npm:17.0.1"
+    react-dom: "npm:17.0.1"
+    tslib: "npm:2.3.1"
+  peerDependencies:
+    "@types/react": ">=16.9.51 <18.0.0"
+    "@types/react-dom": ">=16.9.8 <18.0.0"
+  checksum: 10c0/50a3931d6dab753d080c4762d76db937ff86004e0c28be5e694ed8def66f2d34c904669b686b1256e72ef2203b5b30d026b7fcd298d9b9f8bb3511583f60b60d
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-dynamic-data@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-dynamic-data/-/sp-dynamic-data-1.18.2.tgz"
-  integrity sha512-7KhogG7iCkfdqMjWuZIOScxTus32b/YnbsKiGiQxOMZthUnguRC2MWr5+KvNiiNBHmoIPXXP1vG3hCD4nAmX9A==
+"@microsoft/sp-dynamic-data@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-dynamic-data@npm:1.18.2"
   dependencies:
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-lodash-subset" "1.18.2"
-    "@microsoft/sp-module-interfaces" "1.18.2"
-    tslib "2.3.1"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-lodash-subset": "npm:1.18.2"
+    "@microsoft/sp-module-interfaces": "npm:1.18.2"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/070e3d963d9ba06d9c60b2705465973fa7b9ba084af86bd009f31583340b7190aa88bc7ef010081b30baba2f275f34fc3440d7aa9406fc194368cbb4aea7997c
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-extension-base@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-extension-base/-/sp-extension-base-1.18.2.tgz"
-  integrity sha512-nfexpV85ReBm74vEHd0A5yJq9mv19gf5bx8FVq0EZ9VysZSU/fvvESZouzoN5LU0vUOHl02dkXpdk4uX4T4xug==
+"@microsoft/sp-extension-base@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-extension-base@npm:1.18.2"
   dependencies:
-    "@microsoft/sp-component-base" "1.18.2"
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-loader" "1.18.2"
-    "@microsoft/sp-module-interfaces" "1.18.2"
-    tslib "2.3.1"
+    "@microsoft/sp-component-base": "npm:1.18.2"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-loader": "npm:1.18.2"
+    "@microsoft/sp-module-interfaces": "npm:1.18.2"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/ca57506f89fe630fec481c9955ec4ec489b6775d4434ce14dbb5aa6532976e1ccb2bad27984651cffd95f2becd244006201e27873daa7c059f0388ea8d4f56f1
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-http-base@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-http-base/-/sp-http-base-1.18.2.tgz"
-  integrity sha512-kedmfpvArM/qmRQKXuUfMYPj4Hd18dfT9jeHv3E2eD40UDMMXp0ghMyvyu5PLDHruG700jUCVmY4bhIbXPguLA==
+"@microsoft/sp-http-base@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-http-base@npm:1.18.2"
   dependencies:
-    "@azure/msal-browser" "2.28.1"
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-page-context" "1.18.2"
-    "@microsoft/teams-js-v2" "npm:@microsoft/teams-js@2.12.0"
-    adal-angular "1.0.16"
-    msalBrowserLegacy "npm:@azure/msal-browser@2.22.0"
-    msalLegacy "npm:msal@1.4.12"
-    tslib "2.3.1"
+    "@azure/msal-browser": "npm:2.28.1"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-page-context": "npm:1.18.2"
+    "@microsoft/teams-js-v2": "npm:@microsoft/teams-js@2.12.0"
+    adal-angular: "npm:1.0.16"
+    msalBrowserLegacy: "npm:@azure/msal-browser@2.22.0"
+    msalLegacy: "npm:msal@1.4.12"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/a93af79e7307eaf5aa34a3e1fa65ec08a103ed365f4f159e8d9b82ba3bf6a4f7f3ed646ba836669507255314c454490013493a7aaf2cfa77bea8146fb3ceaf85
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-http-msgraph@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-http-msgraph/-/sp-http-msgraph-1.18.2.tgz"
-  integrity sha512-NY1kHavTQoSUawZ+K4nxMWHZn/70epj16fyygQgAA7ooxImJ+L6p0UVCEJh25S+r058+Mm5OUmWeWmmqNDX74Q==
+"@microsoft/sp-http-msgraph@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-http-msgraph@npm:1.18.2"
   dependencies:
-    "@microsoft/microsoft-graph-clientv1" "npm:@microsoft/microsoft-graph-client@1.7.2-spfx"
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-http-base" "1.18.2"
-    "@microsoft/sp-loader" "1.18.2"
-    tslib "2.3.1"
+    "@microsoft/microsoft-graph-clientv1": "npm:@microsoft/microsoft-graph-client@1.7.2-spfx"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-http-base": "npm:1.18.2"
+    "@microsoft/sp-loader": "npm:1.18.2"
+    tslib: "npm:2.3.1"
+  peerDependencies:
+    "@microsoft/microsoft-graph-client": 3.0.2
+  checksum: 10c0/4fb936720406d0817990ff708e396001b348642c108e2745534e9504a22734bc8287ac39e00b57b170b94321631d4bd8fb7f4714d53e86cc68a71985b403a921
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-http@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-http/-/sp-http-1.18.2.tgz"
-  integrity sha512-u22g6TehpW4dHBz2QUY/2la3NKYdvJDgbM5dJ/5cAyukVWR3gpZ/DBTTx+I9NI9UPgYTJv2Gw5HMqExBcMCeHw==
+"@microsoft/sp-http@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-http@npm:1.18.2"
   dependencies:
-    "@microsoft/microsoft-graph-clientv1" "npm:@microsoft/microsoft-graph-client@1.7.2-spfx"
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-http-base" "1.18.2"
-    "@microsoft/sp-http-msgraph" "1.18.2"
-    tslib "2.3.1"
+    "@microsoft/microsoft-graph-clientv1": "npm:@microsoft/microsoft-graph-client@1.7.2-spfx"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-http-base": "npm:1.18.2"
+    "@microsoft/sp-http-msgraph": "npm:1.18.2"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/e032c5ddde62be0585636677e170242cbc64111bab334f8f8d9c9e11a8d7d9bcdb4d2413af6105c0df64565fe7e29afdfc344dec883d372d1e0bb22412cd5cc2
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-image-helper@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-image-helper/-/sp-image-helper-1.18.2.tgz"
-  integrity sha512-nSKfKdClZCGBwtpJG23XGef6Hnqifvvh4OKbExBc460LRn7JT2AXSiIM9gRNkp7AyfrksqHCq4EbUzEnOWy1Qw==
+"@microsoft/sp-image-helper@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-image-helper@npm:1.18.2"
   dependencies:
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-http" "1.18.2"
-    "@microsoft/sp-http-base" "1.18.2"
-    "@microsoft/sp-loader" "1.18.2"
-    "@microsoft/sp-lodash-subset" "1.18.2"
-    "@microsoft/sp-page-context" "1.18.2"
-    tslib "2.3.1"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-http": "npm:1.18.2"
+    "@microsoft/sp-http-base": "npm:1.18.2"
+    "@microsoft/sp-loader": "npm:1.18.2"
+    "@microsoft/sp-lodash-subset": "npm:1.18.2"
+    "@microsoft/sp-page-context": "npm:1.18.2"
+    tslib: "npm:2.3.1"
+  peerDependencies:
+    "@types/react": ">=16.9.51 <18.0.0"
+    "@types/react-dom": ">=16.9.8 <18.0.0"
+    react: ">=16.13.1 <18.0.0"
+    react-dom: ">=16.13.1 <18.0.0"
+  checksum: 10c0/3f7165110e35f563896c2a00c15afb18ac85dd2b5bfe9711fa9a4515465a322240a0cccbc710dff74f504e21fefbd0e298c9e9e2fa7817006386ec582fe65d06
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-listview-extensibility@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-listview-extensibility/-/sp-listview-extensibility-1.18.2.tgz"
-  integrity sha512-MxQ8UKSsPyQz/QcVB37xmUQC/xRkaV4J9M1c2bEYYL/jm18ImJft1M6viji6SKJs6GM0Dg7/a36x7c5n9Lw8mA==
+"@microsoft/sp-listview-extensibility@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-listview-extensibility@npm:1.18.2"
   dependencies:
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-extension-base" "1.18.2"
-    "@microsoft/sp-module-interfaces" "1.18.2"
-    "@microsoft/sp-page-context" "1.18.2"
-    tslib "2.3.1"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-extension-base": "npm:1.18.2"
+    "@microsoft/sp-module-interfaces": "npm:1.18.2"
+    "@microsoft/sp-page-context": "npm:1.18.2"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/fceac61b01e608a26da9c5e68174683f0fe339df7c8df0f830fbe79775586ec7cc4c7c30b285569d84359a84bb0d5312368f680668bdb97c7ee082959cac1453
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-loader@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-loader/-/sp-loader-1.18.2.tgz"
-  integrity sha512-IXE8tGvVWSRbV8WU7WdVpvuA9CAcJUJfnrk2Ef6ygUgxullJnWv7LddiBDDiqm74AkI4dSUDPVPvi45NBHMWQg==
+"@microsoft/sp-loader@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-loader@npm:1.18.2"
   dependencies:
-    "@fluentui/react" "^8.110.12"
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-dynamic-data" "1.18.2"
-    "@microsoft/sp-http-base" "1.18.2"
-    "@microsoft/sp-lodash-subset" "1.18.2"
-    "@microsoft/sp-module-interfaces" "1.18.2"
-    "@microsoft/sp-odata-types" "1.18.2"
-    "@microsoft/sp-page-context" "1.18.2"
-    "@rushstack/loader-raw-script" "1.4.7"
-    "@types/requirejs" "2.1.29"
-    raw-loader "~0.5.1"
-    react "17.0.1"
-    react-dom "17.0.1"
-    requirejs "2.3.6"
-    tslib "2.3.1"
+    "@fluentui/react": "npm:^8.110.12"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-dynamic-data": "npm:1.18.2"
+    "@microsoft/sp-http-base": "npm:1.18.2"
+    "@microsoft/sp-lodash-subset": "npm:1.18.2"
+    "@microsoft/sp-module-interfaces": "npm:1.18.2"
+    "@microsoft/sp-odata-types": "npm:1.18.2"
+    "@microsoft/sp-page-context": "npm:1.18.2"
+    "@rushstack/loader-raw-script": "npm:1.4.7"
+    "@types/requirejs": "npm:2.1.29"
+    raw-loader: "npm:~0.5.1"
+    react: "npm:17.0.1"
+    react-dom: "npm:17.0.1"
+    requirejs: "npm:2.3.6"
+    tslib: "npm:2.3.1"
+  peerDependencies:
+    "@types/react": ">=16.9.51 <18.0.0"
+    "@types/react-dom": ">=16.9.8 <18.0.0"
+  checksum: 10c0/f3956c4328acb6a08d4ef5c62f6dd4a7482e945ad88eb08e4100f61b74eb1b1fbca34e9e1fae090f9fb36095f955dc0c25178263287d04147f20167712373434
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-lodash-subset@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-lodash-subset/-/sp-lodash-subset-1.18.2.tgz"
-  integrity sha512-RcPAiSq+sDxP78pswo/pnBR7OQIQ8Nvd+MX9ObZofJa/5dSJfC3j/Q5s9jEiCo6sIi4fHSW1W47/eg8WvKoumQ==
+"@microsoft/sp-lodash-subset@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-lodash-subset@npm:1.18.2"
   dependencies:
-    "@types/lodash" "4.14.117"
-    tslib "2.3.1"
+    "@types/lodash": "npm:4.14.117"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/f5e3c35481213b4d90b1c1bce87f1b83c3564ae79ff6acb7a51b7ed71892e3e371e3aea2689f8b3b39d15586511bd33ed971688d11a5816de1edc37bc2d4f40e
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-module-interfaces@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-module-interfaces/-/sp-module-interfaces-1.18.2.tgz"
-  integrity sha512-uaB21IZj3/j/nGOXRR4Lzl0v44Cpq5V/DH4zzj06J416I0eOCXSNthzTkuZMReIknL968ZlVwEDnrT3qxwbWYg==
+"@microsoft/sp-module-interfaces@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-module-interfaces@npm:1.18.2"
   dependencies:
-    "@rushstack/node-core-library" "3.61.0"
-    z-schema "4.2.4"
+    "@rushstack/node-core-library": "npm:3.61.0"
+    z-schema: "npm:4.2.4"
+  checksum: 10c0/9f454f96c2e9b0f48a89c45040ee4adadb17ae34f5003468b622fefe9f9cffe421ad246e8dd2de1fd1eed419e063f872bc60f55f479c0ae294566fe11cd6eceb
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-odata-types@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-odata-types/-/sp-odata-types-1.18.2.tgz"
-  integrity sha512-giCVKR+ZQ20mcwkKX5Osq5RExdVhHDIc2t5yXdF20F/sBqQLQQiiVeIQSFFhhDyfLeHyC+u4Zhw/0SR8PO9OVw==
+"@microsoft/sp-odata-types@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-odata-types@npm:1.18.2"
   dependencies:
-    tslib "2.3.1"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/46ed32e3a173c4d6df63c2584b5a7956a873cfe135a8a7286d4acdb447b4138b08c65029dbbbf20c2c06a548b53976f84656f66fd505f179a781b1d20b8b3355
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-office-ui-fabric-core@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-office-ui-fabric-core/-/sp-office-ui-fabric-core-1.18.2.tgz"
-  integrity sha512-glpgTxu4h5EOMOv6eJoDvEaC7vBi1fn2CS4jPEgFPaEksYq4tZCZbWqM+xsWf91xje3V+a+Mu/fM7tUaA3zybg==
+"@microsoft/sp-office-ui-fabric-core@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-office-ui-fabric-core@npm:1.18.2"
   dependencies:
-    office-ui-fabric-core "11.0.1"
-    tslib "2.3.1"
+    office-ui-fabric-core: "npm:11.0.1"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/3e3788a7e042c5ffdb3d0500501296d0f8f252c96b98360482f45e34b2b5dab5c048c5197619b502a4ee9a0c0dd8218fd57a0e2e96640ac28a5f293060de8b66
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-page-context@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-page-context/-/sp-page-context-1.18.2.tgz"
-  integrity sha512-ux0atGLKYvHMcIQdBOIPQnjtG+wohVU6rB81kbxlJVmfnXYD2Rkng5q8v+fgxQvKRA1EAwtILP8TPN0KUZRIvQ==
+"@microsoft/sp-page-context@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-page-context@npm:1.18.2"
   dependencies:
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-dynamic-data" "1.18.2"
-    "@microsoft/sp-lodash-subset" "1.18.2"
-    "@microsoft/sp-odata-types" "1.18.2"
-    tslib "2.3.1"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-dynamic-data": "npm:1.18.2"
+    "@microsoft/sp-lodash-subset": "npm:1.18.2"
+    "@microsoft/sp-odata-types": "npm:1.18.2"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/ddbe226ef410e9c988d8d007f16abd432aa2a02f2c2be82f1f7f0c5e5e34f3041a70b0bcb67ed9c4609f5e770a95709f03f36a4259283cc8941681904e850703
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-property-pane@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-property-pane/-/sp-property-pane-1.18.2.tgz"
-  integrity sha512-7KpylwJ3KyFpe4q54Q4++/2E52XEFan8NdQU6kRl9o4/assWB8DokF83KMiGLkEte4NZhXgxyAYAj39RyHUzIA==
+"@microsoft/sp-property-pane@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-property-pane@npm:1.18.2"
   dependencies:
-    "@fluentui/react" "^8.110.12"
-    "@microsoft/sp-component-base" "1.18.2"
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-dynamic-data" "1.18.2"
-    "@microsoft/sp-image-helper" "1.18.2"
-    "@microsoft/sp-lodash-subset" "1.18.2"
-    "@microsoft/sp-page-context" "1.18.2"
-    react "17.0.1"
-    react-dom "17.0.1"
-    tslib "2.3.1"
+    "@fluentui/react": "npm:^8.110.12"
+    "@microsoft/sp-component-base": "npm:1.18.2"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-dynamic-data": "npm:1.18.2"
+    "@microsoft/sp-image-helper": "npm:1.18.2"
+    "@microsoft/sp-lodash-subset": "npm:1.18.2"
+    "@microsoft/sp-page-context": "npm:1.18.2"
+    react: "npm:17.0.1"
+    react-dom: "npm:17.0.1"
+    tslib: "npm:2.3.1"
+  peerDependencies:
+    "@types/react": ">=16.9.51 <18.0.0"
+    "@types/react-dom": ">=16.9.8 <18.0.0"
+  checksum: 10c0/159c3080afc4aef41276320c9764421ed0170c61fe1aa8c645f94d9b2d7fd66aee35ff1a73dbdef83d2a18b17aaeb06e160cb8ba678cbb6f749d0e7e60b19829
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-search-extensibility@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-search-extensibility/-/sp-search-extensibility-1.18.2.tgz"
-  integrity sha512-dBWLMLD6Mh6vkg7AIoin+nV1lpTrY+oJlC0e9WcRN1AAmg78MJ6Bvq82LXHfMF27j/b6Tk1X4oVBypdpy/n3EA==
+"@microsoft/sp-search-extensibility@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-search-extensibility@npm:1.18.2"
   dependencies:
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-extension-base" "1.18.2"
-    "@microsoft/sp-loader" "1.18.2"
-    tslib "2.3.1"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-extension-base": "npm:1.18.2"
+    "@microsoft/sp-loader": "npm:1.18.2"
+    tslib: "npm:2.3.1"
+  checksum: 10c0/bb852bb56621069430143b4d3e3ea96dd582036ada9f868ad0b0955eba8dffd9f982fb4fcc43ee469e1a199da62e86d931f09e5fd09a3b4b64cca378f5fda7c0
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-top-actions@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-top-actions/-/sp-top-actions-1.18.2.tgz"
-  integrity sha512-kKxTB/Bj352OCAGKidgk7WtHcXvHUdH1srnsMS3FgbgRCHqK0K7A2EZRSRYothxrn4TwGHXN7gNbLQfstk521Q==
+"@microsoft/sp-top-actions@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-top-actions@npm:1.18.2"
+  checksum: 10c0/8eae0034a5d349ae3d4fa97e827cb4eb979ef34eb4aeb4e1fffca8130c5f26a57d7bc42c72d9f8de419a434659168d386df440245c17e7e1c6508875b82eac58
+  languageName: node
+  linkType: hard
 
-"@microsoft/sp-webpart-base@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.npmjs.org/@microsoft/sp-webpart-base/-/sp-webpart-base-1.18.2.tgz"
-  integrity sha512-HFOnWHb5TL5+m+5aIpSsFh9jK0o2PhtNe/PsmXVPxnSKtQiJE3dxRhEFKZfashERM4SM5GprWjcLH9V8zz/lPQ==
+"@microsoft/sp-webpart-base@npm:1.18.2":
+  version: 1.18.2
+  resolution: "@microsoft/sp-webpart-base@npm:1.18.2"
   dependencies:
-    "@fluentui/react" "^8.110.12"
-    "@microsoft/sp-component-base" "1.18.2"
-    "@microsoft/sp-core-library" "1.18.2"
-    "@microsoft/sp-diagnostics" "1.18.2"
-    "@microsoft/sp-dynamic-data" "1.18.2"
-    "@microsoft/sp-http" "1.18.2"
-    "@microsoft/sp-http-base" "1.18.2"
-    "@microsoft/sp-loader" "1.18.2"
-    "@microsoft/sp-lodash-subset" "1.18.2"
-    "@microsoft/sp-module-interfaces" "1.18.2"
-    "@microsoft/sp-page-context" "1.18.2"
-    "@microsoft/sp-property-pane" "1.18.2"
-    "@microsoft/sp-top-actions" "1.18.2"
-    "@microsoft/teams-js-v2" "npm:@microsoft/teams-js@2.12.0"
-    "@types/office-js" "1.0.36"
-    react "17.0.1"
-    react-dom "17.0.1"
-    tslib "2.3.1"
+    "@fluentui/react": "npm:^8.110.12"
+    "@microsoft/sp-component-base": "npm:1.18.2"
+    "@microsoft/sp-core-library": "npm:1.18.2"
+    "@microsoft/sp-diagnostics": "npm:1.18.2"
+    "@microsoft/sp-dynamic-data": "npm:1.18.2"
+    "@microsoft/sp-http": "npm:1.18.2"
+    "@microsoft/sp-http-base": "npm:1.18.2"
+    "@microsoft/sp-loader": "npm:1.18.2"
+    "@microsoft/sp-lodash-subset": "npm:1.18.2"
+    "@microsoft/sp-module-interfaces": "npm:1.18.2"
+    "@microsoft/sp-page-context": "npm:1.18.2"
+    "@microsoft/sp-property-pane": "npm:1.18.2"
+    "@microsoft/sp-top-actions": "npm:1.18.2"
+    "@microsoft/teams-js-v2": "npm:@microsoft/teams-js@2.12.0"
+    "@types/office-js": "npm:1.0.36"
+    react: "npm:17.0.1"
+    react-dom: "npm:17.0.1"
+    tslib: "npm:2.3.1"
+  peerDependencies:
+    "@types/react": ">=16.9.51 <18.0.0"
+    "@types/react-dom": ">=16.9.8 <18.0.0"
+  checksum: 10c0/aed0c9d8ea2da60b4428cb485ae7c9233597602ca48219c46aaffcab696eca309a5bf1346f94a193ad10e4651915d4188b386b5dd364d564f249493749fe57cc
+  languageName: node
+  linkType: hard
 
 "@microsoft/teams-js-v2@npm:@microsoft/teams-js@2.12.0":
   version "2.12.0"
@@ -10229,11 +10307,13 @@ ms@2.1.3:
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
 "msalBrowserLegacy@npm:@azure/msal-browser@2.22.0":
-  version "2.22.0"
-  resolved "https://registry.npmjs.org/@azure/msal-browser/-/msal-browser-2.22.0.tgz"
-  integrity sha512-ZpnbnzjYGRGHjWDPOLjSp47CQvhK927+W9avtLoNNCMudqs2dBfwj76lnJwObDE7TAKmCUueTiieglBiPb1mgQ==
+  version: 2.22.0
+  resolution: "@azure/msal-browser@npm:2.22.0"
   dependencies:
-    "@azure/msal-common" "^6.1.0"
+    "@azure/msal-common": "npm:^6.1.0"
+  checksum: 10c0/673aee39ca74be1bab12e04f4c591288b968443e29b27924704c6cf19e0c9eadc05c142a8cb44430949b116f10262bb0571b4bd825478484a688ca4f1567fefb
+  languageName: node
+  linkType: hard
 
 "msalLegacy@npm:msal@1.4.12":
   version "1.4.12"
