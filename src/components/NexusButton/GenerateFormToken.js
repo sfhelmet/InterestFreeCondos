@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const sign = require("jwt-encode");
+const KJUR = require('jsrsasign');
 
 const GenerateTokenForm = ({ children }) => {
   const [email, setEmail] = useState("");
@@ -25,13 +25,19 @@ const GenerateTokenForm = ({ children }) => {
       email: email,
       userType: userType,
       unit: unit,
+      exp: Math.floor(Date.now() / 1000) + (60 * 60) // expiresIn, token will expire in 1 hour
     };
 
     // Secret key used to sign the token
     const secretKey = process.env.REACT_APP_Secret_Key;
 
-    // Generate JWT token
-    const token = sign(payload, secretKey);
+    // Convert the secret key to a hexadecimal string
+    const keyHex = KJUR.crypto.Util.sha256(secretKey);
+
+    // Create the JWT header
+    const header = { alg: 'HS256', typ: 'JWT' };
+
+    const token = KJUR.jws.JWS.sign(null, header, JSON.stringify(payload), keyHex);
 
     // Update state with generated token
     setGeneratedToken(token);
