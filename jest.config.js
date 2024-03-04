@@ -35,6 +35,7 @@ const config = {
     "<rootDir>/Pages/ProfilePage/MyAccount/",
     "<rootDir>/Pages/HomePage/Home.js",
     "<rootDir>/Pages/HomePage/Dashboards/RentalUser/",
+    "<rootDir>/Pages/Management/PropertyFilesView.js",
     "<rootDir>/components/PublicUserKeyRequest/",
     "<rootDir>/components/utils/",
   ],
