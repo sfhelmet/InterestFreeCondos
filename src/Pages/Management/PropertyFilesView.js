@@ -1,18 +1,15 @@
 import { useState } from "react";
 import { auth, db } from "../../config/firebase";
-import { query, collection, getDocs, updateDoc, doc, where} from "firebase/firestore" 
-import { getStorage, uploadBytes, ref, getDownloadURL, deleteObject } from "firebase/storage"
+import { query, collection, getDocs } from "firebase/firestore" 
+import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { useEffect } from "react";
 import FileIcon from "../../components/utils/FileIcons"
-import { useNavigate } from "react-router-dom";
-
+import PropertyUploadsManager from "./PropertyUploadsManager";
 
 
 const PropertyFilesView = (props) =>
 {
-
     const [propertyProfiles, setPropertyProfiles] = useState(null);
-    const navigate = useNavigate();
     const storage = getStorage();
 
     const handleDeleteConfirmation = (file, property) => {
@@ -21,29 +18,14 @@ const PropertyFilesView = (props) =>
         }
       };
       
-      const deleteFile = (file, property) => {
+    const deleteFile = (file, property) => {
         
-        
-        const newproperties = propertyProfiles.map(item => {
-            if (item.id === property.id && item.files) {
-              item.files = item.files.filter(f => f !== file);
-            }
-            return item;
-          });
+        const newproperties = PropertyUploadsManager.filterPropertyObjects(propertyProfiles, property, file)
 
         setPropertyProfiles(newproperties);
 
-        // Remove from storage
-        const property_files_ref = ref(storage, `property_files/${file}`)
-        
-        deleteObject(property_files_ref).then(() => {
-            // Remove from db list
-            const docRef = doc(db, "properties", property.id);
-            updateDoc(docRef, {files: property.files.filter(item => item !== file)})
-
-            console.log("Delete file - OK");
-        })
-      };
+        PropertyUploadsManager.removeStorafeFile(storage, file, property)
+    };
       
 
     const handleUploadFileClick = (property) => {
@@ -62,44 +44,17 @@ const PropertyFilesView = (props) =>
             const formattedTimestamp = new Date(timestamp).toISOString().replace(/[-T:.Z]/g, '_');
             const filename = `${formattedTimestamp}_${file.name.replace(/ /g, '_')}`;
 
-            // Upload new file in storage
-            const property_files_ref = ref(storage, `property_files/${filename}`)
-            uploadBytes(property_files_ref, file).then((snapshot) => {
+            let bundle = { file: file, filename: filename, property: property}; 
+            
+            let properties = PropertyUploadsManager.uploadStorageFile(storage, bundle, propertyProfiles, setPropertyProfiles);
+            setPropertyProfiles(properties);
 
-                // Upload file array of properties table
-                const docRef = doc(db, "properties", property.id);
-                updateDoc(docRef, {files: [...property.files, filename]}).then(async () =>
-                    {
-                        // Modify file list
-                        const newproperties = propertyProfiles.map(item => {
-                            if (item.id === property.id && item.files) {
-                              item.files.push(filename);
-                            }
-                            return item;
-                          });
-                        setPropertyProfiles(newproperties);
-
-                        // Modify in-place the anchor of the file
-                        await getDownloadURL(ref(storage, `property_files/${filename}`)).then(url =>
-                            {
-                                const fileanchor = document.getElementById(filename);
-                                fileanchor.setAttribute('href', url);
-                            })
-                    }
-                )
-
-                console.log("File upload - OK")
-              });              
-        });
+          });
     };
 
     useEffect(() => {
         const fetchAllProperties = async () => {
             if (!propertyProfiles && auth.currentUser) {
-                // Make sure non-management users can't land here
-                getDocs(query(collection(db, "users"),where("userID", "==", auth.currentUser.uid))).then(
-                  docs =>{docs.forEach(doc =>{if (doc.data().userType !== "MANAGEMENT") {navigate("/unauthorized")}})}
-                )
 
                 // Get properties
                 const usersRef = collection(db, "properties");
@@ -127,7 +82,7 @@ const PropertyFilesView = (props) =>
         
 
         fetchAllProperties();
-    }, [navigate, propertyProfiles, storage]);
+    }, [propertyProfiles, storage]);
 
 
 
