@@ -36,4 +36,5 @@ jobs:
           REACT_APP_FirebaseStorageBucket: ${{ secrets.REACT_APP_FirebaseStorageBucket }}
           REACT_APP_FirebaseMessagingSenderId: ${{ secrets.REACT_APP_FirebaseMessagingSenderId }}
           REACT_APP_FirebaseAppId: ${{ secrets.REACT_APP_FirebaseAppId }}
+          REACT_APP_Secret_Key: ${{ secrets.REACT_APP_Secret_Key }}
         run: npm test

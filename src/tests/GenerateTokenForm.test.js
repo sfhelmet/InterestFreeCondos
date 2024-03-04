@@ -12,8 +12,8 @@ test("GenerateFormToken test", async () => {
   user.type(document.querySelector("#unit"), "1");
   user.click(document.querySelector("#token"));
 
-  // await waitFor(() => {
-  //   const textareaElement = document.querySelector("#TokenTextArea");
-  //   expect(textareaElement).toBeInTheDocument();
-  // });
+  await waitFor(() => {
+    const textareaElement = document.querySelector("#TokenTextArea");
+    expect(textareaElement).toBeInTheDocument();
+  });
 });
