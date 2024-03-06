@@ -1,13 +1,40 @@
 import React, { useState } from 'react';
 import './PublicKeyRequest.css';
 import '../../Styling/Fonts/fonts.css';
+const KJUR = require('jsrsasign');
+
 
 const PublicKeyRequest = () => {
   const [keyNumber, setKeyNumber] = useState('');
 
+  const secretKey = process.env.REACT_APP_Secret_Key;
+
+  // Convert the secret key to a hexadecimal string
+  const keyHex = KJUR.crypto.Util.sha256(secretKey);
+
   const handleSubmit = () => {
-    // Logic for submitting key number
-    console.log('Submitting key number:', keyNumber);
+    try {
+      // Parse the JWT
+      const decoded = KJUR.jws.JWS.parse(keyNumber);
+
+      // Verify the signature
+      const isValid = KJUR.jws.JWS.verifyJWT(keyNumber, keyHex, { alg: ['HS256'] });
+
+      if (isValid) {
+          // Signature is valid
+          console.log('JWT is valid.');
+
+          // Check additional claims if needed
+          const claims = decoded.payloadObj;
+
+          console.log('JWT is valid:', claims);
+          // TODO: Update Firestore with payload
+      } else {
+          console.log('JWT is invalid.');
+      }
+    } catch (error) {
+        console.log('Error validating JWT:', error);
+    }
   };
 
   return (
