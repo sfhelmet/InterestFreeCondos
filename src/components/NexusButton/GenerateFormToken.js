@@ -55,6 +55,7 @@ const GenerateTokenForm = ({ children }) => {
         <div>
           <label>
             <input
+              id="renter"
               type="radio"
               value="Renter"
               checked={userType === "Renter"}
@@ -63,6 +64,7 @@ const GenerateTokenForm = ({ children }) => {
           </label>
           <label>
             <input
+              id="owner"
               type="radio"
               value="Owner"
               checked={userType === "Owner"}

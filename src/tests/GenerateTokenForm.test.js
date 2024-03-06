@@ -8,7 +8,7 @@ test("GenerateFormToken test", async () => {
   render(<GenerateTokenForm />);
 
   user.type(document.querySelector("#email"), "nexusTester@nexusTest.ca");
-  user.type(document.querySelector("#userType"), "1234567890");
+  user.click(document.querySelector("#renter"));
   user.type(document.querySelector("#unit"), "1");
   user.click(document.querySelector("#token"));
 
