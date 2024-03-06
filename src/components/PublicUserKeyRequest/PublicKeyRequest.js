@@ -28,6 +28,7 @@ const PublicKeyRequest = () => {
           const claims = decoded.payloadObj;
 
           console.log('JWT is valid:', claims);
+          // TODO: Update Firestore with payload
       } else {
           console.log('JWT is invalid.');
       }
