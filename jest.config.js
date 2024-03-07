@@ -30,9 +30,16 @@ const config = {
   coverageDirectory: "../coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
-  // coveragePathIgnorePatterns: [
-  //   "\\\\node_modules\\\\"
-  // ],
+  coveragePathIgnorePatterns: [
+    "/node_modules/",
+    "/src/Pages/HomePage/",
+    
+  ],
+
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+    '\\.(jpg|jpeg|png|gif|webp|svg)$': 'jest-transform-stub',
+  },
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
