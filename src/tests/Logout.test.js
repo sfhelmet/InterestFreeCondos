@@ -59,7 +59,7 @@ test("Logout fails for unexpected reason", async () => {
     consoleErrorSpy.mockRestore();
 });
 
-test('Rendering Logout button works', () => {
+test('Rendering Logout button works', async () => {
     const { getByText } = render(<BrowserRouter><Logout /></BrowserRouter>);
     const logoutBtn = getByText("Logout");
   

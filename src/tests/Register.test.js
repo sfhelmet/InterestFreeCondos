@@ -5,7 +5,7 @@ import Register from "../components/auth/Register/Register";
 import { BrowserRouter } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { addDoc, getFirestore } from "firebase/firestore";
+import { addDoc } from "firebase/firestore";
 
 jest.mock('firebase/auth', () => ({
     createUserWithEmailAndPassword: jest.fn(() => Promise.reject()),
@@ -22,7 +22,8 @@ jest.mock('react-router-dom', () => ({
 jest.mock('firebase/firestore', () => ({
     addDoc: jest.fn(() => Promise.resolve()),
     getFirestore: jest.fn(),
-    db: jest.fn()
+    db: jest.fn(),
+    collection: jest.fn()
 }));
 
 test('Rendering Register Works', () => {
@@ -31,6 +32,7 @@ test('Rendering Register Works', () => {
     const userEmailInput = getByLabelText('Enter email:');
     const userPasswordInput = getByLabelText('Enter new password:');
     const userPhoneInput = getByLabelText('Enter phone:');
+    const registerContainer = document.querySelector(".register-container");
     const registerButton = getByText('Register');
   
     expect(userNameInput).toBeInTheDocument();
@@ -38,6 +40,7 @@ test('Rendering Register Works', () => {
     expect(userPasswordInput).toBeInTheDocument();
     expect(userPhoneInput).toBeInTheDocument();
     expect(registerButton).toBeInTheDocument();
+    expect(registerContainer).toBeInTheDocument();
 });
 
 test("Register Works", async () => {
@@ -108,10 +111,8 @@ test("Register fails on bad email input", async () => {
 
 test("Successful Register redirects", async () => {
     const mockNavigate = jest.fn();
-    
     useNavigate.mockReturnValue(mockNavigate);
     
-    //getFirestore.mockResolvedValue();
     createUserWithEmailAndPassword.mockResolvedValueOnce({
         user: { uid: "test" }
     });
@@ -136,11 +137,11 @@ test("Successful Register redirects", async () => {
 
     expect(createUserWithEmailAndPassword).toHaveBeenCalled();
 
-    // await waitFor(() => {
-    //     expect(addDoc).toHaveBeenCalled();
-    // });
+    await waitFor(() => {
+        expect(addDoc).toHaveBeenCalled();
+    });
 
-    // await waitFor(() => {
-    //     expect(mockNavigate).toHaveBeenCalledWith('/');
-    // });
+    await waitFor(() => {
+        expect(mockNavigate).toHaveBeenCalledWith('/');
+    });
 });
