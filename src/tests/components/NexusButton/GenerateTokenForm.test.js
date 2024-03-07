@@ -1,7 +1,7 @@
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
-import GenerateTokenForm from "../components/NexusButton/GenerateFormToken";
+import GenerateTokenForm from "../../../components/NexusButton/GenerateFormToken";
 
 test("GenerateFormToken test", async () => {
   const user = userEvent.setup();

@@ -1,8 +1,6 @@
-import { useState } from "react";
 import '@testing-library/jest-dom';
-import PropertyUploadsManager from "../Pages/Management/PropertyUploadsManager";
-import { getStorage, ref, uploadBytes } from "firebase/storage"
-import { storage } from '../config/firebase';
+import PropertyUploadsManager from "../../../Pages/Management/PropertyUploadsManager";
+import { storage } from '../../../config/firebase';
 
 
 test("Filtering property objects works", async () => {
