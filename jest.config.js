@@ -31,14 +31,16 @@ const config = {
 
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
-    "<rootDir>/Pages/NotFoundPage/",
     "<rootDir>/Pages/ProfilePage/MyAccount/",
     "<rootDir>/Pages/HomePage/Home.js",
     "<rootDir>/Pages/HomePage/Dashboards/RentalUser/",
     "<rootDir>/Pages/Management/PropertyFilesView.js",
-    "<rootDir>/components/PublicUserKeyRequest/",
-    "<rootDir>/components/utils/",
   ],
+
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+    '\\.(jpg|jpeg|png|gif|webp|svg)$': 'jest-transform-stub',
+  },
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
