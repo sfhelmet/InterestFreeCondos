@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import '@testing-library/jest-dom';
-import Login from "../Pages/LoginPage/Login";
+import Login from "../../../Pages/LoginPage/Login";
 import { BrowserRouter } from "react-router-dom";
 
 test("Non SSO Login works", async () => {

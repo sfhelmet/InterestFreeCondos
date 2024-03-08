@@ -4,7 +4,7 @@ import { auth } from "../../config/firebase";
 
 const AuthChecker = ({ children }) => {
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     if (!auth.currentUser) {
       navigate("/login");

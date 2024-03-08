@@ -30,11 +30,11 @@ const Profile = () => {
         //Uploading code should add a field to the user like profilePicPath
         await uploadBytes(uploadRef, file)
             .then(() => {
-                console.log("File uploaded!")
+                console.log("File uploaded!");
             })
             .catch(err => {
-                console.log("Error occurred while uploading profile picture")
-                console.error(err.message)
+                console.log("Error occurred while uploading profile picture");
+                console.error(err.message);
             })
     }
 
@@ -43,10 +43,11 @@ const Profile = () => {
 
         await getDownloadURL(profilePictureRef)
             .then((url) => {
+                console.log("URL fetched");
                 setProfilePicURL(url);
             })
             .catch(err => {
-                console.error(err.message)
+                console.error(err.message);
             })
     }
 

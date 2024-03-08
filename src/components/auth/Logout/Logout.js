@@ -6,14 +6,14 @@ import { auth } from "../../../config/firebase";
 
 import "./Logout.css";
 
-const Logout = ({ navigateTo = "/login" }) => {
+const Logout = () => {
   const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
   const logout = () => {
     setDisabled(true);
     signOut(auth)
       .then(() => {
-        navigate(navigateTo);
+        navigate("/login");
       })
       .catch((error) => {
         console.error(error);
