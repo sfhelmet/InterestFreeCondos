@@ -20,6 +20,18 @@ jest.mock('jsrsasign', () => ({
 }));
 
 describe('PublicKeyRequest Component', () => {
+  beforeAll(() => {
+    window.alert = jest.fn();
+  });
+  
+  afterEach(() => {
+    window.alert.mockClear();
+  });
+  
+  afterAll(() => {
+    window.alert.mockRestore();
+  });
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -50,5 +62,16 @@ describe('PublicKeyRequest Component', () => {
     expect(jsrsasign.crypto.Util.sha256).toHaveBeenCalledWith(process.env.REACT_APP_Secret_Key);
     expect(jsrsasign.jws.JWS.parse).toHaveBeenCalledWith('exampleJWT');
     expect(jsrsasign.jws.JWS.verifyJWT).toHaveBeenCalledWith('exampleJWT', 'hashedSecretKey', { alg: ['HS256'] });  
+  });
+
+  test('handles form submission and validates JWT with error', async () => {
+    const { getByPlaceholderText, getByText } = render(<PublicKeyRequest />);
+    const inputField = getByPlaceholderText('Enter key number');
+    const submitButton = getByText('Submit');
+    
+    fireEvent.change(inputField, { target: { value: '' } });
+    fireEvent.click(submitButton);
+  
+    expect(window.alert).toHaveBeenCalledWith('Please enter a key.');
   });
 });

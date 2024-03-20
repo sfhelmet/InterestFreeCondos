@@ -16,7 +16,6 @@ const GenerateTokenForm = ({ children }) => {
     setUnit(event.target.value);
   };
   const generateToken = () => {
-    // Construct payload using form data
     const payload = {
       email: email,
       userType: userType,
@@ -24,18 +23,10 @@ const GenerateTokenForm = ({ children }) => {
       exp: Math.floor(Date.now() / 1000) + (60 * 60) // expiresIn, token will expire in 1 hour
     };
 
-    // Secret key used to sign the token
     const secretKey = process.env.REACT_APP_Secret_Key;
-
-    // Convert the secret key to a hexadecimal string
     const keyHex = KJUR.crypto.Util.sha256(secretKey);
-
-    // Create the JWT header
     const header = { alg: 'HS256', typ: 'JWT' };
-
     const token = KJUR.jws.JWS.sign(null, header, JSON.stringify(payload), keyHex);
-
-    // Update state with generated token
     setGeneratedToken(token);
   };
 

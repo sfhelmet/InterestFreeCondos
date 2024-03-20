@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { keyExists, uploadKey, getUserIdbyEmail, updateCondo } from './PublicKeyRequestService';
 import './PublicKeyRequest.css';
 import '../../Styling/Fonts/fonts.css';
 const KJUR = require('jsrsasign');
@@ -8,32 +9,32 @@ const PublicKeyRequest = () => {
   const [keyNumber, setKeyNumber] = useState('');
 
   const secretKey = process.env.REACT_APP_Secret_Key;
-
-  // Convert the secret key to a hexadecimal string
   const keyHex = KJUR.crypto.Util.sha256(secretKey);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (keyNumber === '') {
+      alert('Please enter a key.');
+      return;
+    }
     try {
-      // Parse the JWT
       const decoded = KJUR.jws.JWS.parse(keyNumber);
-
-      // Verify the signature
       const isValid = KJUR.jws.JWS.verifyJWT(keyNumber, keyHex, { alg: ['HS256'] });
-
       if (isValid) {
-          // Signature is valid
-          console.log('JWT is valid.');
-
-          // Check additional claims if needed
           const claims = decoded.payloadObj;
-
-          console.log('JWT is valid:', claims);
-          // TODO: Update Firestore with payload
+          if (await keyExists(keyNumber)) {
+            alert('Key already used.');
+            return;
+          }
+          alert('JWT is valid.');
+          console.log(claims);
+          await uploadKey(keyNumber, claims.exp);
+          const userId = await getUserIdbyEmail(claims.email);
+          updateCondo(userId, claims.unit, claims.userType);
       } else {
-          console.log('JWT is invalid.');
+          alert('JWT is invalid.');
       }
     } catch (error) {
-        console.log('Error validating JWT:', error);
+        alert('Error validating JWT:', error);
     }
   };
 
