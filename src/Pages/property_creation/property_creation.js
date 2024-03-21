@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import './property_creation.css'; 
+import { db, storage } from "../../config/firebase";
+import { collection, addDoc } from 'firebase/firestore';
+import {ref, uploadBytes } from 'firebase/storage';
+
 
 const PropertyForm = () => {
   const [property, setProperty] = useState({
@@ -27,15 +31,49 @@ const PropertyForm = () => {
   
   const handleImageChange = (e) => {
     const selectedImages = Array.from(e.target.files);
-    setProperty({ ...property, images: selectedImages });
+    setProperty({ ...property, images: selectedImages, imageNames: selectedImages.map(image => {
+      const timestamp = new Date().getTime();
+      const formattedTimestamp = new Date(timestamp).toISOString().replace(/[-T:.Z]/g, '_');
+      const filename = `${formattedTimestamp}_${image.name.replace(/ /g, '_')}`;
+      return filename;
+    })});
+    
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Add code to submit the property data to your backend or state management system
+  //   console.log('Submitted:', property);
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add code to submit the property data to your backend or state management system
-    console.log('Submitted:', property);
+  
+    // Add code to submit the property data to Firebase Firestore
+    try {
+      // Add the property data to Firestore
+      const docRef = await addDoc(collection(db, 'properties'), {
+        name: property.name,
+        unitCount: parseInt(property.unitCount, 10),
+        parkingCount: parseInt(property.parkingCount, 10),
+        lockerCount: parseInt(property.lockerCount, 10),
+        address: property.address,
+        files: property.imageNames
+      });
+  
+      // Upload images to Firebase Storage
+      if (property.images.length > 0) {
+        for (let i = 0; i < property.images.length; i++) {
+          const property_files_ref = ref(storage, `property_files/${property.imageNames[i]}`)
+          uploadBytes(property_files_ref, property.images[i]);
+      }
+      }
+      console.log('Property created with ID:', docRef.id);
+    } catch (error) {
+      console.error('Error adding property: ', error);
+    }
   };
-
+  
   return (
     
     <div className="property-form-overlay">
