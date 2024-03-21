@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './property_creation.css'; 
 import { db, storage } from "../../config/firebase";
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { collection, addDoc } from 'firebase/firestore';
+import {ref, uploadBytes } from 'firebase/storage';
 
 
 const PropertyForm = () => {
