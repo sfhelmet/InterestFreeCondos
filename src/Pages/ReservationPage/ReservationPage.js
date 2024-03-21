@@ -17,7 +17,19 @@ const ReservationPage = () => {
     const [timeVisible, setTimeVisible] = useState(false);
 
   
-    // Building data with associated amenities
+    // Input building data here
+    // The structure of the data is really important else everything breaks in the code. 
+    // Key points:
+    //      - Note: All times must be in 24h format no PM and AM.
+    //      - Each building has an ID, a name, an array of amenities
+    //      - For each element of the amenities array, so each amenity, contains the name of the amenity, the duration of a reservation (timeSlot), an array of reservations,
+    //          and an availability array
+    //      - Each reservation contains the date of the reservation (YYYY-MM-DD format), the start time of the reservation, the end time of the reservation 
+    //          (can be calculated as to not store it in the db but I need it as its on parameter), and the user who made the reservation (not used but should be stored to 
+    //          fetch all reservations later on).
+    //      - Each availability contains the open time of the facility, the close time of the facility, an array contain the days in a week the facility is opened,
+    //          and an array containing the closure periods. This closure period array contains all the closure period stored as a start of closure and end of closure
+    // NOTE: In the below buildingData, ONLY Oasis Tower has been properly formatted. As such, all the tests were made using Oasis tower. Thus, use Oasis Tower as your template.
     const buildingData = useMemo(() =>[
         {
           id: 1,
@@ -42,12 +54,12 @@ const ReservationPage = () => {
                 { date: '2024-03-27', start: '14:30 ', end: '15:00 ', user: 'Jane Smith' }
                 ],
               availability: { open: '9:00 AM', close: '8:00 PM', 
-              days: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-                }, 
+              days: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
               closurePeriods: [
-                { start: 'December 24th', end: 'December 26th' },
-                { start: 'July 1st', end: 'July 5th' }
+                { start: '2024-12-24', end: '2024-12-26' },
+                { start: '2024-04-01', end: '2024-04-05' }
               ]
+                }
             }
           ]
         },
@@ -134,6 +146,12 @@ const ReservationPage = () => {
           ]
         }
       ], []);
+
+      //Handle pushing the reservation to the DB here 
+  const handleConfirmation = () => {
+    // Everthing is already properly formatted at this point.
+    alert(`Reservation confirmed for ${selectedDate} at ${selectedTime}`);
+  };
   
  useEffect(()=>{
         const selectedBuilding = buildingData.find(building => building.id === parseInt(selectedUnit));
@@ -149,6 +167,7 @@ const ReservationPage = () => {
   }, [buildingData]); // Include buildingData in the dependency array
 
   const handleUnitSelect = (unitId) => {
+    setTimeVisible(false);
     setSelectedUnit(unitId);
     // Find selected unit's amenities
     const selectedBuilding = buildingData.find(building => building.id === parseInt(unitId));
@@ -161,11 +180,6 @@ const ReservationPage = () => {
         setTimeVisible(false);
         setSelectedAmenity(amenityName);
     };
-
-  // Function to handle date selection
-  const handleDateSelect = (date) => {//eslint-disable-line
-    setSelectedDate(date);
-  };
 
   const moment = require('moment');
 
@@ -183,8 +197,7 @@ const ReservationPage = () => {
             const timeSlotMinutes = selectedAmenity.timeSlot || 60; // Default time slot is 60 minutes if not specified
             const existingReservations = reservations || [];
             while (currentTime.isSameOrBefore(endTime)) {
-                const timeString = currentTime.format('h:mm A');
-
+                const timeString = currentTime.format('HH:mm');
                 let isReserved = false;
                 existingReservations.forEach(reservation => {
                     const reservationStartTime = moment(`${reservation.date} ${reservation.start}`, 'YYYY-MM-DDTHH:mm:ss');
@@ -223,35 +236,55 @@ const ReservationPage = () => {
     setConfirmVisible(true); // Show confirm button after time selection
   };
 
-  // Function to handle confirmation
-  const handleConfirmation = () => {
-    // Implement confirmation logic
-    alert(`Reservation confirmed for ${selectedDate} at ${selectedTime}`);
-  };
 
   const handleDayClick = (date) => {
-    // Add your logic here for handling the click event
     const day = date.toLocaleDateString('en-US', {weekday: 'long'});
     const formattedDate = date.toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }).split('/').reverse().join('-');
-    // console.log('Selected day:', day);
     if(selectedAmenity)
     CheckAvailability(day, selectedAmenityData, formattedDate);
   };
 
   const CheckAvailability = (selectedDate, amenity, formattedDate) => {
     setTimeVisible(false);
+    setSelectedDate(formattedDate);
     const availableDays = amenity.availability.days.map(day => day.toLowerCase());
     const selectedDay = selectedDate.toLowerCase();
     if(availableDays.includes(selectedDay)){
-       const amenityName = amenity.name;
-       const reservations = amenity.reservations || [];
-       const reservationsForFormattedDate = reservations.filter(reservation => {
-        // Extract the date part from the reservation's date (YYYY-MM-DD format)
-        const reservationDate = reservation.date;
-        // Compare the extracted date with the formatted date
-        return reservationDate === formattedDate;
-        });
-       fetchAvailableTimes(amenityName, reservationsForFormattedDate, formattedDate);
+        if(amenity.availability.closurePeriods){
+            const selectedMoment = moment(formattedDate, 'YYYY-MM-DD');
+
+            let isVacation = false;
+            const closure = amenity.availability.closurePeriods || [];
+            closure.forEach(period => {
+                const periodStart = moment(period.start, 'YYYY-MM-DD');
+                const periodEnd = moment(period.end, 'YYYY-MM-DD');
+                // console.log(selectedMoment.format('YYYY-MM-DD') + " compared to "+ periodStart.format('YYYY-MM-DD') + " equals "+selectedMoment.isSameOrAfter(periodStart));
+                // console.log(selectedMoment.format('YYYY-MM-DD') + " compared to "+ periodEnd.format('YYYY-MM-DD') + " equals "+selectedMoment.isBefore(periodEnd));
+                // console.log(selectedMoment.isSameOrAfter(periodStart)&&selectedMoment.isBefore(periodEnd));
+                // console.log("");
+                if(selectedMoment.isSameOrAfter(periodStart)&&selectedMoment.isSameOrBefore(periodEnd)){
+                    isVacation=true;
+                }
+            });
+            if(isVacation){
+                console.log("Vacation time");
+                return;
+            }
+            else{
+                const amenityName = amenity.name;
+                const reservations = amenity.reservations || [];
+                const reservationsForFormattedDate = reservations.filter(reservation => {
+                    // Extract the date part from the reservation's date (YYYY-MM-DD format)
+                    const reservationDate = reservation.date;
+                    // Compare the extracted date with the formatted date
+                    return reservationDate === formattedDate;
+                    });
+                fetchAvailableTimes(amenityName, reservationsForFormattedDate, formattedDate);
+            }
+        }
+
+
+       
     }
     else{
         console.log("This facility is not open on this day");
@@ -305,9 +338,16 @@ const ReservationPage = () => {
       (<div className="times">
        <h2>Available Times</h2>
         {availableTimes.map((time) => (
-          <button key={time} onClick={() => handleTimeSelect(time)}>
-            {time}
-          </button>
+          <label key={time} className="time-radio">
+          <input
+              type="radio"
+              name="time"
+              value={time}
+              checked={selectedTime === time}
+              onChange={() => handleTimeSelect(time)}
+          />
+          {time}
+      </label>
         ))}
       </div>)}
 
