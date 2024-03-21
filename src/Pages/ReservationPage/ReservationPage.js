@@ -27,8 +27,8 @@ const ReservationPage = () => {
               name: 'Swimming Pool', 
               timeSlot: 60,
               reservations: [
-                { date: '2024-03-25', start: '9:00 AM', end: '10:00 AM', user: 'John Doe' },
-                { date: '2024-03-27', start: '2:00 PM', end: '2:30 PM', user: 'Jane Smith' }
+                { date: '2024-03-25', start: '9:00 ', end: '10:00 ', user: 'John Doe' },
+                { date: '2024-03-27', start: '14:00 ', end: '15:00 ', user: 'Jane Smith' }
                 ],
               availability: { open: '6:00 AM', close: '10:00 PM', 
               days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
@@ -37,6 +37,10 @@ const ReservationPage = () => {
             { 
               name: 'Massage Parlor', 
               timeSlot: 30,
+              reservations: [
+                { date: '2024-03-26', start: '9:00 ', end: '9:30 ', user: 'John Doe' },
+                { date: '2024-03-27', start: '14:30 ', end: '15:00 ', user: 'Jane Smith' }
+                ],
               availability: { open: '9:00 AM', close: '8:00 PM', 
               days: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
                 }, 
@@ -166,7 +170,7 @@ const ReservationPage = () => {
   const moment = require('moment');
 
   // Function to fetch available times for the selected date
-  const fetchAvailableTimes = (amenityName, reservations) => {
+  const fetchAvailableTimes = (amenityName, reservations, formattedDate) => {
     //console.log(reservations[0].start);
     const selectedBuilding = buildingData.find(building => building.id === parseInt(selectedUnit));
     if (selectedBuilding) {
@@ -174,8 +178,8 @@ const ReservationPage = () => {
         if (selectedAmenity && selectedAmenity.availability) {
             const { open, close } = selectedAmenity.availability;
             const timeSlots = [];
-            let currentTime = moment(`2024-01-01 ${open}`, 'YYYY-MM-DDTHH:mm:ss A');
-            const endTime = moment(`2024-01-01 ${close} PM`, 'YYYY-MM-DDTHH:mm:ss A');
+            let currentTime = moment(`${formattedDate} ${open}`, 'YYYY-MM-DDTHH:mm:ss A');
+            const endTime = moment(`${formattedDate} ${close} PM`, 'YYYY-MM-DDTHH:mm:ss A');
             const timeSlotMinutes = selectedAmenity.timeSlot || 60; // Default time slot is 60 minutes if not specified
             const existingReservations = reservations || [];
             while (currentTime.isSameOrBefore(endTime)) {
@@ -183,15 +187,18 @@ const ReservationPage = () => {
 
                 let isReserved = false;
                 existingReservations.forEach(reservation => {
-                    const reservationStartTime = moment(`${reservation.date} ${reservation.start}`, 'YYYY-MM-DDTHH:mm:ss A');
-                    const reservationEndTime = moment(`${reservation.date} ${reservation.end}`, 'YYYY-MM-DDTHH:mm:ss A');
-                    // If the current time slot overlaps with the reservation, set isReserved to true
-                    // console.log("Reservation start time:", reservationStartTime.format('YYYY-MM-DD HH:mm:ss'));
-                    // console.log("Reservation end time:", reservationEndTime.format('YYYY-MM-DD HH:mm:ss'));
-                    // console.log("Current time:", currentTime.format('YYYY-MM-DD HH:mm:ss'));
-                    console.log(currentTime.isSameOrAfter(reservationStartTime));
-                    if (currentTime.isSameOrAfter(reservationStartTime)&&currentTime.isBefore(reservationEndTime)) {
-                        console.log("here");
+                    const reservationStartTime = moment(`${reservation.date} ${reservation.start}`, 'YYYY-MM-DDTHH:mm:ss');
+                    const reservationEndTime = moment(`${reservation.date} ${reservation.end}`, 'YYYY-MM-DDTHH:mm:ss');
+                    
+                    const formattedCurrentTime = moment(currentTime.format('YYYY-MM-DD HH:mm:ss'));
+                    const formattedStartTime = moment(reservationStartTime.format('YYYY-MM-DD HH:mm:ss'));
+                    const formattedEndTime = moment(reservationEndTime.format('YYYY-MM-DD HH:mm:ss'));
+                    // console.log(formattedCurrentTime.format('YYYY-MM-DD HH:mm:ss') + " compared to "+ formattedStartTime.format('YYYY-MM-DD HH:mm:ss') + " equals "+formattedCurrentTime.isSameOrAfter(formattedStartTime));
+                    // console.log(formattedCurrentTime.format('YYYY-MM-DD HH:mm:ss') + " compared to "+ formattedEndTime.format('YYYY-MM-DD HH:mm:ss') + " equals "+formattedCurrentTime.isBefore(formattedEndTime));
+                    // console.log(formattedCurrentTime.isSameOrAfter(formattedStartTime)&&formattedCurrentTime.isBefore(formattedEndTime));
+                    // console.log("");
+                    if (formattedCurrentTime.isSameOrAfter(formattedStartTime)&&formattedCurrentTime.isBefore(formattedEndTime)) {
+                        // console.log("here");
                         isReserved = true;
                     }
                 });
@@ -226,7 +233,7 @@ const ReservationPage = () => {
     // Add your logic here for handling the click event
     const day = date.toLocaleDateString('en-US', {weekday: 'long'});
     const formattedDate = date.toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }).split('/').reverse().join('-');
-    console.log('Selected day:', day);
+    // console.log('Selected day:', day);
     if(selectedAmenity)
     CheckAvailability(day, selectedAmenityData, formattedDate);
   };
@@ -244,7 +251,7 @@ const ReservationPage = () => {
         // Compare the extracted date with the formatted date
         return reservationDate === formattedDate;
         });
-       fetchAvailableTimes(amenityName, reservationsForFormattedDate);
+       fetchAvailableTimes(amenityName, reservationsForFormattedDate, formattedDate);
     }
     else{
         console.log("This facility is not open on this day");
