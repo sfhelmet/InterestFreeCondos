@@ -83,7 +83,6 @@ const ReservationPage = () => {
   const handleCalendarDayClick = (date) => {
     const selectedDay = date.toLocaleDateString('en-US', {weekday: 'long'}).toLowerCase();
     const formattedDate = date.toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }).split('/').reverse().join('-');
-
     if (currentBuilding !== 'Select Building' && currentAmenity !== 'Select Amenity') {
       checkAvailability(selectedDay,formattedDate)
     }
@@ -126,6 +125,18 @@ const ReservationPage = () => {
             
             fetchAvailableTimes(amenityName, reservationsForFormattedDate, formattedDate);
           }
+        }
+        else{
+            const amenityName = selectedAmenity.name;
+            const reservations = selectedAmenity.reservations || [];
+            const reservationsForFormattedDate = reservations.filter(reservation => {
+              // Extract the date part from the reservation's date (YYYY-MM-DD format)
+              const reservationDate = reservation.date;
+              // Compare the extracted date with the formatted date
+              return reservationDate === formattedDate;
+            });
+            
+            fetchAvailableTimes(amenityName, reservationsForFormattedDate, formattedDate);
         }
       }
     } else {
@@ -198,6 +209,7 @@ const ReservationPage = () => {
           })}
         </select>
       </Box>
+      <div className='thisContainer'>
       <Box className='calendar-container'>
         <div className="calendar">
           <Calendar  
@@ -211,21 +223,25 @@ const ReservationPage = () => {
       {timeVisible &&
       (
         <div className="times">
-          <h2>Available Times</h2>
+          <h3>Available Times</h3>
+          <div className='timeDisplay'>
             {availableTimes.map((time) => (
               <label key={time} className="time-radio">
-              <input
+              <input className='timeButton'
                   type="radio"
                   name="time"
                   value={time}
                   checked={selectedTime === time}
                   onChange={() => handleTimeSelect(time)}
               />
+              <span className="custom-radio"></span>
                 {time}
               </label>
             ))}
+            </div>
         </div>
       )}
+      </div>
 
       {confirmVisible && <button onClick={handleConfirmReservation}>Confirm Reservation</button>}
     </Box>
