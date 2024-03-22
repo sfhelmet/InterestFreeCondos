@@ -14,6 +14,7 @@ code {
 }
 
 :root{
+  background-color: var(--background);
   --text: #f4f9f9; /*White*/
   --alt_text: #7fe6ef; /*Light Blue*/
   --accent1: #3e8ca3; /*Dark Cyan*/
