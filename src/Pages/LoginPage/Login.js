@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import AuthContainer from "../../components/auth/AuthContainer/AuthContainer";
 import Center from "../../components/utils/Center";
 import Register from "../../components/auth/Register/Register";
+import "./Login.css"
 
 const tabIdToURL = {
   0: "login",
@@ -33,23 +34,24 @@ const Login = (props) => {
   };
 
   return (
+    <div className="LoginContainer">
     <Center height={90}>
-      <Box
+      <Box className="LoginPanel"
         display={"flex"}
         alignItems={"center"}
         flexDirection={"column"}
         boxShadow={2}
         margin={3}
       >
-        <Box sx={{ borderBottom: 1, borderColor: "divider", width: "100%" }}>
-          <Tabs value={value} onChange={handleChange} variant="fullWidth">
-            <Tab sx={{ px: { lg: 20, xs: 6 } }} label="Login" />
-            <Tab sx={{ px: { lg: 16, xs: 6 } }} label="Register" />
+        <Box sx={{ borderBottom: 1, borderColor: "divider", width: "100%"}}>
+          <Tabs  value={value} onChange={handleChange} variant="fullWidth">
+            <Tab className="HeaderTab" sx={{ px: { lg: 20, xs: 6 } }} label="Login" />
+            <Tab className="HeaderTab" sx={{ px: { lg: 16, xs: 6 } }} label="Register" />
           </Tabs>
         </Box>
         {/* login */}
         <TabPanel value={value} index={0}>
-          <AuthContainer />
+          <AuthContainer className="LoginPanel" />
         </TabPanel>
         {/* register */}
         <TabPanel value={value} index={1}>
@@ -57,12 +59,13 @@ const Login = (props) => {
         </TabPanel>
       </Box>
     </Center>
+    </div>
   );
 };
 
 const TabPanel = ({ children, value, index }) => {
   return (
-    <div role="tabpanel" hidden={value !== index}>
+    <div className="LoginPanel" role="tabpanel" hidden={value !== index}>
       {value === index && (
         <Box sx={{ p: 3 }}>
           <>{children}</>
