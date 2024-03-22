@@ -39,7 +39,7 @@ const PublicKeyRequest = () => {
   };
 
   return (
-    <div className="home-page">
+    <div className="home-page-container">
       <div className="company-info">
         {/* Placeholder for company logo */}
         <img src="Nexus-clear-noText.png" alt="Company Logo" />

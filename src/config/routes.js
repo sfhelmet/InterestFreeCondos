@@ -6,7 +6,11 @@ import OwnerHome from "../Pages/HomePage/Dashboards/CondoOwner/OwnerHome";
 import PropertyFilesView from "../Pages/Management/PropertyFilesView";
 import GenerateTokenForm from "../components/NexusButton/GenerateFormToken";
 import PropertyCreation from "../Pages/property_creation/property_creation";
+<<<<<<< HEAD
 import FinancialPage from "../Pages/FinancialPage/FinancialPage";
+=======
+import ReservationPage from "../Pages/ReservationPage/ReservationPage";
+>>>>>>> main
 
 const routes = [
   {
@@ -57,7 +61,6 @@ const routes = [
     name: "Generate Token",
     protected: false,
   },
-
   {
     path: "/property-creation",
     component: PropertyCreation,
@@ -69,7 +72,7 @@ const routes = [
     component: FinancialPage,
     name: "Financial Page",
     protected: false,
-  }
+  },
 ];
 
 export default routes;
