@@ -1,5 +1,15 @@
 .not-found-container {
     text-align: center;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.nexus {
+    color: var(--text);
+}
+
+.NotFound404 {
+    background-color: var(--background);
 }
 
 .not-found-container .not-found-logo {
