@@ -1,4 +1,4 @@
-import { getDoc, getDocs, collection, addDoc, doc, query, where } from 'firebase/firestore';
+import { getDoc, getDocs, collection, doc, query, where } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 
 export const getPaymentYears = async () => {
