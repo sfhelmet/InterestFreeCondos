@@ -6,7 +6,7 @@ import OwnerHome from "../Pages/HomePage/Dashboards/CondoOwner/OwnerHome";
 import PropertyFilesView from "../Pages/Management/PropertyFilesView";
 import GenerateTokenForm from "../components/NexusButton/GenerateFormToken";
 import PropertyCreation from "../Pages/property_creation/property_creation";
-import ReservationPage from "../Pages/ReservationPage/ReservationPage";
+import FinancialPage from "../Pages/FinancialPage/FinancialPage";
 
 const routes = [
   {
@@ -64,9 +64,9 @@ const routes = [
     protected: false,
   },
   {
-    path: "/reservation",
-    component: ReservationPage,
-    name: "Reservation",
+    path: "/financials",
+    component: FinancialPage,
+    name: "Financial Page",
     protected: false,
   },
 ];
