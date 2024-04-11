@@ -1,5 +1,5 @@
 import { getDownloadURL, uploadBytes } from "firebase/storage";
-import Profile from "../../../Pages/ProfilePage/Profile";
+import Profile from "../../../pages/ProfilePage/Profile";
 import { render, waitFor, fireEvent } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import AuthenticatedUserContext from "../../../contexts/AuthenticatedUserContext";

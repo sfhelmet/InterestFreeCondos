@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import NotFoundPage from '../../../Pages/NotFoundPage/NotFoundPage';
-import nexus_logo from '../../../Images/nexus_logo.png';
+import NotFoundPage from '../../../pages/NotFoundPage/NotFoundPage';
+import nexus_logo from '../../../images/nexus_logo.png';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('NotFoundPage Component', () => {
