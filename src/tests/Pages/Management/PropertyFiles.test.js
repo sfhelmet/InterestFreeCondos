@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import PropertyUploadsManager from "../../../Pages/Management/PropertyUploadsManager";
+import PropertyUploadsManager from "../../../pages/Management/PropertyUploadsManager";
 import { storage } from '../../../config/firebase';
 
 
