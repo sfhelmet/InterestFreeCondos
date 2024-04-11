@@ -1,5 +1,5 @@
-import nexus_logo from "../../Images/Logos/Nexus-clear-noText.png";
-import Center from "../../components/utils/Center";
+import nexus_logo from "../../images/Logos/Nexus-clear-noText.png";
+import Center from "../../components/Utils/Center";
 
 import "./NotFoundPage.css";
 

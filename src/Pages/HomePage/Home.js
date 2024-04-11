@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import Logout from "../../components/auth/Logout/Logout";
-import Center from "../../components/utils/Center";
+import Logout from "../../components/Auth/Logout/Logout";
+import Center from "../../components/Utils/Center";
 import Profile from "../ProfilePage/Profile";
 
 const Home = (props) => {

@@ -4,7 +4,7 @@ import { db, storage } from "../../../../config/firebase";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
 import AuthenticatedUserContext from "../../../../contexts/AuthenticatedUserContext";
-import logo from "../../../../Images/Logos/Nexus-clear-noText.png";
+import logo from "../../../../images/Logos/Nexus-clear-noText.png";
 
 import "./OwnerHome.css";
 

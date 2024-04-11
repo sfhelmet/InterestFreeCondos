@@ -3,7 +3,7 @@ import { auth, db } from "../../config/firebase";
 import { query, collection, getDocs } from "firebase/firestore" 
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { useEffect } from "react";
-import FileIcon from "../../components/utils/FileIcons"
+import FileIcon from "../../components/Utils/FileIcons"
 import PropertyUploadsManager from "./PropertyUploadsManager";
 
 

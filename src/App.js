@@ -3,8 +3,8 @@ import { CircularProgress } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { auth } from "./config/firebase";
 import routes from "./config/routes";
-import Center from "./components/utils/Center";
-import AuthChecker from "./components/auth/AuthChecker";
+import Center from "./components/Utils/Center";
+import AuthChecker from "./components/Auth/AuthChecker";
 import { AuthenticatedUserProvider } from "./contexts/AuthenticatedUserContext";
 
 function App() {
