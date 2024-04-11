@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './property_creation.css'; 
+import './PropertyCreation.css'; 
 import { db, storage } from "../../config/firebase";
 import { collection, addDoc } from 'firebase/firestore';
 import {ref, uploadBytes } from 'firebase/storage';

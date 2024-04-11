@@ -1,0 +1,21 @@
+.auth-container .simple-login-container {
+    text-align: center;
+}
+
+.auth-container .simple-login-container .login-inputs .login-password {
+    margin-top: 1rem;
+}
+
+.auth-container .simple-login-container .login-btn {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.auth-container .sso-logins-container {
+    margin-top: 2rem;
+}
+
+.auth-container .sso-logins-container .goolge-sso-login-btn {
+    width: 100%;
+}

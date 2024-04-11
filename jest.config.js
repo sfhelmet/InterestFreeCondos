@@ -22,7 +22,7 @@ const config = {
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   collectCoverageFrom: [
-    "<rootDir>/Pages/**/*.js",
+    "<rootDir>/pages/**/*.js",
     "<rootDir>/components/**/*.js",
   ],
 
@@ -31,11 +31,11 @@ const config = {
 
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
-    "<rootDir>/Pages/ProfilePage/MyAccount/",
-    "<rootDir>/Pages/HomePage/Home.js",
-    "<rootDir>/Pages/HomePage/Dashboards/RentalUser/",
-    "<rootDir>/Pages/Management/PropertyFilesView.js",
-    "<rootDir>/Pages/FinancialPage/"
+    "<rootDir>/pages/ProfilePage/MyAccount/",
+    "<rootDir>/pages/HomePage/Home.js",
+    "<rootDir>/pages/HomePage/Dashboards/RentalUser/",
+    "<rootDir>/pages/Management/PropertyFilesView.js",
+    "<rootDir>/pages/FinancialPage/"
   ],
 
   transform: {
@@ -139,7 +139,7 @@ const config = {
   // A list of paths to directories that Jest should use to search for files in
   roots: [
     "<rootDir>/tests",
-    "<rootDir>/Pages",
+    "<rootDir>/pages",
     "<rootDir>/components"
   ],
 

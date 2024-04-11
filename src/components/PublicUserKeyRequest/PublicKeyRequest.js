@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { keyExists, uploadKey, getUserIdbyEmail, updateCondo } from './PublicKeyRequestService';
 import './PublicKeyRequest.css';
-import '../../Styling/Fonts/fonts.css';
+import '../../styling/Fonts/fonts.css';
 const KJUR = require('jsrsasign');
 
 

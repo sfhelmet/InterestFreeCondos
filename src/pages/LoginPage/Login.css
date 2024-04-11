@@ -1,0 +1,16 @@
+.LoginContainer {
+    background-color: var(--background);
+}
+
+.HeaderTab {
+    background-color: var(--alt_background)!important;
+    color: var(--alt_text)!important;
+}
+
+.LoginPanel {
+    background-color: var(--accent2);
+}
+
+.login-inputs {
+    color: white;
+}
