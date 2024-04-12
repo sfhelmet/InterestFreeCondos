@@ -40,12 +40,6 @@ const PropertyForm = () => {
     
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Add code to submit the property data to your backend or state management system
-  //   console.log('Submitted:', property);
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
   
