@@ -185,3 +185,63 @@ test('Updates property attribute on toggle edit change', async () => {
     expect(updateDoc).toHaveBeenCalled();
     expect(logSpy).not.toHaveBeenCalled();
 });
+
+test('Updates property attribute on toggle edit change', async () => {
+    const logSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+    const user = userEvent.setup();
+    const { getAllByText, getByText, getByPlaceholderText } = render(
+        <BrowserRouter>
+            <AuthenticatedUserContext.Provider value={{ 
+                    userID: "D4flx9lDvqeQ8jYAxIFRdt4o8Gz2",
+                    userName:"Pol",
+                    email:"abc@gmail.com",
+                    phone:"123-456-7899"
+                }}
+            >
+                <OwnerHome />
+            </AuthenticatedUserContext.Provider>
+        </BrowserRouter>
+    );
+
+    await waitFor(() => {
+        expect(getByText("Example Tower")).toBeInTheDocument();
+    });
+
+    act(() => {
+        fireEvent.click(getAllByText("Edit")[0]);
+    })
+
+    const balanceDueInput = getByPlaceholderText('Balance Due');
+    expect(balanceDueInput).toBeInTheDocument();
+
+    const monthlyRentInput = getByPlaceholderText("Monthly Rent")
+    expect(monthlyRentInput).toBeInTheDocument();
+
+    const dueDateInput = getByPlaceholderText("Due Date");
+    expect(dueDateInput).toBeInTheDocument();
+
+    const receivedMoneyInput = getByPlaceholderText("Received Money");
+    expect(receivedMoneyInput).toBeInTheDocument();
+
+    act(() => {
+        user.clear(balanceDueInput);
+        user.type(balanceDueInput, "0$");
+
+        user.clear(monthlyRentInput);
+        user.type(monthlyRentInput, "100$");
+
+        user.clear(dueDateInput);
+        user.type("2024-06-06");
+
+        user.clear(receivedMoneyInput);
+        user.type(receivedMoneyInput, "100$");
+    });
+
+    const saveBtn = getByText("Save");
+    act(() => {
+        fireEvent.click(saveBtn);
+    });
+
+    expect(updateDoc).toHaveBeenCalled();
+    expect(logSpy).not.toHaveBeenCalled();
+});
