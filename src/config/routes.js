@@ -7,6 +7,7 @@ import PropertyFilesView from "../pages/Management/PropertyFilesView";
 import GenerateTokenForm from "../components/NexusButton/GenerateFormToken";
 import PropertyCreation from "../pages/PropertyCreation/PropertyCreation";
 import FinancialPage from "../pages/FinancialPage/FinancialPage";
+import ReservationPage from "../pages/ReservationPage/ReservationPage"
 
 const routes = [
   {
@@ -69,6 +70,12 @@ const routes = [
     name: "Financial Page",
     protected: false,
   },
+  {
+    path: "/reservations",
+    component: ReservationPage,
+    name: "Reservation Page",
+    protected: false
+  }
 ];
 
 export default routes;
