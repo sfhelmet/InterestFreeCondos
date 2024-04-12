@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - hosting
 
 jobs:
   deploy-react-to-gh-pages:
