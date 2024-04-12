@@ -8,7 +8,7 @@ import GenerateTokenForm from "../components/NexusButton/GenerateFormToken";
 import PropertyCreation from "../pages/PropertyCreation/PropertyCreation";
 import FinancialPage from "../pages/FinancialPage/FinancialPage";
 import ReservationPage from "../pages/ReservationPage/ReservationPage"
-import RequestSubmission from "../pages/RequestSubmission/RequestSubmission";
+import RequestSubmission from "../pages/Requests/Submissions/RequestSubmission";
 
 const routes = [
   {
