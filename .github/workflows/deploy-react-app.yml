@@ -9,6 +9,14 @@ on:
 jobs:
   deploy-react-to-gh-pages:
     runs-on: ubuntu-latest
+    env:
+      REACT_APP_FirebaseApiKey: ${{ secrets.REACT_APP_FIREBASEAPIKEY }}
+      REACT_APP_FirebaseAuthDomain: ${{ secrets.REACT_APP_FIREBASEAUTHDOMAIN }}
+      REACT_APP_FirebaseProjectId: ${{ secrets.REACT_APP_FIREBASEPROJECTID }}
+      REACT_APP_FirebaseStorageBucket: ${{ secrets.REACT_APP_FIREBASESTORAGEBUCKET }}
+      REACT_APP_FirebaseMessagingSenderId: ${{ secrets.REACT_APP_FIREBASEMESSAGINGSENDERID }}
+      REACT_APP_FirebaseAppId: ${{ secrets.REACT_APP_FIREBASEAPPID }}
+      REACT_APP_Secret_Key: ${{ secrets.REACT_APP_SECRET_KEY }}
 
     steps:
       # checkout the repository content to github runner
