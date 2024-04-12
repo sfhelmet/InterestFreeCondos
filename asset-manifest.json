@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/https://sfhelmet.github.io/Nexus/static/css/main.140217bc.css",
-    "main.js": "/https://sfhelmet.github.io/Nexus/static/js/main.7f9c696e.js",
-    "static/js/453.4f065752.chunk.js": "/https://sfhelmet.github.io/Nexus/static/js/453.4f065752.chunk.js",
-    "static/media/Nexus-clear-noText.png": "/https://sfhelmet.github.io/Nexus/static/media/Nexus-clear-noText.be05e0a8d86d5bd030a3.png",
-    "static/media/fa-solid-900.ttf": "/https://sfhelmet.github.io/Nexus/static/media/fa-solid-900.45a265d0f07b31cde85f.ttf",
-    "static/media/fa-brands-400.ttf": "/https://sfhelmet.github.io/Nexus/static/media/fa-brands-400.6205fd00fb1b573e9f0f.ttf",
-    "static/media/fa-solid-900.woff2": "/https://sfhelmet.github.io/Nexus/static/media/fa-solid-900.fb8184add5a3101ad0a3.woff2",
-    "static/media/fa-brands-400.woff2": "/https://sfhelmet.github.io/Nexus/static/media/fa-brands-400.8d3cabfc66809162fb4d.woff2",
-    "static/media/fa-regular-400.ttf": "/https://sfhelmet.github.io/Nexus/static/media/fa-regular-400.adc51aab4d771ab65f81.ttf",
-    "static/media/fa-regular-400.woff2": "/https://sfhelmet.github.io/Nexus/static/media/fa-regular-400.e931bc0d14f5bbb1da22.woff2",
-    "static/media/telemarines1.ttf": "/https://sfhelmet.github.io/Nexus/static/media/telemarines1.5ec1829d44f7768d40f7.ttf",
-    "static/media/fa-v4compatibility.ttf": "/https://sfhelmet.github.io/Nexus/static/media/fa-v4compatibility.2eb7b3ef25042305f3ff.ttf",
-    "static/media/fa-v4compatibility.woff2": "/https://sfhelmet.github.io/Nexus/static/media/fa-v4compatibility.b3049b13a93f07e026fc.woff2",
-    "index.html": "/https://sfhelmet.github.io/Nexus/index.html",
-    "main.140217bc.css.map": "/https://sfhelmet.github.io/Nexus/static/css/main.140217bc.css.map",
-    "main.7f9c696e.js.map": "/https://sfhelmet.github.io/Nexus/static/js/main.7f9c696e.js.map",
-    "453.4f065752.chunk.js.map": "/https://sfhelmet.github.io/Nexus/static/js/453.4f065752.chunk.js.map"
+    "main.css": "/https://sfhelmet.github.io/InterestFreeCondos/static/css/main.2463f892.css",
+    "main.js": "/https://sfhelmet.github.io/InterestFreeCondos/static/js/main.12344e42.js",
+    "static/js/453.4f065752.chunk.js": "/https://sfhelmet.github.io/InterestFreeCondos/static/js/453.4f065752.chunk.js",
+    "static/media/Nexus-clear-noText.png": "/https://sfhelmet.github.io/InterestFreeCondos/static/media/Nexus-clear-noText.be05e0a8d86d5bd030a3.png",
+    "static/media/fa-solid-900.ttf": "/https://sfhelmet.github.io/InterestFreeCondos/static/media/fa-solid-900.45a265d0f07b31cde85f.ttf",
+    "static/media/fa-brands-400.ttf": "/https://sfhelmet.github.io/InterestFreeCondos/static/media/fa-brands-400.6205fd00fb1b573e9f0f.ttf",
+    "static/media/fa-solid-900.woff2": "/https://sfhelmet.github.io/InterestFreeCondos/static/media/fa-solid-900.fb8184add5a3101ad0a3.woff2",
+    "static/media/fa-brands-400.woff2": "/https://sfhelmet.github.io/InterestFreeCondos/static/media/fa-brands-400.8d3cabfc66809162fb4d.woff2",
+    "static/media/fa-regular-400.ttf": "/https://sfhelmet.github.io/InterestFreeCondos/static/media/fa-regular-400.adc51aab4d771ab65f81.ttf",
+    "static/media/fa-regular-400.woff2": "/https://sfhelmet.github.io/InterestFreeCondos/static/media/fa-regular-400.e931bc0d14f5bbb1da22.woff2",
+    "static/media/telemarines1.ttf": "/https://sfhelmet.github.io/InterestFreeCondos/static/media/telemarines1.5ec1829d44f7768d40f7.ttf",
+    "static/media/fa-v4compatibility.ttf": "/https://sfhelmet.github.io/InterestFreeCondos/static/media/fa-v4compatibility.2eb7b3ef25042305f3ff.ttf",
+    "static/media/fa-v4compatibility.woff2": "/https://sfhelmet.github.io/InterestFreeCondos/static/media/fa-v4compatibility.b3049b13a93f07e026fc.woff2",
+    "index.html": "/https://sfhelmet.github.io/InterestFreeCondos/index.html",
+    "main.2463f892.css.map": "/https://sfhelmet.github.io/InterestFreeCondos/static/css/main.2463f892.css.map",
+    "main.12344e42.js.map": "/https://sfhelmet.github.io/InterestFreeCondos/static/js/main.12344e42.js.map",
+    "453.4f065752.chunk.js.map": "/https://sfhelmet.github.io/InterestFreeCondos/static/js/453.4f065752.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.140217bc.css",
-    "static/js/main.7f9c696e.js"
+    "static/css/main.2463f892.css",
+    "static/js/main.12344e42.js"
   ]
 }
