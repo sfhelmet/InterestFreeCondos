@@ -115,7 +115,7 @@ const OwnerHome = () => {
           </div>
           <div className="right-panel">
             {condoProperties.map((property) => (
-              <div key={property.id} className="property-card">
+              <div id={`property-${property.id}`} key={property.id} className="property-card">
                 <div className="property-content">
                   <img
                     src={property.propertyImageURL}
@@ -181,6 +181,7 @@ const OwnerHome = () => {
                             }
                           />
                           <button
+                            id="save-property-btn"
                             onClick={() => handleSaveProperty(property.id)}
                           >
                             Save
@@ -188,13 +189,13 @@ const OwnerHome = () => {
                         </div>
                       ) : (
                         <>
-                          <p>Monthly Rent: {property.monthlyRent}</p>
-                          <p>Balance Due: {property.balanceDue}</p>
-                          <p>Due Date: {property.dueDate}</p>
-                          <p>Received Money: {property.receivedMoney}</p>
+                          <p className="monthly-rent">Monthly Rent: {property.monthlyRent}</p>
+                          <p className="balance-due">Balance Due: {property.balanceDue}</p>
+                          <p className="due-date">Due Date: {property.dueDate}</p>
+                          <p className="received-money">Received Money: {property.receivedMoney}</p>
                         </>
                       )}
-                      <button onClick={() => handleToggleEdit(property.id)}>
+                      <button id="edit-property-btn" onClick={() => handleToggleEdit(property.id)}>
                         {property.isEditing ? "Cancel" : "Edit"}
                       </button>
                     </div>
