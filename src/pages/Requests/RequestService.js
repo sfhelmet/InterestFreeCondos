@@ -1,8 +1,8 @@
 // The RequestService class is a static interface used
 // to carry out tasks in request submission and handling pages
 
-import { collection, addDoc, getDoc, getDocs, query, where } from "firebase/firestore" 
-import { db } from "../../config/firebase";
+import { collection, addDoc, getDocs, query, where, doc, updateDoc } from "firebase/firestore" 
+import { db, auth } from "../../config/firebase";
 
 class RequestService 
 {
@@ -25,7 +25,6 @@ class RequestService
     static fetchRequests = (setRequests) => {
         const requestRef = collection(db, "requests");
         const requestQuery = query(requestRef);
-        console.log("Fetching ");
 
         // Calls the firestore with query
         getDocs(requestQuery).then(docs => {
@@ -33,14 +32,38 @@ class RequestService
             docs.forEach(doc => {
 
                 const data = doc.data();
-                // We want to give the name of the users that submitted the requests
+
+                // IMPROVEMENT: change query such that it is returned in the requestQuery
                 const userRef = collection(db, "users");
                 const userQuery = query(userRef, where('userID', '==', data.userID));
-                getDocs(userQuery).then( userdocs => setRequests([... requests , {... data, id: doc.id, username: userdocs.empty ? "???" : userdocs.docs[0].data().userName}]));
 
+                // We want to give the name of the users that submitted the requests
+                getDocs(userQuery).then( userdocs => {
+                    requests.push({...data, id: doc.id, username: userdocs.empty ? "???" : userdocs.docs[0].data().userName});
+                    setRequests(requests);
+                })
             })
         })
     }
+
+    static updateRequestStatus = (setRequests, requests, handling, id) => {
+        // Change requests for the view
+        requests = requests.map(request => request.id === id ? { ...request, handlingStatus: handling } : request)
+
+        // Send and update view if sucessful
+        const requestRef = doc(db, "requests", id);
+        updateDoc(requestRef, {handlingStatus: handling}).then(() => setRequests(requests));   
+    }
+
+    static getTemplateRequest = () => (
+        {
+            userID: auth.currentUser.uid,   // User that submitted
+            handlingStatus: "Submitted",    // Submitted Processing Closed
+            title: "",                      // Title
+            action: "Custom ticket",        // Type of request
+            notes: ""                       // Free comments from the user
+        }
+    )
 
 
 }

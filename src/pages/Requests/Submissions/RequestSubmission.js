@@ -1,19 +1,12 @@
 import React, { useState} from 'react';
 import RequestService from '../RequestService' 
-import { auth } from "../../../config/firebase";
 import '../RequestStyling.css'
 
 
 const RequestSubmission = () =>
 {
-    const [formData, setFormData] = useState(
-    {
-        userID: auth.currentUser.uid,   // User that submitted
-        handlingStatus: "Submitted",    // Submitted Processing Closed
-        title: "",                      // Title
-        action: "Custom ticket",                     // Type of request
-        notes: ""                       // Free comments from the user
-    });
+    // Default request
+    const [formData, setFormData] = useState(RequestService.getTemplateRequest());
 
 
     // Modify currently stored form info
