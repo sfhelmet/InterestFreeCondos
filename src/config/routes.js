@@ -45,7 +45,7 @@ const routes = [
     path: "/public-home",
     component: PublicKeyRequest,
     name: "Public Key Request",
-    protected: true,
+    protected: false,
   },
   {
     path: "/owner-home",
@@ -81,7 +81,7 @@ const routes = [
     path: "/request-submission",
     component: RequestSubmission,
     name: "Request Submission Page",
-    protected: false
+    protected: true
   }
 ];
 
