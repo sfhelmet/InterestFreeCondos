@@ -17,7 +17,6 @@ const RequestSubmission = () =>
 
 
     const handleSubmit = (e) => {
-
         // Not allowing empty titles
         if (formData.title === "") {
             // Prevent the page from reloading upon submitting the form
