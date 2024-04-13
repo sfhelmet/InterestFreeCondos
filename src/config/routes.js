@@ -9,6 +9,7 @@ import PropertyCreation from "../pages/PropertyCreation/PropertyCreation";
 import FinancialPage from "../pages/FinancialPage/FinancialPage";
 import ReservationPage from "../pages/ReservationPage/ReservationPage"
 import RequestSubmission from "../pages/Requests/Submissions/RequestSubmission";
+import RequestHandling from "../pages/Requests/Handling/RequestHandling";
 
 const routes = [
   {
@@ -81,7 +82,13 @@ const routes = [
     path: "/request-submission",
     component: RequestSubmission,
     name: "Request Submission Page",
-    protected: true
+    protected: true // require user id
+  },
+  {
+    path: "/request-handling",
+    component: RequestHandling,
+    name: "Request Handling Page",
+    protected: false
   }
 ];
 
