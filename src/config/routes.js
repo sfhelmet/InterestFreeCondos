@@ -8,6 +8,7 @@ import GenerateTokenForm from "../components/NexusButton/GenerateFormToken";
 import PropertyCreation from "../pages/PropertyCreation/PropertyCreation";
 import FinancialPage from "../pages/FinancialPage/FinancialPage";
 import ReservationPage from "../pages/ReservationPage/ReservationPage"
+import RequestSubmission from "../pages/Requests/Submissions/RequestSubmission";
 
 const routes = [
   {
@@ -75,6 +76,12 @@ const routes = [
     component: ReservationPage,
     name: "Reservation Page",
     protected: false
+  },
+  {
+    path: "/request-submission",
+    component: RequestSubmission,
+    name: "Request Submission Page",
+    protected: true
   }
 ];
 
