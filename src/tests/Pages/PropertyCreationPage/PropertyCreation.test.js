@@ -6,7 +6,6 @@ import userEvent from '@testing-library/user-event';
 import { addDoc } from 'firebase/firestore';
 import { uploadBytes } from 'firebase/storage';
 
-
 jest.mock("firebase/firestore", () => {
     const ogModule = jest.requireActual("firebase/firestore");
     return {

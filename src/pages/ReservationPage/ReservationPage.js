@@ -80,6 +80,7 @@ const ReservationPage = () => {
     saveReservation()
     //alert(`Reservation confirmed for ${selectedDate} at ${selectedTime}`);
   };
+  
   const handleCalendarDayClick = (date) => {
     const selectedDay = date.toLocaleDateString('en-US', {weekday: 'long'}).toLowerCase();
     const formattedDate = date.toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }).split('/').reverse().join('-');
@@ -227,15 +228,14 @@ const ReservationPage = () => {
           <div className='timeDisplay'>
             {availableTimes.map((time) => (
               <label key={time} className="time-radio">
-              <input className='timeButton'
-                  type="radio"
-                  name="time"
-                  value={time}
-                  checked={selectedTime === time}
-                  onChange={() => handleTimeSelect(time)}
-              />
-              <span className="custom-radio"></span>
-                {time}
+                <span>{time}</span>
+                <input className='timeButton'
+                    type="radio"
+                    name="time"
+                    value={time}
+                    checked={selectedTime === time}
+                    onChange={() => handleTimeSelect(time)}
+                />
               </label>
             ))}
             </div>
