@@ -45,7 +45,7 @@ const routes = [
     path: "/public-home",
     component: PublicKeyRequest,
     name: "Public Key Request",
-    protected: false,
+    protected: true,
   },
   {
     path: "/owner-home",

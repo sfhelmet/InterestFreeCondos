@@ -1,6 +1,9 @@
 // The RequestService class is a static interface used
 // to carry out tasks in request submission and handling pages
 
+import { collection, addDoc } from "firebase/firestore" 
+import { db } from "../../config/firebase";
+
 class RequestService 
 {
     // The request data structure
@@ -8,13 +11,15 @@ class RequestService
     //     userID: "...",           // User that submitted
     //     handlingStatus: "...",   // Submitted Processing Closed
     //     title: "...",            // Title
-    //     action: "...",           // 
+    //     action: "...",           // Action
     //     notes: "..."             // Free comments from the user
     // };
 
-    // Random guid to avoid id collision
-    static generateRequestGUID = () => Date.now().toString();
-
+    // Send request object to firestore
+    static uploadRequest = (formData) => {
+        const requestRef = collection(db, "requests")
+        addDoc(requestRef, formData).then(() => console.log("Request sent"));
+    }
 
 }
 
