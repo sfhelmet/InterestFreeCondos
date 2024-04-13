@@ -1,0 +1,32 @@
+.page-container {
+    background-color: var(--background);
+}
+
+.container-fluid {
+    width: 50%!important;
+    margin-top: 100px;
+}
+
+.page-title {
+    color: var(--text);
+}
+
+.card-header {
+    color: "#7fe6ef";
+    background-color: "#213d4e";
+}
+
+.card-body {
+    background-color: var(--accent1);
+}
+
+.card-header {
+    color: var(--alt_text)!important;
+    background-color: var(--alt_background)!important;
+}
+
+.nexus-submit {
+    background-color: var(--accent2)!important;
+    color: var(--text)!important;
+    border: none!important;
+}
