@@ -18,16 +18,6 @@ const PropertyForm = () => {
   const handleChange = (e) => {
     setProperty({ ...property, [e.target.name]: e.target.value });
   };
-
-  const handleIncrement = (field) => {
-    setProperty({ ...property, [field]: property[field] + 1 });
-  };
-
-  const handleDecrement = (field) => {
-    if (property[field] > 0) {
-      setProperty({ ...property, [field]: property[field] - 1 });
-    }
-  };
   
   const handleImageChange = (e) => {
     const selectedImages = Array.from(e.target.files);
@@ -39,12 +29,6 @@ const PropertyForm = () => {
     })});
     
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Add code to submit the property data to your backend or state management system
-  //   console.log('Submitted:', property);
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,7 +50,7 @@ const PropertyForm = () => {
         for (let i = 0; i < property.images.length; i++) {
           const property_files_ref = ref(storage, `property_files/${property.imageNames[i]}`)
           uploadBytes(property_files_ref, property.images[i]);
-      }
+        }
       }
       console.log('Property created with ID:', docRef.id);
     } catch (error) {
@@ -93,27 +77,15 @@ const PropertyForm = () => {
           </label>
           <label className="form-label">
             Unit Count:
-            <div className="input-group">
-              <input type="number" name="unitCount" value={property.unitCount} onChange={handleChange} className="form-input" min="0" />
-              <div className="arrow" onClick={() => handleIncrement('unitCount')}>▲</div>
-              <div className="arrow" onClick={() => handleDecrement('unitCount')}>▼</div>
-            </div>
+            <input type="number" name="unitCount" value={property.unitCount} onChange={handleChange} className="form-input" min="0" />
           </label>
           <label className="form-label">
             Parking Count:
-            <div className="input-group">
-              <input type="number" name="parkingCount" value={property.parkingCount} onChange={handleChange} className="form-input" min="0"/>
-              <div className="arrow" onClick={() => handleIncrement('parkingCount')}>▲</div>
-              <div className="arrow" onClick={() => handleDecrement('parkingCount')}>▼</div>
-            </div>
+            <input type="number" name="parkingCount" value={property.parkingCount} onChange={handleChange} className="form-input" min="0"/>
           </label>
           <label className="form-label">
             Locker Count:
-            <div className="input-group">
-              <input type="number" name="lockerCount" value={property.lockerCount} onChange={handleChange} className="form-input" min="0"/>
-              <div className="arrow" onClick={() => handleIncrement('lockerCount')}>▲</div>
-              <div className="arrow" onClick={() => handleDecrement('lockerCount')}>▼</div>
-            </div>
+            <input type="number" name="lockerCount" value={property.lockerCount} onChange={handleChange} className="form-input" min="0"/>
           </label>
           <label className="form-label">
             Address:
@@ -123,7 +95,7 @@ const PropertyForm = () => {
             Images:
             <input type="file" name="images" onChange={handleImageChange} multiple className="form-input" />
           </label>
-          <button type="submit" className="submit-button">Create Profile</button>
+          <button type="submit" className="submit-button">Create Property</button>
         </form>
       </div>
     </div>

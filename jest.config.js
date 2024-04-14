@@ -35,7 +35,10 @@ const config = {
     "<rootDir>/pages/HomePage/Home.js",
     "<rootDir>/pages/HomePage/Dashboards/RentalUser/",
     "<rootDir>/pages/Management/PropertyFilesView.js",
-    "<rootDir>/pages/FinancialPage/"
+    "<rootDir>/pages/FinancialPage/",
+    "<rootDir>/pages/ReservationPage/",
+    "<rootDir>/pages/Requests/RequestService.js",
+    "<rootDir>/pages/Requests/Handling/RequestHandling.js"
   ],
 
   transform: {
