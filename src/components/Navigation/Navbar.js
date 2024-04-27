@@ -1,22 +1,17 @@
 import { Link } from 'react-router-dom';
+import * as navconfig from './navcomponents'
 
 import './Navbar.css'
 
 const NexusNavbar = () => {
 
+    // Types of users
+    //  - Rental
+    //  - Management
+    //  - Owner
+    //  - Employee
 
-    const rental_config = [
-        {
-            label: "Home",
-            route: "/"
-        },
-        {
-            label: "Requests",
-            route: "/request-submission"
-        }
-    ]
-
-    const nav_config = rental_config;
+    const nav_config = navconfig.rental;
 
 
     return (
@@ -27,13 +22,15 @@ const NexusNavbar = () => {
                 </Link>
             </div>
             <div className='nav-button-section'>
-                { nav_config ? (nav_config.map( page => (
+                { nav_config.map( page => 
+                    (
                         <Link to={page.route} className='nexus-nav-link' key={page.label}>
                             <div>
                                 {page.label}
                             </div>
                         </Link>
-                    ))) : (<></>)
+                    )
+                )
                 }
             </div>
         </div>
