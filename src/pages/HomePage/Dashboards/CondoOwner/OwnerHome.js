@@ -90,29 +90,7 @@ const OwnerHome = () => {
     <div>
       <div className="home-page">
         <div className="panel-container">
-          <div className="left-panel">
-            <img src={logo} alt="Company Logo" className="logo" />
-            <h3
-              className="nexus"
-              style={{ fontFamily: "telemarines", fontSize: "24px" }}
-            >
-              Nexus
-            </h3>
-            <ul>
-              <li>
-                <Link to="/profile">My Profle</Link>
-              </li>
-              <li>
-                <Link to="/manage-properties">Manage Properties</Link>
-              </li>
-              <li>
-                <Link to="/financial-status">Financial Status</Link>
-              </li>
-              <li>
-                <Link to="/requests">View Requests</Link>
-              </li>
-            </ul>
-          </div>
+
           <div className="right-panel">
             {condoProperties.map((property) => (
               <div id={`property-${property.id}`} key={property.id} className="property-card">
