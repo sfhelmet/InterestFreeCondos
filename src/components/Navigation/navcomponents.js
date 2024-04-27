@@ -19,6 +19,10 @@ export const management = [
         route: '/'
     },
     {
+        label: 'Requests',
+        route: '/request-handling'
+    },
+    {
         label: 'Files',
         route: '/property-files'
     },
@@ -30,7 +34,6 @@ export const management = [
         label: 'New property',
         route: '/property-creation'
     },
-
 ]
 
 export const owner = [
