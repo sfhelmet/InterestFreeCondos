@@ -66,11 +66,12 @@ const PropertyFilesView = (props) =>
                         data.id = doc.id;
                         properties.push(data);
 
-                        data.files.forEach( async (filename) => {
-                            await getDownloadURL(ref(storage, `property_files/${filename}`)).then(url =>
+                        data.files.forEach( (filename) => {
+                            getDownloadURL(ref(storage, `property_files/${filename}`)).then(url =>
                                 {
-                                    const fileanchor = document.getElementById(filename);
-                                    fileanchor.setAttribute('href', url);
+                                    try {
+                                      document.getElementById(filename).setAttribute('href', url);
+                                    } catch (e) {}
                                 })
                         })
                     })
