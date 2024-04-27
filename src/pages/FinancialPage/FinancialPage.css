@@ -7,6 +7,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: fit-content;
 }
 
 .export button:hover {
@@ -17,6 +18,30 @@
 .export {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   height: 50px; 
+}
+
+.financials-page {
+  width: fit-content;
+  height: auto;
+}
+
+.financials-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.financial-form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.financials-download-button {
+  margin-top: 20px;
+}
+
+.financials-page-container {
+  display: flex;
+  justify-content: center;
 }
