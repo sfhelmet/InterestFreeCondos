@@ -9,6 +9,7 @@ import { db, storage } from "../../config/firebase";
 
 import "./Profile.css";
 import { doc, updateDoc } from "firebase/firestore";
+import Center from "../../components/Utils/Center";
 
 const Profile = () => {
     const { authenticatedUser: currentUser, updateAuthenticatedUser } = useContext(AuthenticatedUserContext);
@@ -80,65 +81,67 @@ const Profile = () => {
     }, [currentUser, fetchUserProfilePicture]);
 
     return (
-        <Box className="user-profile-container">
-            <Box className="image-options-wrapper">
-                <Box className="profile-img-box thin-border">
-                    <Avatar className="profile-avatar" src={profilePicURL ?? null}>
-                        {currentUser && !profilePicURL ? (currentUser.userName ?? "N/A") : null}
-                    </Avatar>
-                    <Typography className="profile-name">{currentUser ? currentUser.userName : ""}</Typography>
-                    <Button
-                        component="label"
-                        className="upload-btn"
-                        startIcon={<CloudUpload/>}
-                    >
-                        Update Picture
-                        <VisuallyHiddenInput 
-                            type="file" 
-                            onChange={handleProfilePictureUpload}
-                            accept=".png,.jpg,.jpeg"
-                        />
-                    </Button>
+        <Center>
+            <Box className="user-profile-container">
+                <Box className="image-options-wrapper">
+                    <Box className="profile-img-box thin-border">
+                        <Avatar className="profile-avatar" src={profilePicURL ?? null}>
+                            {currentUser && !profilePicURL ? (currentUser.userName ?? "N/A") : null}
+                        </Avatar>
+                        <Typography className="profile-name">{currentUser ? currentUser.userName : ""}</Typography>
+                        <Button
+                            component="label"
+                            className="upload-btn"
+                            startIcon={<CloudUpload/>}
+                        >
+                            Update Picture
+                            <VisuallyHiddenInput 
+                                type="file" 
+                                onChange={handleProfilePictureUpload}
+                                accept=".png,.jpg,.jpeg"
+                            />
+                        </Button>
+                    </Box>
+                    <Box className="options-stack thin-border">
+                        {
+                        isPublicUser ? 
+                            publicUserOptions.map((option, i) => {
+                                return (
+                                    <Box key={i} className={`stack-option-container ${ i !== publicUserOptions.length-1 ? "thin-lower-border": ''}`}>
+                                        <Button 
+                                            sx={hoverBtnOverrides} 
+                                            className={`stack-option-btn ${ currentlySelectedOption === option ? "currently-selected": "" }`}
+                                            onClick={() => handleBtnClick(option)}
+                                        >
+                                            {option}
+                                        </Button>
+                                    </Box>
+                                )
+                            })
+                        : 
+                            keyRegisteredUserOptions.map((option, i) => {
+                                return (
+                                    <Box key={i} className={`stack-option-container ${ i !== keyRegisteredUserOptions.length-1 ? "thin-lower-border": ''}`}>
+                                        <Button 
+                                            sx={hoverBtnOverrides} 
+                                            className={`stack-option-btn ${ currentlySelectedOption === option ? "currently-selected": "" }`}
+                                            onClick={() => handleBtnClick(option)}
+                                        >
+                                            {option}
+                                        </Button>
+                                    </Box>
+                                )
+                            })
+                        }
+                    </Box>
                 </Box>
-                <Box className="options-stack thin-border">
-                    {
-                    isPublicUser ? 
-                        publicUserOptions.map((option, i) => {
-                            return (
-                                <Box key={i} className={`stack-option-container ${ i !== publicUserOptions.length-1 ? "thin-lower-border": ''}`}>
-                                    <Button 
-                                        sx={hoverBtnOverrides} 
-                                        className={`stack-option-btn ${ currentlySelectedOption === option ? "currently-selected": "" }`}
-                                        onClick={() => handleBtnClick(option)}
-                                    >
-                                        {option}
-                                    </Button>
-                                </Box>
-                            )
-                        })
-                     : 
-                        keyRegisteredUserOptions.map((option, i) => {
-                            return (
-                                <Box key={i} className={`stack-option-container ${ i !== keyRegisteredUserOptions.length-1 ? "thin-lower-border": ''}`}>
-                                    <Button 
-                                        sx={hoverBtnOverrides} 
-                                        className={`stack-option-btn ${ currentlySelectedOption === option ? "currently-selected": "" }`}
-                                        onClick={() => handleBtnClick(option)}
-                                    >
-                                        {option}
-                                    </Button>
-                                </Box>
-                            )
-                        })
-                    }
+                <Box className="selected-stack-option-wrapper thin-border">
+                    <Box className="selected-stack-option-container">
+                        <MyAccount/>
+                    </Box>
                 </Box>
             </Box>
-            <Box className="selected-stack-option-wrapper thin-border">
-                <Box className="selected-stack-option-container">
-                    <MyAccount/>
-                </Box>
-            </Box>
-        </Box>
+        </Center>
     )
 }
 

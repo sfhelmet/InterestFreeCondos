@@ -1,7 +1,6 @@
-import Home from "../pages/HomePage/Home";
 import Login from "../pages/LoginPage/Login";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import PublicKeyRequest from "../components/PublicUserKeyRequest/PublicKeyRequest";
+import UserKeyRegistration from "../components/UserKeyRegistration/UserKeyRegistration";
 import OwnerHome from "../pages/HomePage/Dashboards/CondoOwner/OwnerHome";
 import PropertyFilesView from "../pages/Management/PropertyFilesView";
 import GenerateTokenForm from "../components/NexusButton/GenerateFormToken";
@@ -10,19 +9,20 @@ import FinancialPage from "../pages/FinancialPage/FinancialPage";
 import ReservationPage from "../pages/ReservationPage/ReservationPage"
 import RequestSubmission from "../pages/Requests/Submissions/RequestSubmission";
 import RequestHandling from "../pages/Requests/Handling/RequestHandling";
+import Profile from "../pages/ProfilePage/Profile";
 
 const routes = [
   {
     path: "",
-    component: Home,
-    name: "Home Page",
+    component: UserKeyRegistration,
+    name: "Authenticated Limited Home Page",
     protected: true,
     hasNav: true
   },
   {
     path: "/",
-    component: Home,
-    name: "Home Page",
+    component: UserKeyRegistration,
+    name: "Authenticated Limited Home Page",
     protected: true,
     hasNav: true
   },
@@ -46,10 +46,10 @@ const routes = [
     protected: false,
   },
   {
-    path: "/public-home",
-    component: PublicKeyRequest,
+    path: "/public-home", // For users to input their keys provided from the company
+    component: UserKeyRegistration,
     name: "Public Key Request",
-    protected: false,
+    protected: true,
   },
   {
     path: "/owner-home",
@@ -59,7 +59,7 @@ const routes = [
     hasNav: true
   },
   {
-    path: "/token", //for testing
+    path: "/token", //For companies to generate keys/tokens for renters / condo owners
     component: GenerateTokenForm,
     name: "Generate Token",
     protected: false,
@@ -99,7 +99,14 @@ const routes = [
     name: "Request Handling Page",
     protected: false,
     hasNav: true
-  }
+  },
+  {
+    path: "/profile",
+    component: Profile,
+    name: "User Profile Page",
+    protected: true,
+    hasNav: true
+  },
 ];
 
 export default routes;

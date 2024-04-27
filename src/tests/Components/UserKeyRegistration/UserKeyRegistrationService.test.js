@@ -1,6 +1,6 @@
 
 import '@testing-library/jest-dom/extend-expect';
-import { uploadKey, keyExists, getUserIdbyEmail, updateCondo } from '../../../components/PublicUserKeyRequest/PublicKeyRequestService';
+import { uploadKey, keyExists, getUserIdbyEmail, updateCondo } from '../../../components/UserKeyRegistration/UserKeyRegistrationService';
 import { db } from '../../../config/firebase';
 import { doc, getDoc, setDoc, getDocs, updateDoc, collection, query, where } from 'firebase/firestore';
 

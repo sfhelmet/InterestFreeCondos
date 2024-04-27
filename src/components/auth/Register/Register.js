@@ -23,13 +23,14 @@ const Register = () => {
                     email: userEmail,
                     userName: userName,
                     phone: userPhone,
-                    profilePic: null
+                    profilePic: null,
+                    userType: 'PUBLIC'
                 }
                 
                 setDoc(doc(db,"users", newUser.userID), newUser);
             })
             .then(() => {
-                navigate("/")
+                navigate("/public-home")
             })
             .catch((err) => {
                 console.error("Error occurred during account creation")
