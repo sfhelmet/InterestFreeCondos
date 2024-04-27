@@ -1,0 +1,64 @@
+.nexus-navigation-bar {
+    background-color: rgb(53, 113, 153);
+    color: var(--text);
+    padding: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 20px;
+    margin:100px;
+    margin-top: 50px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+
+    display: flex;
+    align-items: center;
+
+
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.nexus-nav-name {
+    font-family: "telemarines";
+    font-size: 24px;
+    margin: 0;
+
+    font-family: telemarines;
+    font-size: 24px;
+
+}
+
+.nav-button-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.nav-button {
+    background-color: black;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.nexus-nav-link {
+    text-decoration: none;
+    color: inherit;
+    padding: .5rem 1rem;
+}
+
+.nexus-nav-link:hover {
+    color: var(--alt_text);
+    text-decoration: none;
+}
+
+.nexus-nav-name:hover {
+    color: var(--alt_text);
+    text-decoration: none;
+}

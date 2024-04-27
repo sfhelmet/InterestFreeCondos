@@ -6,6 +6,7 @@ import routes from "./config/routes";
 import Center from "./components/Utils/Center";
 import AuthChecker from "./components/Auth/AuthChecker";
 import { AuthenticatedUserProvider } from "./contexts/AuthenticatedUserContext";
+import NexusNavbar from "./components/Navigation/Navbar";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -40,10 +41,14 @@ function App() {
                 element={
                   route.protected ? (
                     <AuthChecker>
+                      { route.hasNav ? <NexusNavbar /> : <></> }
                       <route.component />
                     </AuthChecker>
                   ) : (
+                    <>
+                    { route.hasNav ? <NexusNavbar /> : <></> }
                     <route.component />
+                    </>
                   )
                 }
               />
