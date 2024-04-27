@@ -1,18 +1,10 @@
 import { Link } from 'react-router-dom';
-import * as navconfig from './navcomponents'
+import React, { useState, useEffect } from 'react';
+
 
 import './Navbar.css'
 
-const NexusNavbar = () => {
-
-    // Types of users
-    //  - Rental
-    //  - Management
-    //  - Owner
-    //  - Employee
-
-    const nav_config = navconfig.rental;
-
+const NexusNavbar = (props) => {
 
     return (
         <div className='nexus-navigation-bar'>
@@ -22,7 +14,7 @@ const NexusNavbar = () => {
                 </Link>
             </div>
             <div className='nexus-nav-button-section'>
-                { nav_config.map( page => 
+                { props.links ? props.links.map( page => 
                     (
                         <Link to={page.route} className='nexus-nav-link' key={page.label}>
                             <div>
@@ -30,7 +22,7 @@ const NexusNavbar = () => {
                             </div>
                         </Link>
                     )
-                )
+                ) : (<></>)
                 }
             </div>
         </div>
