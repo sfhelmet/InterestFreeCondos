@@ -4,7 +4,7 @@ import Center from "../../Utils/Center";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../../config/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 
 import "./Register.css";
 
@@ -22,10 +22,11 @@ const Register = () => {
                     userID: userCredential.user.uid,
                     email: userEmail,
                     userName: userName,
-                    phone: userPhone
+                    phone: userPhone,
+                    profilePic: null
                 }
                 
-                addDoc(collection(db, "users"), newUser);
+                setDoc(doc(db,"users", newUser.userID), newUser);
             })
             .then(() => {
                 navigate("/")

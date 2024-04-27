@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, Providers } from "../../../config/firebase";
+import { auth, db, Providers } from "../../../config/firebase";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import AuthenticatedUserContext from "../../../contexts/AuthenticatedUserContext";
 import GoogleIcon from "@mui/icons-material/Google";
 import LoginIcon from '@mui/icons-material/Login';
 import Center from "../../Utils/Center";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 import "./AuthContainer.css";
 
@@ -15,6 +17,7 @@ const AuthContainer = () => {
   const [disabled, setDisabled] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const { updateAuthenticatedUser } = useContext(AuthenticatedUserContext)
 
   const nonSSOSignIn = () => {
     signInWithEmailAndPassword(auth, userEmail, userPassword)
@@ -30,11 +33,41 @@ const AuthContainer = () => {
   const signInWithGoogle = () => {
     setDisabled(true);
     signInWithPopup(auth, Providers.google)
-      .then(() => {
+      .then(async userCreds => {
+        const { user } = userCreds;
+        const customUserObj = {
+          userID: user.uid,
+          email: user.email,
+          phone: user.phoneNumber,
+          userName: user.displayName,
+          userType: "PUBLIC",
+          profilePic: null
+        }
+
+        let userExists = true;
+        await getDoc(doc(db, "users", customUserObj.userID))
+          .then(doc => {
+            if (!doc.data()) {
+              userExists = false;
+            }
+          }).catch(err => {
+            console.log(err.message);
+          });
+
+        if (!userExists) {
+          await setDoc(doc(db, "users", customUserObj.userID), customUserObj)
+            .then(() => {
+              console.log("Custom User Obj created from Google SSO obj");
+            })
+            .catch(err => {
+              console.log(err.message);
+            });
+        }
+        updateAuthenticatedUser(customUserObj);
+      }).then(() => {
         setDisabled(false);
         navigate("/");
-      })
-      .catch((error) => {
+      }).catch((error) => {
         console.error("Error signing in with Google");
         setErrorMessage(error.code + ": " + error.message);
         setDisabled(false);

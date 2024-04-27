@@ -1,16 +1,17 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import { AuthenticatedUserContext } from "../../contexts/AuthenticatedUserContext";
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import MyAccount from "./MyAccount/MyAccount";
 import { CloudUpload } from "@mui/icons-material";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { storage } from "../../config/firebase";
+import { db, storage } from "../../config/firebase";
 
 import "./Profile.css";
+import { doc, updateDoc } from "firebase/firestore";
 
 const Profile = () => {
-    const currentUser = useContext(AuthenticatedUserContext);
+    const { authenticatedUser: currentUser, updateAuthenticatedUser } = useContext(AuthenticatedUserContext);
     const [profilePicURL, setProfilePicURL] = useState(null);
     const [isPublicUser, setIsPublicUser] = useState(true);
     const publicUserOptions = ["My Account"];//Doubles as the options that are available to all users
@@ -26,8 +27,8 @@ const Profile = () => {
 
     const handleProfilePictureUpload = async (e) => {
         const file = e.target.files[0];
-        const uploadRef = ref(storage, 'profilePictures/test.png');
-        //Uploading code should add a field to the user like profilePicPath
+        const uploadRef = ref(storage, `profile_pictures/${file.name}`);
+
         await uploadBytes(uploadRef, file)
             .then(() => {
                 console.log("File uploaded!");
@@ -36,12 +37,20 @@ const Profile = () => {
                 console.log("Error occurred while uploading profile picture");
                 console.error(err.message);
             })
+
+        await updateDoc(doc(db,"users", currentUser.userID), {
+            ...currentUser,
+            profilePic: file.name.toString()
+        });
+
+        updateAuthenticatedUser({ ...currentUser, profilePic: file.name.toString() });
+        fetchUserProfilePicture();
     }
 
-    const fetchUserProfilePicture = async () => {
-        const profilePictureRef = ref(storage, 'profilePictures/test.png');
+    const fetchUserProfilePicture = useCallback(() => {
+        const profilePictureRef = ref(storage, `profile_pictures/${currentUser.profilePic}`);
 
-        await getDownloadURL(profilePictureRef)
+        getDownloadURL(profilePictureRef)
             .then((url) => {
                 console.log("URL fetched");
                 setProfilePicURL(url);
@@ -49,7 +58,7 @@ const Profile = () => {
             .catch(err => {
                 console.error(err.message);
             })
-    }
+    }, [currentUser]);
 
     const VisuallyHiddenInput = styled('input')({
         clip: 'rect(0 0 0 0)',
@@ -68,7 +77,7 @@ const Profile = () => {
             setIsPublicUser(false);
             fetchUserProfilePicture();
         }
-    }, [currentUser]);
+    }, [currentUser, fetchUserProfilePicture]);
 
     return (
         <Box className="user-profile-container">
