@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RequestService from '../RequestService' 
 import '../RequestStyling.css'
-import NexusNavbar from '../../../components/Navigation/Navbar';
 
 
 // The Request Handling allows Management companies to view all existing tickets,
