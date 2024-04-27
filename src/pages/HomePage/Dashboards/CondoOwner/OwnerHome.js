@@ -9,7 +9,7 @@ import logo from "../../../../images/Logos/Nexus-clear-noText.png";
 import "./OwnerHome.css";
 
 const OwnerHome = () => {
-  const currentUser = useContext(AuthenticatedUserContext);
+  const { authenticatedUser: currentUser } = useContext(AuthenticatedUserContext);
   const [condoProperties, setCondoProperties] = useState([]);
 
   const fetchOwnedProperties = useCallback(async () => {

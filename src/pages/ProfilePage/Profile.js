@@ -10,7 +10,7 @@ import { storage } from "../../config/firebase";
 import "./Profile.css";
 
 const Profile = () => {
-    const currentUser = useContext(AuthenticatedUserContext);
+    const { authenticatedUser: currentUser } = useContext(AuthenticatedUserContext);
     const [profilePicURL, setProfilePicURL] = useState(null);
     const [isPublicUser, setIsPublicUser] = useState(true);
     const publicUserOptions = ["My Account"];//Doubles as the options that are available to all users
@@ -26,7 +26,7 @@ const Profile = () => {
 
     const handleProfilePictureUpload = async (e) => {
         const file = e.target.files[0];
-        const uploadRef = ref(storage, 'profilePictures/test.png');
+        const uploadRef = ref(storage, `profile_pictures/${currentUser.profilePic}`);
         //Uploading code should add a field to the user like profilePicPath
         await uploadBytes(uploadRef, file)
             .then(() => {
@@ -38,10 +38,10 @@ const Profile = () => {
             })
     }
 
-    const fetchUserProfilePicture = async () => {
-        const profilePictureRef = ref(storage, 'profilePictures/test.png');
+    const fetchUserProfilePicture = () => {
+        const profilePictureRef = ref(storage, `profilePictures/${currentUser.profilePic}`);
 
-        await getDownloadURL(profilePictureRef)
+        getDownloadURL(profilePictureRef)
             .then((url) => {
                 console.log("URL fetched");
                 setProfilePicURL(url);
@@ -49,7 +49,7 @@ const Profile = () => {
             .catch(err => {
                 console.error(err.message);
             })
-    }
+    };
 
     const VisuallyHiddenInput = styled('input')({
         clip: 'rect(0 0 0 0)',
@@ -64,11 +64,14 @@ const Profile = () => {
     });
 
     useEffect(() => {
-        if (currentUser) {
-            setIsPublicUser(false);
-            fetchUserProfilePicture();
+        const setup = () => {
+            if (currentUser) {
+                setIsPublicUser(false);
+                fetchUserProfilePicture();
+            }
         }
-    }, [currentUser]);
+        return () => setup();
+    });
 
     return (
         <Box className="user-profile-container">
