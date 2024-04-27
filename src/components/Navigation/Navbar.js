@@ -1,39 +1,28 @@
 import { Link } from 'react-router-dom';
+import React from 'react';
+
 
 import './Navbar.css'
 
-const NexusNavbar = () => {
-
-
-    const rental_config = [
-        {
-            label: "Home",
-            route: "/"
-        },
-        {
-            label: "Requests",
-            route: "/request-submission"
-        }
-    ]
-
-    const nav_config = rental_config;
-
+const NexusNavbar = (props) => {
 
     return (
         <div className='nexus-navigation-bar'>
-            <div className='nav-logo'>
+            <div className='nexus-nav-logo'>
                 <Link to="/" className='nexus-nav-link'>
                     <h3 className="nexus-nav-name">Nexus</h3>
                 </Link>
             </div>
-            <div className='nav-button-section'>
-                { nav_config ? (nav_config.map( page => (
+            <div className='nexus-nav-button-section'>
+                { props.links ? props.links.map( page => 
+                    (
                         <Link to={page.route} className='nexus-nav-link' key={page.label}>
                             <div>
                                 {page.label}
                             </div>
                         </Link>
-                    ))) : (<></>)
+                    )
+                ) : (<></>)
                 }
             </div>
         </div>

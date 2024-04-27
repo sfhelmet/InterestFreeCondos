@@ -1,0 +1,33 @@
+.token-page-container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+label {
+    color: var(--text)
+}
+
+#token {
+    margin-top: 20px;
+}
+
+
+.unit-text-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.token-label {
+    display: flex;
+    justify-content: space-between;
+}
+
+#generated-token {
+    color: var(--text)
+}
+
+#TokenTextArea {
+    width: 100%;
+}

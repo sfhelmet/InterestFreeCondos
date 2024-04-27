@@ -183,33 +183,36 @@ const ReservationPage = () => {
   }
 
   return (
+    <div className='reservation-page-container'>
     <Box className='reservation-page'>
       <h1>Reservation Page</h1>
-      <Box className='unit-container'>
-        <h3>Select Unit</h3>
-        <select value={currentBuilding} onChange={(e) => setCurrentBuilding(e.target.value)}>
-          <option value='Select Unit'>Select Unit</option>
-          { buildingData.map(b => {
-              return <option key={b.id} value={b.name}>{b.name}</option>
-          })}
-        </select>
-      </Box>
-      <Box className='amenity-container'>
-        <h3>Select Amenity</h3>
-        <select value={currentAmenity} onChange={(e) => setCurrentAmenity(e.target.value)}>
-          <option value='Select Amenity'>Select Amenity</option>
-          { buildingData.map(b => {
-              if (b.name === currentBuilding) {
-                const amenities = b.amenities.map((a,i) => {
-                  return <option key={i} value={a.name}>{a.name}</option>
-                })
-                return amenities;
-              } else {
-                return null;
-              }
-          })}
-        </select>
-      </Box>
+      <div className='selection-containers'>
+        <Box className='unit-container'>
+          <h3>Select Unit</h3>
+          <select value={currentBuilding} onChange={(e) => setCurrentBuilding(e.target.value)}>
+            <option value='Select Unit'>Select Unit</option>
+            { buildingData.map(b => {
+                return <option key={b.id} value={b.name}>{b.name}</option>
+            })}
+          </select>
+        </Box>
+        <Box className='amenity-container'>
+          <h3>Select Amenity</h3>
+          <select value={currentAmenity} onChange={(e) => setCurrentAmenity(e.target.value)}>
+            <option value='Select Amenity'>Select Amenity</option>
+            { buildingData.map(b => {
+                if (b.name === currentBuilding) {
+                  const amenities = b.amenities.map((a,i) => {
+                    return <option key={i} value={a.name}>{a.name}</option>
+                  })
+                  return amenities;
+                } else {
+                  return null;
+                }
+            })}
+          </select>
+        </Box>
+      </div>
       <div className='thisContainer'>
       <Box className='calendar-container'>
         <div className="calendar">
@@ -245,6 +248,7 @@ const ReservationPage = () => {
 
       {confirmVisible && <button onClick={handleConfirmReservation}>Confirm Reservation</button>}
     </Box>
+  </div>
   );
 };
 

@@ -63,6 +63,7 @@ const routes = [
     component: GenerateTokenForm,
     name: "Generate Token",
     protected: false,
+    hasNav: true
   },
   {
     path: "/property-creation",
