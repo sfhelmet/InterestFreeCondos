@@ -34,6 +34,8 @@ function App() {
             return Navigations.management;
         case "EMPLOYEE":
             return Navigations.employee;
+        default:
+          return [];
     }
   }
 

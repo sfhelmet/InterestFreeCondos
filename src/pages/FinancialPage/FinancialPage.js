@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Center from "../../components/Utils/Center";
 import "./FinancialPage.css";
 import CSVDownloader from "./Download.js";
 import { getPaymentYears, getPaymentCondos } from "./FinancialPageService";
