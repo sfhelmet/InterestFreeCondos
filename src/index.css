@@ -22,3 +22,7 @@ code {
   --background: #193446; /*Dark Blue*/
   --alt_background: #213d4e; /*Lighter Dark Blue */
 }
+
+#root {
+  background-color: var(--background);
+}

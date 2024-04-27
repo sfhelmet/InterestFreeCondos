@@ -17,12 +17,14 @@ const routes = [
     component: Home,
     name: "Home Page",
     protected: true,
+    hasNav: true
   },
   {
     path: "/",
     component: Home,
     name: "Home Page",
     protected: true,
+    hasNav: true
   },
   {
     path: "/login",
@@ -35,6 +37,7 @@ const routes = [
     component: PropertyFilesView,
     name: "Property Files Management",
     protected: true,
+    hasNav: true
   },
   {
     path: "*",
@@ -53,6 +56,7 @@ const routes = [
     component: OwnerHome,
     name: "Owner Home",
     protected: false,
+    hasNav: true
   },
   {
     path: "/token", //for testing
@@ -65,30 +69,35 @@ const routes = [
     component: PropertyCreation,
     name: "Property Creation",
     protected: false,
+    hasNav: true
   },
   {
     path: "/financials",
     component: FinancialPage,
     name: "Financial Page",
     protected: false,
+    hasNav: true
   },
   {
     path: "/reservations",
     component: ReservationPage,
     name: "Reservation Page",
-    protected: false
+    protected: false,
+    hasNav: true
   },
   {
     path: "/request-submission",
     component: RequestSubmission,
     name: "Request Submission Page",
-    protected: true // require user id
+    protected: true,
+    hasNav: true
   },
   {
     path: "/request-handling",
     component: RequestHandling,
     name: "Request Handling Page",
-    protected: false
+    protected: false,
+    hasNav: true
   }
 ];
 

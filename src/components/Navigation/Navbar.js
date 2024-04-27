@@ -22,13 +22,13 @@ const NexusNavbar = () => {
     return (
         <div className='nexus-navigation-bar'>
             <div className='nav-logo'>
-                <Link to="/" className='nav-link'>
+                <Link to="/" className='nexus-nav-link'>
                     <h3 className="nexus-nav-name">Nexus</h3>
                 </Link>
             </div>
             <div className='nav-button-section'>
                 { nav_config ? (nav_config.map( page => (
-                        <Link to={page.route} className='nav-link' key={page.label}>
+                        <Link to={page.route} className='nexus-nav-link' key={page.label}>
                             <div>
                                 {page.label}
                             </div>

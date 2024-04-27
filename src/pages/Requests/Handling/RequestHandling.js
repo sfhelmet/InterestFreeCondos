@@ -39,7 +39,6 @@ const RequestHandling = () => {
 
     return (
     <div style={{backgroundColor: "#193446"}}>
-        <NexusNavbar />
 
         <div className='page-container' style={{ backgroundColor: "#193446", height: "100vh", display: "flex", alignItems: "stretch", justifyContent: "center" }}>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossOrigin="anonymous"/>
