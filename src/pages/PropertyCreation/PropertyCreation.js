@@ -61,12 +61,7 @@ const PropertyForm = () => {
   return (
     
     <div className="property-form-overlay">
-      {/* Video Element */}
-      <video autoPlay loop muted className="background-video">
-        <source src="condo_3.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
+ 
       {/* Form */}
       <div className="property-form-container">
         <h2 className="form-heading">Create Property Profile</h2>
