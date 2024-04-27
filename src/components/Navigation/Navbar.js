@@ -11,7 +11,7 @@ const NexusNavbar = () => {
     //  - Owner
     //  - Employee
 
-    const nav_config = navconfig.rental;
+    const nav_config = navconfig.management;
 
 
     return (
