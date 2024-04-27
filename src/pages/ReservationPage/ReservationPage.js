@@ -18,7 +18,7 @@ const ReservationPage = () => {
   const [confirmVisible, setConfirmVisible] = useState(false);
   const [selectedTime, setSelectedTime] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
-  const currentUser = useContext(AuthenticatedUserContext);
+  const { authenticatedUser: currentUser} = useContext(AuthenticatedUserContext);
 
   useEffect(() => {
     const fetchBuildingData = async () => {

@@ -5,9 +5,9 @@ import AuthenticatedUserContext from '../../../contexts/AuthenticatedUserContext
 import "./MyAccount.css";
 
 const MyAccount = () => {
-    const currentUser = useContext(AuthenticatedUserContext);
-
+    const { authenticatedUser :currentUser } = useContext(AuthenticatedUserContext);
     const fontFamilyOverride = { fontFamily: "inherit" };
+
     return (
         <Box className={"myaccount-container"}>
             <Box className="title-buttons-container">

@@ -21,6 +21,10 @@ export const AuthenticatedUserProvider = ({ children }) => {
         })
     }
 
+    const updateAuthenticatedUser = (user) => {
+        setAuthenticatedUser(user);
+    }
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
             if (authUser) {
@@ -34,7 +38,7 @@ export const AuthenticatedUserProvider = ({ children }) => {
     }, [])
 
     return (
-        <AuthenticatedUserContext.Provider value={authenticatedUser}>
+        <AuthenticatedUserContext.Provider value={{ authenticatedUser, updateAuthenticatedUser }}>
             {children}
         </AuthenticatedUserContext.Provider>
     );

@@ -22,7 +22,8 @@ const Register = () => {
                     userID: userCredential.user.uid,
                     email: userEmail,
                     userName: userName,
-                    phone: userPhone
+                    phone: userPhone,
+                    profilePic: null
                 }
                 
                 addDoc(collection(db, "users"), newUser);
