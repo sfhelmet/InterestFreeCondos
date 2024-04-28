@@ -22,6 +22,10 @@ export const rental = [
     {
         label: "My Requests",
         route: "/my-requests"
+    },
+    {
+        label: "My Reservations",
+        route:"/my-reservations"
     }
 ]
 
@@ -80,6 +84,10 @@ export const owner = [
     {
         label: "My Requests",
         route:"/my-requests"
+    },
+    {
+        label: "My Reservations",
+        route:"/my-reservations"
     }
 ]
 

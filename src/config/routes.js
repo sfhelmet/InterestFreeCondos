@@ -11,6 +11,7 @@ import RequestSubmission from "../pages/Requests/Submissions/RequestSubmission";
 import RequestHandling from "../pages/Requests/Handling/RequestHandling";
 import Profile from "../pages/ProfilePage/Profile";
 import MyRequests from "../pages/MyRequestsPage/MyRequests";
+import MyReservations from "../pages/MyReservationsPage/MyReservations";
 
 const routes = [
   {
@@ -112,6 +113,13 @@ const routes = [
     path: "/my-requests",
     component: MyRequests,
     name: "User Requests Page",
+    protected: true,
+    hasNav: true
+  },
+  {
+    path: "/my-reservations",
+    component: MyReservations,
+    name: "User Reservations Page",
     protected: true,
     hasNav: true
   },

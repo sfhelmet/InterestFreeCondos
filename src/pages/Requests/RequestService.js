@@ -70,6 +70,45 @@ class RequestService
         })
     }
 
+    static fetchUserSpecificReservations = (setReservations, userName) => {
+        const reservationRef = collection(db, "condoReservationData");
+        const reservationQuery = query(reservationRef);
+
+        // Calls the firestore with query
+        getDocs(reservationQuery).then(docs => {
+            let reservations = [];
+            docs.forEach(doc => {
+
+                const { name, amenities } = doc.data();
+
+                const amenityReservations = amenities.map(a => { 
+                    return {
+                        buildingName: name,
+                        reservations: a.reservations,
+                        amenityName: a.name,
+                    }
+                }).filter(r => r !== undefined && r !== null);
+
+                reservations = [...reservations, ...amenityReservations];
+            })
+
+            reservations = reservations.filter(r => r.reservations !== undefined);
+
+            const userReservations = reservations.flatMap(r => {
+                const userRes = r.reservations.filter(ar => ar.user === userName);
+
+                return userRes.map(ur => ({
+                    buildingName: r.buildingName,
+                    amenityName: r.amenityName,
+                    ...ur
+                }));
+            });
+
+            console.log(userReservations)
+            setReservations(userReservations);
+        })
+    }
+
     static updateRequestStatus = (setRequests, requests, handling, id) => {
         // Change requests for the view
         requests = requests.map(request => request.id === id ? { ...request, handlingStatus: handling } : request)
