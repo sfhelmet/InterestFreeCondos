@@ -10,6 +10,7 @@ import ReservationPage from "../pages/ReservationPage/ReservationPage"
 import RequestSubmission from "../pages/Requests/Submissions/RequestSubmission";
 import RequestHandling from "../pages/Requests/Handling/RequestHandling";
 import Profile from "../pages/ProfilePage/Profile";
+import MyRequests from "../pages/MyRequestsPage/MyRequests";
 
 const routes = [
   {
@@ -104,6 +105,13 @@ const routes = [
     path: "/profile",
     component: Profile,
     name: "User Profile Page",
+    protected: true,
+    hasNav: true
+  },
+  {
+    path: "/my-requests",
+    component: MyRequests,
+    name: "User Requests Page",
     protected: true,
     hasNav: true
   },

@@ -9,11 +9,19 @@ export const rental = [
     },
     {
         label: 'Reservations',
+        route: "/reservations"
+    },
+    {
+        label: 'Reservations',
         route: '/reservations'
     },
     {
         label: "My Profile",
         route: '/profile'  
+    },
+    {
+        label: "My Requests",
+        route: "/my-requests"
     }
 ]
 
@@ -54,6 +62,10 @@ export const owner = [
         route: '/request-submission'
     },
     {
+        label: 'Reservations',
+        route: "/reservations"
+    },
+    {
         label: 'Files',
         route: '/property-files'
     },
@@ -64,6 +76,10 @@ export const owner = [
     {
         label: "My Profile",
         route: '/profile'  
+    },
+    {
+        label: "My Requests",
+        route:"/my-requests"
     }
 ]
 

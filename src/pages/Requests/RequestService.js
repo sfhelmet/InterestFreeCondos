@@ -46,6 +46,30 @@ class RequestService
         })
     }
 
+    static fetchUserSpecificRequests = (setRequests, userID) => {
+        const requestRef = collection(db, "requests");
+        const requestQuery = query(requestRef, where("userID","==",userID));
+
+        // Calls the firestore with query
+        getDocs(requestQuery).then(docs => {
+            let requests = [];
+            docs.forEach(doc => {
+
+                const data = doc.data();
+
+                // IMPROVEMENT: change query such that it is returned in the requestQuery
+                const userRef = collection(db, "users");
+                const userQuery = query(userRef, where('userID', '==', userID));
+
+                // We want to give the name of the users that submitted the requests
+                getDocs(userQuery).then( userdocs => {
+                    requests.push({...data, id: doc.id, username: userdocs.empty ? "???" : userdocs.docs[0].data().userName});
+                    setRequests(requests);
+                })
+            })
+        })
+    }
+
     static updateRequestStatus = (setRequests, requests, handling, id) => {
         // Change requests for the view
         requests = requests.map(request => request.id === id ? { ...request, handlingStatus: handling } : request)

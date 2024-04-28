@@ -1,11 +1,18 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 import { auth, db } from "../config/firebase";
 import { query, collection, where, getDocs} from "firebase/firestore";
 
 export const AuthenticatedUserContext = createContext(null);
 
 export const AuthenticatedUserProvider = ({ children }) => {
-    const [authenticatedUser, setAuthenticatedUser] = useState(null);
+    const [authenticatedUser, setAuthenticatedUser] = useState({
+        email: "",
+        phone: "",
+        profilePic: "",
+        userID: "",
+        userName: "",
+        userType: "",
+    });
 
     const fetchUser = async (userID) => {
         const usersRef = collection(db, "users");
@@ -43,5 +50,13 @@ export const AuthenticatedUserProvider = ({ children }) => {
         </AuthenticatedUserContext.Provider>
     );
 }
+
+export const useAuthenticatedUserContext = () => {
+    const context = useContext(AuthenticatedUserContext);
+    if (!context) {
+      throw new Error('useMyData must be used within a MyDataProvider');
+    }
+    return context;
+} 
 
 export default AuthenticatedUserContext;

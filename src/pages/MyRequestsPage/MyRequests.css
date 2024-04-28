@@ -1,0 +1,44 @@
+.my-requests-page-container {
+    background-color: var(--background);
+}
+
+.my-requests-page-container .container-fluid {
+    width: 50%!important;
+    margin-top: 100px;
+}
+
+.my-requests-page-container .page-title {
+    color: var(--text);
+}
+
+.my-requests-page-container .card-header {
+    color: "#7fe6ef";
+    background-color: "#213d4e";
+}
+
+.my-requests-page-container .card-body {
+    background-color: var(--accent1);
+}
+
+.my-requests-page-container .card-header {
+    color: var(--alt_text)!important;
+    background-color: var(--alt_background)!important;
+}
+
+.my-requests-page-container .nexus-submit {
+    background-color: var(--accent2)!important;
+    color: var(--text)!important;
+    border: none!important;
+}
+
+.my-requests-page-container .badge-dark {
+    background-color: var(--alt_background)!important;
+}
+
+.my-requests-page-container .no-requests-container h3 {
+    color: white;
+}
+
+.my-requests-page-container .no-requests-container h5 {
+    color: white;
+}
