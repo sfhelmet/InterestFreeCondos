@@ -4,6 +4,7 @@
 
 .myaccount-container .title-buttons-container {
     display: flex;
+    justify-content: center;
 }
 
 .myaccount-container .info-container {

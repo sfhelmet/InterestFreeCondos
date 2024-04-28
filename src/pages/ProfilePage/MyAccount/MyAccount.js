@@ -1,13 +1,70 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import AuthenticatedUserContext from '../../../contexts/AuthenticatedUserContext';
+import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import { db } from "../../../config/firebase";
 
 import "./MyAccount.css";
 
 const MyAccount = () => {
-    const { authenticatedUser: currentUser } = useContext(AuthenticatedUserContext);
+    const { authenticatedUser: currentUser, updateAuthenticatedUser } = useContext(AuthenticatedUserContext);
+    const [userName, setUserName] = useState(currentUser && currentUser.userName ? currentUser.userName : "N/A");
+    const [userPhone, setUserPhone] = useState(currentUser && currentUser.phone ? currentUser.phone : "N/A");
 
+    const [userFetched, setUserFetched] = useState(false);
     const fontFamilyOverride = { fontFamily: "inherit" };
+
+    const handleSaveClick = async () => {
+        await updateDoc(doc(db,"users", currentUser.userID), {
+            ...currentUser,
+            userName: userName,
+            phone: userPhone
+        });
+        
+        updateAuthenticatedUser({
+            ...currentUser,
+            userName: userName,
+            phone: userPhone
+        });
+    }
+
+    const handleDiscardClick = () => {
+        setUserName(currentUser.userName);
+        setUserPhone(currentUser.phone ?? "N/A");
+    }
+
+    const handleUserNameChange = (e) => {
+        setUserName(e.target.value);
+    }
+
+    const handleUserPhoneChange = (e) => {
+        setUserPhone(e.target.value);
+    }
+
+    useEffect(() => {
+        if (!userFetched && currentUser) {
+            const fetchUser = async () => {
+                const usersRef = collection(db, "users");
+                const userQuery = query(usersRef, where("userID", "==", currentUser.userID));
+                const results = getDocs(userQuery);
+                await results.then(docs => {
+                    docs.forEach(doc => {
+                        updateAuthenticatedUser(doc.data());
+                    })
+                }).catch(err => {
+                    console.error(err.message);
+                });
+            };
+            fetchUser();
+            setUserFetched(true);
+        }
+
+        if (userFetched) {
+            setUserName(currentUser.userName);
+            setUserPhone(currentUser.phone ?? "N/A");
+        }
+    },[userFetched, currentUser, updateAuthenticatedUser]);
+
     return (
         <Box className={"myaccount-container"}>
             <Box className="title-buttons-container">
@@ -18,22 +75,6 @@ const MyAccount = () => {
                 >
                     Account
                 </Typography>
-                <Box className="btns-container">
-                    <Button
-                        sx={fontFamilyOverride}
-                        variant="outlined"
-                        className="discard-btn"
-                    >
-                        Discard
-                    </Button>
-                    <Button
-                        sx={fontFamilyOverride}
-                        variant="contained"
-                        className="save-btn"
-                    >
-                        Save Changes
-                    </Button>
-                </Box>
             </Box>
             <Typography
                 className="stack-option-subtitle"
@@ -71,7 +112,8 @@ const MyAccount = () => {
                         <TextField 
                             size="small" 
                             className="userName field-input"
-                            value={currentUser && currentUser.userName ? currentUser.userName : "N/A"}
+                            onChange={handleUserNameChange}
+                            value={userName}
                         />
                     </Box>
                     <Box className="vertical">
@@ -99,7 +141,8 @@ const MyAccount = () => {
                         <TextField 
                             size="small" 
                             className="phone field-input"
-                            value={currentUser && currentUser.phone ? currentUser.phone : "N/A"}
+                            onChange={handleUserPhoneChange}
+                            value={userPhone}
                         />
                     </Box>
                 </Box>
@@ -109,6 +152,7 @@ const MyAccount = () => {
                     sx={fontFamilyOverride}
                     variant="outlined"
                     className="discard-btn"
+                    onClick={handleDiscardClick}
                 >
                     Discard
                 </Button>
@@ -116,6 +160,7 @@ const MyAccount = () => {
                     sx={fontFamilyOverride}
                     variant="contained"
                     className="save-btn"
+                    onClick={handleSaveClick}
                 >
                     Save Changes
                 </Button>

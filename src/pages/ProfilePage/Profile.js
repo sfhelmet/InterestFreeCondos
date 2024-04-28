@@ -14,17 +14,9 @@ import Center from "../../components/Utils/Center";
 const Profile = () => {
     const { authenticatedUser: currentUser, updateAuthenticatedUser } = useContext(AuthenticatedUserContext);
     const [profilePicURL, setProfilePicURL] = useState(null);
-    const [isPublicUser, setIsPublicUser] = useState(true);
-    const publicUserOptions = ["My Account"];//Doubles as the options that are available to all users
-    const keyRegisteredUserOptions = ["My Condo","My Condo Financials","My Requests","My Reservations"].concat(publicUserOptions);
-    const [currentlySelectedOption, setCurrentlySelectedOption] = useState("My Account");
     
     //CSS overrides
     const hoverBtnOverrides = { ":hover": { bgcolor: "#193446", color: "white !important"}};
-
-    const handleBtnClick = (clickedOption) => {
-        setCurrentlySelectedOption(clickedOption);
-    }
 
     const handleProfilePictureUpload = async (e) => {
         const file = e.target.files[0];
@@ -75,7 +67,6 @@ const Profile = () => {
 
     useEffect(() => {
         if (currentUser) {
-            setIsPublicUser(false);
             fetchUserProfilePicture();
         }
     }, [currentUser, fetchUserProfilePicture]);
@@ -103,36 +94,14 @@ const Profile = () => {
                         </Button>
                     </Box>
                     <Box className="options-stack thin-border">
-                        {
-                        isPublicUser ? 
-                            publicUserOptions.map((option, i) => {
-                                return (
-                                    <Box key={i} className={`stack-option-container ${ i !== publicUserOptions.length-1 ? "thin-lower-border": ''}`}>
-                                        <Button 
-                                            sx={hoverBtnOverrides} 
-                                            className={`stack-option-btn ${ currentlySelectedOption === option ? "currently-selected": "" }`}
-                                            onClick={() => handleBtnClick(option)}
-                                        >
-                                            {option}
-                                        </Button>
-                                    </Box>
-                                )
-                            })
-                        : 
-                            keyRegisteredUserOptions.map((option, i) => {
-                                return (
-                                    <Box key={i} className={`stack-option-container ${ i !== keyRegisteredUserOptions.length-1 ? "thin-lower-border": ''}`}>
-                                        <Button 
-                                            sx={hoverBtnOverrides} 
-                                            className={`stack-option-btn ${ currentlySelectedOption === option ? "currently-selected": "" }`}
-                                            onClick={() => handleBtnClick(option)}
-                                        >
-                                            {option}
-                                        </Button>
-                                    </Box>
-                                )
-                            })
-                        }
+                        <Box className={`stack-option-container`}>
+                            <Button 
+                                sx={hoverBtnOverrides} 
+                                className={`stack-option-btn currently-selected`}
+                            >
+                                My Account
+                            </Button>
+                        </Box>
                     </Box>
                 </Box>
                 <Box className="selected-stack-option-wrapper thin-border">
