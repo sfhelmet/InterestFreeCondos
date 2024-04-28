@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/InterestFreeCondos/static/css/main.1f751c39.css",
-    "main.js": "/InterestFreeCondos/static/js/main.b081c15e.js",
+    "main.css": "/InterestFreeCondos/static/css/main.8727a68d.css",
+    "main.js": "/InterestFreeCondos/static/js/main.499a9581.js",
     "static/js/453.4f065752.chunk.js": "/InterestFreeCondos/static/js/453.4f065752.chunk.js",
     "static/media/Nexus-clear-noText.png": "/InterestFreeCondos/static/media/Nexus-clear-noText.be05e0a8d86d5bd030a3.png",
     "static/media/fa-solid-900.ttf": "/InterestFreeCondos/static/media/fa-solid-900.bacd5de623fb563b961a.ttf",
@@ -14,12 +14,12 @@
     "static/media/fa-v4compatibility.ttf": "/InterestFreeCondos/static/media/fa-v4compatibility.c8e090db312b0bea2aa2.ttf",
     "static/media/fa-v4compatibility.woff2": "/InterestFreeCondos/static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
     "index.html": "/InterestFreeCondos/index.html",
-    "main.1f751c39.css.map": "/InterestFreeCondos/static/css/main.1f751c39.css.map",
-    "main.b081c15e.js.map": "/InterestFreeCondos/static/js/main.b081c15e.js.map",
+    "main.8727a68d.css.map": "/InterestFreeCondos/static/css/main.8727a68d.css.map",
+    "main.499a9581.js.map": "/InterestFreeCondos/static/js/main.499a9581.js.map",
     "453.4f065752.chunk.js.map": "/InterestFreeCondos/static/js/453.4f065752.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1f751c39.css",
-    "static/js/main.b081c15e.js"
+    "static/css/main.8727a68d.css",
+    "static/js/main.499a9581.js"
   ]
 }
