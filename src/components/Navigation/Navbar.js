@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-
+import Logout from '../Auth/Logout/Logout';
 
 import './Navbar.css'
 
@@ -25,6 +25,7 @@ const NexusNavbar = (props) => {
                 ) : (<></>)
                 }
             </div>
+            <Logout/>
         </div>
     );
 }

@@ -9,7 +9,23 @@ export const rental = [
     },
     {
         label: 'Reservations',
+        route: "/reservations"
+    },
+    {
+        label: 'Reservations',
         route: '/reservations'
+    },
+    {
+        label: "My Profile",
+        route: '/profile'  
+    },
+    {
+        label: "My Requests",
+        route: "/my-requests"
+    },
+    {
+        label: "My Reservations",
+        route:"/my-reservations"
     }
 ]
 
@@ -34,6 +50,10 @@ export const management = [
         label: 'New property',
         route: '/property-creation'
     },
+    {
+        label: "My Profile",
+        route: '/profile'  
+    }
 ]
 
 export const owner = [
@@ -46,14 +66,29 @@ export const owner = [
         route: '/request-submission'
     },
     {
+        label: 'Reservations',
+        route: "/reservations"
+    },
+    {
         label: 'Files',
         route: '/property-files'
     },
     {
         label: 'Financials',
         route: '/financials'
+    },
+    {
+        label: "My Profile",
+        route: '/profile'  
+    },
+    {
+        label: "My Requests",
+        route:"/my-requests"
+    },
+    {
+        label: "My Reservations",
+        route:"/my-reservations"
     }
-
 ]
 
 export const employee = [
@@ -68,5 +103,9 @@ export const employee = [
     {
         label: 'Requests',
         route: '/request-handling'
+    },
+    {
+      label: "My Profile",
+      route: '/profile'  
     }
 ]

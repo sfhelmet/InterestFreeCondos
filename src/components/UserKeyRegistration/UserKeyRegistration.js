@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { keyExists, uploadKey, getUserIdbyEmail, updateCondo } from './PublicKeyRequestService';
-import './PublicKeyRequest.css';
+import { keyExists, uploadKey, getUserIdbyEmail, updateCondo } from './UserKeyRegistrationService';
+import NexusClearLogo from "../../images/Logos/Nexus-clear-noText.png";
+import './UserKeyRegistration.css';
 import '../../styling/Fonts/fonts.css';
 const KJUR = require('jsrsasign');
 
 
-const PublicKeyRequest = () => {
+const UserKeyRegistration = () => {
   const [keyNumber, setKeyNumber] = useState('');
 
   const secretKey = process.env.REACT_APP_Secret_Key;
@@ -42,7 +43,7 @@ const PublicKeyRequest = () => {
     <div className="home-page-container">
       <div className="company-info">
         {/* Placeholder for company logo */}
-        <img src="Nexus-clear-noText.png" alt="Company Logo" />
+        <img src={NexusClearLogo} alt="Company Logo" />
         <h3 style={{fontFamily: 'telemarines', fontSize: '36px'}}>Nexus</h3>
         {/* Placeholder for company description */}
         <p style={{fontFamily: 'telemarines', fontSize: '24px'}}>Tomorrow's Condo Management, Today</p>
@@ -62,4 +63,4 @@ const PublicKeyRequest = () => {
   );
 };
 
-export default PublicKeyRequest;
+export default UserKeyRegistration;

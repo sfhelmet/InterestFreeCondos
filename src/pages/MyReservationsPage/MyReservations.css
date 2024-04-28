@@ -1,0 +1,44 @@
+.my-reservations-page-container {
+    background-color: var(--background);
+}
+
+.my-reservations-page-container .container-fluid {
+    width: 50%!important;
+    margin-top: 100px;
+}
+
+.my-reservations-page-container .page-title {
+    color: var(--text);
+}
+
+.my-reservations-page-container .card-header {
+    color: "#7fe6ef";
+    background-color: "#213d4e";
+}
+
+.my-reservations-page-container .card-body {
+    background-color: var(--accent1);
+}
+
+.my-reservations-page-container .card-header {
+    color: var(--alt_text)!important;
+    background-color: var(--alt_background)!important;
+}
+
+.my-reservations-page-container .nexus-submit {
+    background-color: var(--accent2)!important;
+    color: var(--text)!important;
+    border: none!important;
+}
+
+.my-reservations-page-container .badge-dark {
+    background-color: var(--alt_background)!important;
+}
+
+.my-reservations-page-container .no-reservations-container h3 {
+    color: white;
+}
+
+.my-reservations-page-container .no-reservations-container h5 {
+    color: white;
+}

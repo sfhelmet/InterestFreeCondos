@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import PublicKeyRequest from '../../../components/PublicUserKeyRequest/PublicKeyRequest';
+import UserKeyRegistration from '../../../components/UserKeyRegistration/UserKeyRegistration';
 import '@testing-library/jest-dom/extend-expect';
 import jsrsasign from 'jsrsasign';
 
@@ -19,7 +19,7 @@ jest.mock('jsrsasign', () => ({
   },
 }));
 
-describe('PublicKeyRequest Component', () => {
+describe('UserKeyRegistration Component', () => {
   beforeAll(() => {
     window.alert = jest.fn();
   });
@@ -37,21 +37,21 @@ describe('PublicKeyRequest Component', () => {
   });
 
   test('renders the component', () => {
-    const { getByText, getByPlaceholderText } = render(<PublicKeyRequest />);
+    const { getByText, getByPlaceholderText } = render(<UserKeyRegistration />);
     expect(getByText('Please enter registration key number')).toBeInTheDocument();
     expect(getByPlaceholderText('Enter key number')).toBeInTheDocument();
     expect(getByText('Submit')).toBeInTheDocument();
   });
 
   test('updates state on input change', () => {
-    const { getByPlaceholderText } = render(<PublicKeyRequest />);
+    const { getByPlaceholderText } = render(<UserKeyRegistration />);
     const inputField = getByPlaceholderText('Enter key number');
     fireEvent.change(inputField, { target: { value: '123456' } });
     expect(inputField.value).toBe('123456');
   });
 
   test('handles form submission and validates JWT', () => {
-    const { getByPlaceholderText, getByText } = render(<PublicKeyRequest />);
+    const { getByPlaceholderText, getByText } = render(<UserKeyRegistration />);
     const inputField = getByPlaceholderText('Enter key number');
     const submitButton = getByText('Submit');
 
@@ -65,7 +65,7 @@ describe('PublicKeyRequest Component', () => {
   });
 
   test('handles form submission and validates JWT with error', async () => {
-    const { getByPlaceholderText, getByText } = render(<PublicKeyRequest />);
+    const { getByPlaceholderText, getByText } = render(<UserKeyRegistration />);
     const inputField = getByPlaceholderText('Enter key number');
     const submitButton = getByText('Submit');
     

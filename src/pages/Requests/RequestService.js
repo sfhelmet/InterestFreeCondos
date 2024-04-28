@@ -46,6 +46,69 @@ class RequestService
         })
     }
 
+    static fetchUserSpecificRequests = (setRequests, userID) => {
+        const requestRef = collection(db, "requests");
+        const requestQuery = query(requestRef, where("userID","==",userID));
+
+        // Calls the firestore with query
+        getDocs(requestQuery).then(docs => {
+            let requests = [];
+            docs.forEach(doc => {
+
+                const data = doc.data();
+
+                // IMPROVEMENT: change query such that it is returned in the requestQuery
+                const userRef = collection(db, "users");
+                const userQuery = query(userRef, where('userID', '==', userID));
+
+                // We want to give the name of the users that submitted the requests
+                getDocs(userQuery).then( userdocs => {
+                    requests.push({...data, id: doc.id, username: userdocs.empty ? "???" : userdocs.docs[0].data().userName});
+                    setRequests(requests);
+                })
+            })
+        })
+    }
+
+    static fetchUserSpecificReservations = (setReservations, userName) => {
+        const reservationRef = collection(db, "condoReservationData");
+        const reservationQuery = query(reservationRef);
+
+        // Calls the firestore with query
+        getDocs(reservationQuery).then(docs => {
+            let reservations = [];
+            docs.forEach(doc => {
+
+                const { name, amenities } = doc.data();
+
+                const amenityReservations = amenities.map(a => { 
+                    return {
+                        buildingName: name,
+                        reservations: a.reservations,
+                        amenityName: a.name,
+                    }
+                }).filter(r => r !== undefined && r !== null);
+
+                reservations = [...reservations, ...amenityReservations];
+            })
+
+            reservations = reservations.filter(r => r.reservations !== undefined);
+
+            const userReservations = reservations.flatMap(r => {
+                const userRes = r.reservations.filter(ar => ar.user === userName);
+
+                return userRes.map(ur => ({
+                    buildingName: r.buildingName,
+                    amenityName: r.amenityName,
+                    ...ur
+                }));
+            });
+
+            console.log(userReservations)
+            setReservations(userReservations);
+        })
+    }
+
     static updateRequestStatus = (setRequests, requests, handling, id) => {
         // Change requests for the view
         requests = requests.map(request => request.id === id ? { ...request, handlingStatus: handling } : request)
