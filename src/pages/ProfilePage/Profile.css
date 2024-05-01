@@ -3,15 +3,9 @@
     gap: 1.75em;
     margin-bottom: 3rem;
     font-size: 18px;
+    background-color: var(--accent1);
 }
 
-.user-profile-container .thin-border {
-    border: solid 1.75px #193446;
-}
-
-.user-profile-container .thin-lower-border {
-    border-bottom: solid 1.75px #193446;
-}
 
 .user-profile-container .image-options-wrapper .profile-img-box {
     display: flex;
@@ -29,7 +23,7 @@
     height: 90px;
     object-fit: cover;
     margin-bottom: 0.5rem;
-    background-color: orangered; 
+    background-color: var(--alt_background); 
 }
 
 .user-profile-container .image-options-wrapper .profile-img-box .profile-name {
@@ -57,6 +51,7 @@
     text-align: left;
     margin-top: 60px;
     padding: 30px;
+    border: var(--background);
 }
 
 .user-profile-container .selected-stack-option-wrapper .stack-option-title {
