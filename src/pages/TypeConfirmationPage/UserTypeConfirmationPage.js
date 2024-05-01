@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import NexusClearLogo from "../../images/Logos/Nexus-clear-noText.png";
 import { useAuthenticatedUserContext } from '../../contexts/AuthenticatedUserContext';
-
 import { db } from "../../config/firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const UserTypeRegistrationPage = () => {
     const [userType, setUserType] = useState("");
-    const { authenticatedUser: currentUser } = useAuthenticatedUserContext();
+    const { authenticatedUser: currentUser, updateAuthenticatedUser } = useAuthenticatedUserContext();
     const navigate = useNavigate();
 
     const handleSubmit = async() => {
@@ -32,7 +31,7 @@ const UserTypeRegistrationPage = () => {
             default:
                 navigate("")
         }
-        });
+      });
     }
 
   return (

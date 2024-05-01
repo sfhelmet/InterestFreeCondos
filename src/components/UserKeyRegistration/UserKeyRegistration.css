@@ -28,7 +28,8 @@
   
   .authentication input {
     margin-bottom: 10px; /* Increase margin for more space */
-    padding-left: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 8px;
     padding-bottom: 8px;
     border: 1px solid var(--alt_text);

@@ -47,7 +47,7 @@ const OwnerHome = () => {
   };
 
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser && currentUser.userID !== "") {
       fetchOwnedProperties();
     }
   }, [currentUser, fetchOwnedProperties]);

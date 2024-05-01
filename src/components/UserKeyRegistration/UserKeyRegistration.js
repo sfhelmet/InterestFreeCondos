@@ -3,12 +3,13 @@ import { keyExists, uploadKey, getUserIdbyEmail, updateCondo } from './UserKeyRe
 import NexusClearLogo from "../../images/Logos/Nexus-clear-noText.png";
 import './UserKeyRegistration.css';
 import '../../styling/Fonts/fonts.css';
+import { useNavigate } from 'react-router-dom';
 const KJUR = require('jsrsasign');
 
 
 const UserKeyRegistration = () => {
   const [keyNumber, setKeyNumber] = useState('');
-
+  const navigate = useNavigate();
   const secretKey = process.env.REACT_APP_Secret_Key;
   const keyHex = KJUR.crypto.Util.sha256(secretKey);
 
@@ -30,7 +31,9 @@ const UserKeyRegistration = () => {
           console.log(claims);
           await uploadKey(keyNumber, claims.exp);
           const userId = await getUserIdbyEmail(claims.email);
-          updateCondo(userId, claims.unit, claims.userType);
+          updateCondo(userId, claims.unit, claims.userType).then(() => {
+            navigate("/renter-home");
+          });
       } else {
           alert('JWT is invalid.');
       }

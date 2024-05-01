@@ -80,15 +80,15 @@ const AuthContainer = () => {
 
         if (!userExists) {
           await setDoc(doc(db, "users", customUserObj.userID), customUserObj)
-            .then(() => {
+            .then((res) => {
               console.log("Custom User Obj created from Google SSO obj");
               userObjectCreated = true;
             })
             .catch(err => {
               console.log(err.message);
             });
+          updateAuthenticatedUser(customUserObj);
         }
-        updateAuthenticatedUser(customUserObj);
       }).then(() => {
         setDisabled(false);
         if(userObjectCreated){

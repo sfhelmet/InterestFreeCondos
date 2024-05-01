@@ -16,6 +16,10 @@ export const rental = [
         route: '/profile'  
     },
     {
+        label: "My Rentals",
+        route: '/renter-home'
+    },
+    {
         label: "My Requests",
         route: "/my-requests"
     },
