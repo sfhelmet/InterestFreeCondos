@@ -12,7 +12,7 @@
 
 .export button:hover {
   background-color: var(--accent1); /* Darker blue on hover */
-  color: var(--text)
+  color: var(--text);
 }
 
 .export {
@@ -22,8 +22,10 @@
 }
 
 .financials-page {
-  width: fit-content;
-  height: auto;
+  width: 100%; /* Adjusted width */
+  max-width: 600px; /* Max width for larger screens */
+  margin: 0 auto; /* Center the container */
+  margin-top: 2rem;
 }
 
 .financials-input-container {
@@ -34,6 +36,7 @@
 
 .financial-form-row {
   display: flex;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
   justify-content: space-between;
 }
 

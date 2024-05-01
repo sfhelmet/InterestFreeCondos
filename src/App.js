@@ -31,7 +31,7 @@ function App() {
     );
 
   return (
-    <div>
+    <div style={{margin:"0 1rem 0 1rem", paddingTop:"env(safe-area-inset-top"}}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <AuthenticatedUserProvider>
           <Routes>

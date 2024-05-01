@@ -1,0 +1,30 @@
+import type { CapacitorConfig } from '@capacitor/cli';
+
+const config: CapacitorConfig = {
+  appId: 'com.example.app',
+  appName: 'Nexus_Mobile',
+  webDir: 'build',
+  "plugins":{
+    "FirebasePlugin":{
+    "FirebaseApiKey": "AIzaSyBn3OC0D4Mf0y50WhJFK2hs_yQFpX1XwN0",
+    "FirebaseAuthDomain": "ifcondos.firebaseapp.com",
+    "FirebaseProjectId":"ifcondos",
+    "FirebaseStorageBucket":"ifcondos.appspot.com",
+    "FirebaseMessagingSenderId":"472978924001",
+    "FirebaseAppId":"1:472978924001:web:9239e1e1a73934729932a0",
+    "Secret_Key" : "bieQGjOE1vE6inmNQvnBjIWXupHDkS2d" 
+    }  
+  }, 
+    "cordova": {},
+    "android": {
+      "allowMixedContent": true
+    },
+    "server": {
+      "cleartext": true,
+      "hostname": "localhost",
+      "androidScheme": "https",
+      "url": "http://192.168.68.19:3000/InterestFreeCondos"
+    }
+};
+
+export default config;

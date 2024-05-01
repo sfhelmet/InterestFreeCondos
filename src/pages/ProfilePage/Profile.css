@@ -4,6 +4,7 @@
     margin-bottom: 3rem;
     font-size: 18px;
     background-color: var(--accent1);
+    margin-top: 3.5rem;
 }
 
 
@@ -80,4 +81,31 @@
     color: #193446;
     white-space: nowrap;
     text-transform: none;
+}
+
+@media screen and (max-width: 600px) {
+    .user-profile-container {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+        margin-bottom: 1.5rem; /* Reduce margin for smaller screens */
+        font-size: 16px; /* Decrease font size for smaller screens */
+    }
+
+    .user-profile-container .image-options-wrapper {
+        min-width: auto; /* Allow container to shrink on smaller screens */
+    }
+
+    .user-profile-container .selected-stack-option-wrapper {
+        min-width: 90%; /* Adjust width for smaller screens */
+        min-height: auto; /* Allow container height to adjust */
+        max-width: 100%; /* Allow container to expand to full width */
+        max-height: none; /* Remove max height restriction */
+        margin-top: 30px; /* Reduce top margin for smaller screens */
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .user-profile-container .profile-img-box .upload-btn {
+        margin-top: 0.5rem; /* Adjust margin for smaller screens */
+        height: 30px; /* Decrease height for smaller screens */
+        font-size: 0.9rem; /* Decrease font size for smaller screens */
+    }
 }

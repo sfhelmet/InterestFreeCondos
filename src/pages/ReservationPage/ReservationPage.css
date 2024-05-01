@@ -1,65 +1,68 @@
 .selection-containers {
-  display: flex;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .amenity-container {
-  margin-left: 15px;
+    flex: 1 1 200px;
 }
 
 .reservation-page-container {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
 
 .reservation-page {
-
     background-color: var(--background);
-    height: 100vh;
-    width: 60%;
-  }
-  
-  h1 {
+    width: 100%;
+    max-width: 800px; /* Adjust max-width as needed */
+    padding: 20px;
+}
+
+h1 {
     margin-bottom: 20px;
     margin-top: 0;
     color: var(--text);
-  }
+}
 
-  h3{
+h3 {
     color: var(--text);
-  }
-  
-  select {
+}
+
+select {
     padding: 5px;
     padding-right: 5px;
     background-color: var(--accent1);
     border-color: var(--accent2);
     color: var(--text);
     border-radius: 8px;
-    width: 200px;
-  }
+    width: 100%;
+    max-width: 200px; /* Adjust max-width as needed */
+}
 
-.calendar-container{
+.calendar-container {
     margin-top: 20px;
     margin-right: 20px;
+    flex: 1 1 300px;
 }
-  
-  .calendar {
-    margin-bottom: 20px;
-    /* Add styles for the calendar component */
-  }
-  
-  .times {
-    margin-bottom: 20px;
-    width: 30%;
-  }
 
-  /* In your CSS file, such as styles.css */
-  .time-radio{
+.calendar {
+    margin-bottom: 20px;
+}
+
+.times {
+    margin-bottom: 20px;
+    flex: 1 1 200px;
+}
+
+.time-radio {
     color: var(--text);
     margin-right: 10px;
-  }
-  
-  button {
+}
+
+button {
     margin-right: 10px;
     margin-bottom: 10px;
     padding: 5px 10px;
@@ -68,20 +71,53 @@
     border: none;
     cursor: pointer;
     border-radius: 8px;
-  }
-  
-  button:hover {
-    background-color: var(--accent2);
-  }
+}
 
-  .thisContainer{
+button:hover {
+    background-color: var(--accent2);
+}
+
+.thisContainer {
     display: flex;
-    flex-direction: row;
-  }
-  
-  .timeDisplay{
-    display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-  }
-  
+}
+
+.timeDisplay {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Media Query for smaller screens */
+@media screen and (max-width: 600px) {
+    .selection-containers {
+        flex-direction: column;
+    }
+
+    .amenity-container {
+        margin-left: 0;
+    }
+
+    .reservation-page-container {
+        padding: 10px;
+    }
+
+    .reservation-page {
+        padding: 10px;
+    }
+
+    .calendar-container {
+        margin-top: 10px;
+        margin-right: 0;
+        flex: 1 1 100%;
+    }
+
+    .times {
+        margin-bottom: 10px;
+        flex: 1 1 100%;
+    }
+
+    .time-radio {
+        margin-right: 5px;
+    }
+}
