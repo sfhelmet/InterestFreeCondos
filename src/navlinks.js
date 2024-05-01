@@ -43,7 +43,7 @@ export const management = [
         route: '/property-files'
     },
     {
-        label: 'Registration',
+        label: 'Unit Token Generation',
         route: '/token'
     },
     {

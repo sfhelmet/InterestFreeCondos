@@ -5,6 +5,7 @@ import { db } from "../../config/firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
+import "./UserTypeConfirmationPage.css";
 
 const UserTypeRegistrationPage = () => {
     const [userType, setUserType] = useState("");
@@ -31,7 +32,7 @@ const UserTypeRegistrationPage = () => {
               navigate("/company-home");
               break;
           default:
-              navigate("")
+              navigate("/")
         }
       });
     }

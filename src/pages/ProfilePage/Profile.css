@@ -58,6 +58,10 @@
     margin-bottom: 1rem;
 }
 
+.user-profile-container .options-stack {
+    padding: 1rem;
+}
+
 .user-profile-container .options-stack .currently-selected {
     background-color: #193446;
     color: #F4F9F9 !important;
