@@ -13,7 +13,6 @@ const CompanyHome = () => {
   const fetchOwnedProperties = useCallback(async () => {
     const fetchedUnits = await getDocs(collection(db, "condoUnits"));
 
-
     const parsedUnits = await Promise.all(
       fetchedUnits.docs.map(async (condoUnit) => {
         const unit = condoUnit.data();
@@ -25,8 +24,7 @@ const CompanyHome = () => {
       })
     );
 
-    const filteredUnits = parsedUnits.filter(unit => unit !== null);
-
+    const filteredUnits = parsedUnits.filter((unit) => unit !== null);
 
     setCondoProperties(filteredUnits);
   }, [currentUser]);
@@ -96,60 +94,84 @@ const CompanyHome = () => {
     <div>
       <div className="home-page">
         <div className="panel-container">
-
           <div className="right-panel">
-            {condoProperties.length > 1 ? condoProperties.map((property) => (
-              <div id={`property-${property.id}`} key={property.id} className="property-card">
-                <div className="property-content">
-                  <img
-                    src={property.propertyImageURL}
-                    alt="Property"
-                    className="property-image"
-                  />
-                  <div className="property-details">
-                    <div>
-                      <h3>{property.buildingName}</h3>
-                      <p>{property.address}</p>
-                      <p>Unit {property.unit}</p>
-                    </div>
-                    <div>
-                      <h4>Rented by: {property.renterName}</h4>
-                      {property.isEditing ? (
-                        <div>
-                          <input
-                            type="text"
-                            placeholder="Monthly Rent"
-                            value={property.monthlyRent}
-                            onChange={(e) =>
-                              handlePropertyChange(
-                                property.id,
-                                "monthlyRent",
-                                e.target.value
-                              )
-                            }
-                          />
-                          <button
-                            id="save-property-btn"
-                            onClick={() => handleSaveProperty(property.id)}
-                          >
-                            Save
-                          </button>
-                        </div>
-                      ) : (
-                        <>
-                          <p className="monthly-rent">Monthly Rent: {property.monthlyRent}</p>
-                          <br></br><br></br>
-                        </>
-                      )}
-                      <button id="edit-property-btn" onClick={() => handleToggleEdit(property.id)}>
-                        {property.isEditing ? "Cancel" : "Edit"}
-                      </button>
+            {condoProperties.length > 1 ? (
+              condoProperties.map((property) => (
+                <div
+                  id={`property-${property.id}`}
+                  key={property.id}
+                  className="property-card"
+                >
+                  <div className="property-content">
+                    <img
+                      src={property.propertyImageURL}
+                      alt="Property"
+                      className="property-image"
+                    />
+                    <div className="property-details">
+                      <div>
+                        <h3>{property.buildingName}</h3>
+                        <p>{property.address}</p>
+                        <p>Unit {property.unit}</p>
+                      </div>
+                      <div>
+                        <h4>Rented by: {property.renterName}</h4>
+                        {property.isEditing ? (
+                          <div>
+                            <input
+                              type="text"
+                              placeholder="Monthly Fee"
+                              value={property.fee}
+                              onChange={(e) =>
+                                handlePropertyChange(
+                                  property.id,
+                                  "fee",
+                                  e.target.value
+                                )
+                              }
+                            />
+                            <button
+                              id="save-property-btn"
+                              onClick={() => handleSaveProperty(property.id)}
+                            >
+                              Save
+                            </button>
+                          </div>
+                        ) : (
+                          <>
+                            <p className="monthly-rent">
+                              Monthly Rent: {property.monthlyRent}
+                            </p>
+                            <p className="monthly-fee">
+                              Monthly Fee: {property.fee}
+                            </p>
+                            <p className="number-parking">
+                              Number of Parking: {property.nbOfParking}
+                            </p>
+                            <p className="monthly-cost">
+                              Monthly Cost: $
+                              {parseFloat(property.fee.replace("$", "")) *
+                                property.nbOfParking}
+                            </p>
+                            <br />
+                            <br />
+                          </>
+                        )}
+
+                        <button
+                          id="edit-property-btn"
+                          onClick={() => handleToggleEdit(property.id)}
+                        >
+                          {property.isEditing ? "Cancel" : "Edit"}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )) : <div>There are no properties to view.</div>}
-
+              ))
+            ) : (
+              <div>There are no properties to view.</div>
+            )}
           </div>
         </div>
       </div>
