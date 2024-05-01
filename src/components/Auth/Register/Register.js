@@ -85,7 +85,6 @@ const Register = () => {
                             <option value="MANAGEMENT">Company</option>
                             <option value="PUBLIC">I don't know yet</option>
                         </select>
-                        {userType && <p>You selected: {userType}</p>}
                     </div>
                     {/* <TextField 
                         className="user-phone" 
