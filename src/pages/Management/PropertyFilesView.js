@@ -67,12 +67,15 @@ const PropertyFilesView = (props) =>
                         properties.push(data);
 
                         data.files.forEach( (filename) => {
-                            getDownloadURL(ref(storage, `property_files/${filename}`)).then(url =>
-                                {
+                            getDownloadURL(ref(storage, `property_files/${filename}`))
+                              .then(url => {
                                     try {
                                       document.getElementById(filename).setAttribute('href', url);
                                     } catch (e) {}
-                                })
+                              })
+                              .catch((err) => {
+                                console.log("Error fetching file for condo unit. File may be missing or corrupted");
+                              })
                         })
                     })
                     setPropertyProfiles(properties);
