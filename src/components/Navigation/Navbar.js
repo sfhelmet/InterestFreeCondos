@@ -1,10 +1,32 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import Logout from '../Auth/Logout/Logout';
-
+import { useAuthenticatedUserContext } from '../../contexts/AuthenticatedUserContext'
 import './Navbar.css'
+import * as Navigations from '../../navlinks'
 
 const NexusNavbar = (props) => {
+
+    const { authenticatedUser: currentUser } = useAuthenticatedUserContext();
+
+    const navigation = (userType) => {
+        switch (userType) {
+            case "RENTAL": 
+                return Navigations.rental;
+            case "OWNER":
+                return Navigations.owner;
+            case "MANAGEMENT": 
+                return Navigations.management;
+            case "EMPLOYEE":
+                return Navigations.employee;
+            default:
+              return [];
+        }
+    }
+
+    const links = navigation(currentUser.userType);
+
+
 
     return (
         <div className='nexus-navigation-bar'>
@@ -14,7 +36,7 @@ const NexusNavbar = (props) => {
                 </Link>
             </div>
             <div className='nexus-nav-button-section'>
-                { props.links ? props.links.map( page => 
+                { links ? links.map( page => 
                     (
                         <Link to={page.route} className='nexus-nav-link' key={page.label}>
                             <div>
