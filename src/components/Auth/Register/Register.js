@@ -12,7 +12,8 @@ const Register = () => {
     const [userName, setUsername] = useState("");
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
-    const [userPhone, setUserPhone] = useState("");
+    // const [userPhone, setUserPhone] = useState("");
+    const [userType, setUserType] = useState("");
     const navigate = useNavigate();
 
     const handleRegister = async () => {
@@ -22,15 +23,27 @@ const Register = () => {
                     userID: userCredential.user.uid,
                     email: userEmail,
                     userName: userName,
-                    phone: userPhone,
+                    phone: null,
                     profilePic: null,
-                    userType: 'PUBLIC'
+                    userType: userType
                 }
                 
                 setDoc(doc(db,"users", newUser.userID), newUser);
             })
             .then(() => {
-                navigate("/public-home")
+                switch(userType){
+                    case "RENTAL":
+                        navigate("/")
+                        break;
+                    case "OWNER":
+                        navigate("/")
+                        break;
+                    case "MANAGEMENT":
+                        navigate("");
+                        break;
+                    default:
+                        navigate("")
+                }
             })
             .catch((err) => {
                 console.error("Error occurred during account creation")
@@ -64,13 +77,22 @@ const Register = () => {
                         value={userPassword}
                         onChange={(e) => setUserPassword(e.target.value)}
                     />
-                    <TextField 
+                    <div className="usertype-dropdown-menu">
+                        <select value={userType} onChange={(e => setUserType(e.target.value))}>
+                            <option value="">Select user type</option>
+                            <option value="RENTAL">Renter</option>
+                            <option value="OWNER">Owner</option>
+                            <option value="MANAGEMENT">Company</option>
+                            <option value="PUBLIC">I don't know yet</option>
+                        </select>
+                    </div>
+                    {/* <TextField 
                         className="user-phone" 
                         size="small" 
                         label={"Enter phone:"}
                         value={userPhone}
                         onChange={(e) => setUserPhone(e.target.value)}
-                    />
+                    /> */}
                 </Box>
                 <Button className="register-btn" variant="contained" onClick={handleRegister}>Register</Button>
             </Box>

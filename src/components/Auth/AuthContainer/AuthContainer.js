@@ -19,6 +19,8 @@ const AuthContainer = () => {
   const [userPassword, setUserPassword] = useState("");
   const { updateAuthenticatedUser } = useContext(AuthenticatedUserContext)
 
+  let userObjectCreated = false;
+
   const nonSSOSignIn = () => {
     signInWithEmailAndPassword(auth, userEmail, userPassword)
       .then(() => {
@@ -58,6 +60,7 @@ const AuthContainer = () => {
           await setDoc(doc(db, "users", customUserObj.userID), customUserObj)
             .then(() => {
               console.log("Custom User Obj created from Google SSO obj");
+              userObjectCreated = true;
             })
             .catch(err => {
               console.log(err.message);
@@ -66,7 +69,11 @@ const AuthContainer = () => {
         updateAuthenticatedUser(customUserObj);
       }).then(() => {
         setDisabled(false);
-        navigate("/");
+        if(userObjectCreated){
+          navigate("/user-selection");
+        } else {
+          navigate("/");
+        }
       }).catch((error) => {
         console.error("Error signing in with Google");
         setErrorMessage(error.code + ": " + error.message);

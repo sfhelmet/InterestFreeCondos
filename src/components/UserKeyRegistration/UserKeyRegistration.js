@@ -51,6 +51,8 @@ const UserKeyRegistration = () => {
 
       <div className="authentication">
         <h2>Please enter registration key number</h2>
+        <p>The key is used to identify which property you are trying to access. It should have been sent to you by email.</p>
+        <p>Please verify your spam folder if you have not received it.</p>
         <input
           type="text"
           value={keyNumber}

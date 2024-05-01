@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Logout from '../Auth/Logout/Logout';
 import { useAuthenticatedUserContext } from '../../contexts/AuthenticatedUserContext'
 import './Navbar.css'
 import * as Navigations from '../../navlinks'
 
 const NexusNavbar = (props) => {
-
+    const [links, setLinks] = useState([]);
     const { authenticatedUser: currentUser } = useAuthenticatedUserContext();
 
     const navigation = (userType) => {
@@ -24,7 +24,12 @@ const NexusNavbar = (props) => {
         }
     }
 
-    const links = navigation(currentUser.userType);
+    useEffect(() => {
+        if (currentUser) {
+            console.log("set navigation")
+            setLinks(navigation(currentUser.userType));
+        }
+    },[currentUser]);
 
 
 
