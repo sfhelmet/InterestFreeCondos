@@ -66,7 +66,7 @@ const AuthContainer = () => {
         updateAuthenticatedUser(customUserObj);
       }).then(() => {
         setDisabled(false);
-        navigate("/");
+        navigate("/user-selection");
       }).catch((error) => {
         console.error("Error signing in with Google");
         setErrorMessage(error.code + ": " + error.message);

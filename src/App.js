@@ -15,7 +15,14 @@ function App() {
   useEffect( () => {
     auth.onAuthStateChanged( async (user) => {
       if (user) {
-        console.info("User detected.");
+        const userTypeSnapshot = await getUserType();
+        if(userTypeSnapshot.docs.length > 1){
+          const userType = userTypeSnapshot.docs[0].data().userType;
+          setNavConfig(navigation(userType));
+          console.info("User detected.");
+        } else {
+          console.info("Something went wrong when fetching user data");
+        }
       } else {
         console.info("No user detected");
       }

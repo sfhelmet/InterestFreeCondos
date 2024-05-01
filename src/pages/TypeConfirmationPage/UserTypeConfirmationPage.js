@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import NexusClearLogo from "../../images/Logos/Nexus-clear-noText.png";
+import { useAuthenticatedUserContext } from '../../contexts/AuthenticatedUserContext';
 
 import { auth, db } from "../../config/firebase";
 import { collection, getDocs, query, where, setDoc, doc } from "firebase/firestore";
@@ -7,6 +8,7 @@ import { collection, getDocs, query, where, setDoc, doc } from "firebase/firesto
 
 const UserTypeRegistrationPage = () => {
     const [userType, setUserType] = useState("");
+    const { authenticatedUser: currentUser } = useAuthenticatedUserContext();
 
     const getCurrentUser = () => {
         let uid = auth.currentUser.uid;

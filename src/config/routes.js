@@ -107,7 +107,7 @@ const routes = [
     path: "/profile",
     component: Profile,
     name: "User Profile Page",
-    protected: true,
+    protected: false,
     hasNav: true
   },
   {
