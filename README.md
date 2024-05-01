@@ -36,3 +36,5 @@ Note 2: Use this for normal development.
 ```bash
 npm start
 ```
+
+Note 3: For the Android mobile apk, **you must run the web app first**.
