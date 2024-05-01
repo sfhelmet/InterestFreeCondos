@@ -12,10 +12,6 @@ export const rental = [
         route: "/reservations"
     },
     {
-        label: 'Reservations',
-        route: '/reservations'
-    },
-    {
         label: "My Profile",
         route: '/profile'  
     },
