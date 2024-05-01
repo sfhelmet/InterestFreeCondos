@@ -1,5 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useCallback, useEffect, useState } from "react";
 import { db, storage } from "../../../../config/firebase";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
@@ -111,7 +110,7 @@ const OwnerHome = () => {
                     <div>
                       <h3>{property.buildingName}</h3>
                       <p>{property.address}</p>
-                      <p>{property.unit}</p>
+                      <p>Unit {property.unit}</p>
                     </div>
                     <div>
                       <h4>Rented by: {property.renterName}</h4>

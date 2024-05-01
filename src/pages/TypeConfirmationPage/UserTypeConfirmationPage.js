@@ -24,10 +24,10 @@ const UserTypeRegistrationPage = () => {
                 navigate("/")
                 break;
             case "OWNER":
-                navigate("/")
+                navigate("/owner-home")
                 break;
             case "MANAGEMENT":
-                navigate("/owner-home");
+                navigate("/company-home");
                 break;
             default:
                 navigate("")
