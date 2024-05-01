@@ -31,6 +31,7 @@
   border-radius: 10px;
   background-color: rgba(31, 61, 78, 0.8); /* Dark blue background color with transparency */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-top: 1.5rem;
 }
 
 .form-heading {

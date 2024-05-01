@@ -1,91 +1,122 @@
+/* Base styles */
+
 .home-page {
-    background-color: var(--background); /* Dark background color */
-    color: var(--text); /* Light text color */
-  }
+  background-color: var(--background); /* Dark background color */
+  color: var(--text); /* Light text color */
+}
 
-  .panel-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-    
+.panel-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.right-panel {
+  width: 80%; /* Two-thirds of the screen */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;
+}
+
+.property-card {
+  background-color: rgba(126, 230, 239, 0.3); /* Transparent background color */
+  margin-bottom: 20px;
+  cursor: pointer;
+  flex: 1; /* Make property cards stretch to fill available space */
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.property-card:hover {
+  background-color: rgba(126, 230, 239, 0.5); /* Darker transparent background color on hover */
+}
+
+.property-content {
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center vertically */
+}
+
+.property-card img {
+  width: 20%;
+  height: auto;
+  margin-right: 20px;
+}
+
+.property-details {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.property-details div {
+  flex: 1;
+}
+
+.property-details h3,
+.property-details h4 {
+  margin-bottom: 5px;
+}
+
+.property-details p {
+  margin: 5px 0;
+}
+
+.view-more {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin-bottom: 20px;
+}
+
+.view-more-button {
+  text-decoration: none; /* Remove underline */
+  color: var(--alt_text); /* Set color to blue */
+}
+
+.view-more-button::after {
+  content: "View more ⋁";
+}
+
+.view-more-button:hover::after {
+  color: var(--accent1);
+  content: "View more ⋀"; /* Change text on hover */
+}
+
+.logo {
+  width: 95%;
+}
+
+.property-image {
+  margin-left: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Align buttons to the right */
+}
+
+#save-property-btn,
+#cancel-edit-btn {
+  margin-left: 10px; /* Add some margin between the buttons */
+}
+
+
+/* Media queries */
+@media screen and (max-width: 768px) {
   .right-panel {
-    width: 80%; /* Two-thirds of the screen */
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center;
+    width: 90%; /* Adjusted width for medium screens */
   }
-  
-  .property-card {
-    background-color: rgba(126, 230, 239, 0.3); /* Transparent background color */
-    margin-bottom: 20px;
-    cursor: pointer;
-    flex: 1; /* Make property cards stretch to fill available space */
-    display: flex;
-    align-items: center;
-    border-radius: 15px;
-  }
-  
-  .property-card:hover {
-    background-color: rgba(126, 230, 239, 0.5); /* Darker transparent background color on hover */
+}
+
+@media screen and (max-width: 480px) {
+  .right-panel {
+    width: 95%; /* Adjusted width for smaller screens */
   }
 
-  .property-content {
-    display: flex; /* Use flexbox */
-    align-items: center; /* Center vertically */
-  }
-  
   .property-card img {
-    width: 20%;
-    height: auto;
-    margin-right: 20px;
+    width: 30%; /* Adjusted image width for smaller screens */
+    margin-right: 10px; /* Adjusted margin for smaller screens */
   }
-  
-  .property-details {
-    display: flex;
-    justify-content: space-between;
-    flex: 1;
-  }
-  
-  .property-details div {
-    flex: 1;
-  }
-  
-  .property-details h3,
-  .property-details h4 {
-    margin-bottom: 5px;
-  }
-  
-  .property-details p {
-    margin: 5px 0;
-  }
-  
-  .view-more {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    margin-bottom: 20px;
-  }
-
-
-  .view-more-button{
-    text-decoration: none; /* Remove underline */
-    color: var(--alt_text); /* Set color to blue */
-  }
-
-  .view-more-button::after{
-    content: "View more ⋁";
-  }
-
-  .view-more-button:hover::after {
-    color: var(--accent1);
-    content: "View more ⋀"; /* Change text on hover */
-  }
-
-  .logo{
-    width: 95%;
-  }
-
-  .property-image {
-    margin-left: 20px;
-  }
+}
