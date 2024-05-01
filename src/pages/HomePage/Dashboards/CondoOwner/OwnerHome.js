@@ -3,26 +3,34 @@ import { Link } from "react-router-dom";
 import { db, storage } from "../../../../config/firebase";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
-import AuthenticatedUserContext from "../../../../contexts/AuthenticatedUserContext";
+import { useAuthenticatedUserContext } from "../../../../contexts/AuthenticatedUserContext";
 
 import "./OwnerHome.css";
 
 const OwnerHome = () => {
-  const { authenticatedUser: currentUser } = useContext(AuthenticatedUserContext);
+  const { authenticatedUser: currentUser } = useAuthenticatedUserContext();
   const [condoProperties, setCondoProperties] = useState([]);
 
   const fetchOwnedProperties = useCallback(async () => {
     const fetchedUnits = await getDocs(collection(db, "condoUnits"));
+
+
     const parsedUnits = await Promise.all(
       fetchedUnits.docs.map(async (condoUnit) => {
         const unit = condoUnit.data();
-        const unitImage = await fetchPropertyImage(unit.imageFileName);
-        return { ...unit, propertyImageURL: unitImage, isEditing: false }; // Adding isEditing property
+        if (currentUser.userID === unit.ownerId) {
+          const unitImage = await fetchPropertyImage(unit.imageFileName);
+          return { ...unit, propertyImageURL: unitImage, isEditing: false }; // Adding isEditing property
+        }
+        return null;
       })
     );
 
-    setCondoProperties(parsedUnits);
-  }, []);
+    const filteredUnits = parsedUnits.filter(unit => unit !== null);
+
+
+    setCondoProperties(filteredUnits);
+  }, [currentUser]);
 
   const fetchPropertyImage = async (fileName) => {
     const propertyPictureRef = ref(storage, `sampleCondoUnits/${fileName}`);
@@ -91,7 +99,7 @@ const OwnerHome = () => {
         <div className="panel-container">
 
           <div className="right-panel">
-            {condoProperties.map((property) => (
+            {condoProperties.length > 1 ? condoProperties.map((property) => (
               <div id={`property-${property.id}`} key={property.id} className="property-card">
                 <div className="property-content">
                   <img
@@ -179,10 +187,8 @@ const OwnerHome = () => {
                   </div>
                 </div>
               </div>
-            ))}
-            <div className="view-more">
-              <Link className="view-more-button" to="/manage-properties" />
-            </div>
+            )) : <div>There are no properties to view.</div>}
+
           </div>
         </div>
       </div>
