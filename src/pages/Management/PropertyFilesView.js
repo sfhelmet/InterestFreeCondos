@@ -5,7 +5,7 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { useEffect } from "react";
 import FileIcon from "../../components/Utils/FileIcons"
 import PropertyUploadsManager from "./PropertyUploadsManager";
-
+import "./PropertyFilesView.css"
 
 const PropertyFilesView = (props) =>
 {
@@ -98,7 +98,7 @@ const PropertyFilesView = (props) =>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossOrigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossOrigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossOrigin="anonymous"></script>
-        <div className="container-fluid" style={{ width: "80%", marginTop: "0"}}>
+        <div className="container-fluid" style={{ width: "80%", marginTop: "-3rem"}}>
         <h1 style={{color: "#f4f9f9"}}>Property Files View</h1>
           {propertyProfiles ? (propertyProfiles.map( property => (
             <div className="row" key={property.id}>
@@ -121,9 +121,9 @@ const PropertyFilesView = (props) =>
                   {property.files && property.files.length > 0 ? (property.files.map( file =>
                     <li className="list-group-item" key={`${file}_${property.id}`} style={{backgroundColor: "#317995"}} >
                       <div className="d-flex justify-content-between">
-                        <div>
+                        <div className="fileName-container">
                           <FileIcon filename={file}></FileIcon>
-                          <a id={file} href={`#${file}`} download style={{color: "black"}}>{file}</a>
+                          <a id={file} href={`#${file}`} download style={{color: "black", textOverflow:"ellipsis"}}>{file}</a>
                         </div>
                         <button type="button" aria-label="Close" style={{border: "none", backgroundColor: "transparent"}}                                       
                                 onClick={() => handleDeleteConfirmation(file, property) }>

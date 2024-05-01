@@ -1,57 +1,119 @@
+/* Your existing CSS for desktop navigation bar */
+
 .nexus-navigation-bar {
-    background-color: rgb(53, 113, 153);
-    color: var(--text);
-    padding: 20px;
-    padding-left: 25px;
-    padding-right: 25px;
-    border-radius: 20px;
-    margin:100px;
-    margin-top: 50px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
-
     display: flex;
+    justify-content: space-between;
     align-items: center;
-
-
+    padding: 20px;
+    background-color: rgb(53, 113, 153);
+    color: white;
 }
 
 .nexus-nav-logo {
-    display: flex;
-    align-items: center;
-    margin: 0!important;
-    
+    flex: 1;
 }
 
-.nexus-nav-name {
-    font-size: 24px!important;
-    margin: 0!important;
+.nexus-nav-button-section {
+    position: relative;
+    flex: 1;
+    text-align: right;
+}
 
-    font-family: telemarines;
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+}
 
-    font-weight: lighter;
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+}
 
+.menu-links {
+    display: none;
+    flex-direction: column;
+}
+
+.menu-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.menu-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.open .menu-links {
+    display: flex;
+}
+
+.open .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.open .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+@media (max-width: 480px) { /* Adjust breakpoint for Pixel 7 Pro */
+    .menu-toggle {
+        display: block;
+    }
+
+    .nexus-nav-button-section {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgb(53, 113, 153);
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nexus-nav-button-section.open {
+        display: block;
+    }
+}
+/* CSS for desktop navbar */
+
+.nexus-navigation-bar-desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(53, 113, 153);
+    color: white;
+}
+
+.nexus-nav-logo {
+    flex: 1;
 }
 
 .nexus-nav-button-section {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
 }
 
-.nexus-nav-link {
+.nexus-nav-button-section a {
+    color: white;
     text-decoration: none;
-    color: inherit;
-    padding: .2rem 1rem!important;
+    margin-left: 20px;
 }
 
-.nexus-nav-link:hover {
-    color: var(--alt_text);
-    text-decoration: none;
+.nexus-nav-button-section a:hover {
+    color: yellow; /* Example hover color */
 }
 
-.nexus-nav-name:hover {
-    color: var(--alt_text);
-    text-decoration: none;
+.logout-button {
+    margin-left: 20px; /* Adjust margin as needed */
 }

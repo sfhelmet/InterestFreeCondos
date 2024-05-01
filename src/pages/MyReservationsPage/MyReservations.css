@@ -1,5 +1,6 @@
 .my-reservations-page-container {
     background-color: var(--background);
+    margin-top: 2rem;
 }
 
 .my-reservations-page-container .container-fluid {
@@ -41,4 +42,24 @@
 
 .my-reservations-page-container .no-reservations-container h5 {
     color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .my-reservations-page-container .container-fluid {
+        width: 80%!important; /* Adjusted width for medium screens */
+    }
+
+    .my-reservations-page-container .container-fluid {
+        margin-top: 50px; /* Adjusted margin-top for medium screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .my-reservations-page-container .container-fluid {
+        width: 90%!important; /* Adjusted width for smaller screens */
+    }
+
+    .my-reservations-page-container .container-fluid {
+        margin-top: 30px; /* Adjusted margin-top for smaller screens */
+    }
 }
