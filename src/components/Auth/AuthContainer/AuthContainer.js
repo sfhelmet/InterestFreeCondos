@@ -17,14 +17,34 @@ const AuthContainer = () => {
   const [disabled, setDisabled] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [userType, setUserType] = useState("");
   const { updateAuthenticatedUser } = useContext(AuthenticatedUserContext)
+
 
   let userObjectCreated = false;
 
   const nonSSOSignIn = () => {
     signInWithEmailAndPassword(auth, userEmail, userPassword)
-      .then(() => {
-        navigate("/")
+      .then(async (userCredential) => {
+        const user = userCredential.user;
+
+        await getDoc(doc(db, "users", user.uid))
+        .then( doc => {
+          switch(doc.data().userType){
+            case "RENTAL":
+                navigate("/")
+                break;
+            case "OWNER":
+                navigate("/owner-home")
+                break;
+            case "MANAGEMENT":
+                navigate("/company-home");
+                break;
+            default:
+                navigate("/");
+          }
+        }
+        )
       })
       .catch(err => {
         console.error("Error signing in");
@@ -51,6 +71,8 @@ const AuthContainer = () => {
           .then(doc => {
             if (!doc.data()) {
               userExists = false;
+            } else {
+              setUserType(doc.data().userType);
             }
           }).catch(err => {
             console.log(err.message);
@@ -72,7 +94,19 @@ const AuthContainer = () => {
         if(userObjectCreated){
           navigate("/user-selection");
         } else {
-          navigate("/");
+          switch(userType){
+            case "RENTAL":
+                navigate("/")
+                break;
+            case "OWNER":
+                navigate("/owner-home")
+                break;
+            case "MANAGEMENT":
+                navigate("/company-home");
+                break;
+            default:
+                navigate("/")
+        }
         }
       }).catch((error) => {
         console.error("Error signing in with Google");
