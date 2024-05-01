@@ -28,7 +28,7 @@ export const rental = [
 export const management = [
     {
         label: 'Home',
-        route: '/'
+        route: '/company-home'
     },
     {
         label: 'Requests',
