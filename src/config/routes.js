@@ -12,6 +12,7 @@ import RequestHandling from "../pages/Requests/Handling/RequestHandling";
 import Profile from "../pages/ProfilePage/Profile";
 import MyRequests from "../pages/MyRequestsPage/MyRequests";
 import MyReservations from "../pages/MyReservationsPage/MyReservations";
+import UserTypeRegistrationPage from "../pages/TypeConfirmationPage/UserTypeConfirmationPage";
 
 const routes = [
   {
@@ -122,6 +123,13 @@ const routes = [
     name: "User Reservations Page",
     protected: true,
     hasNav: true
+  },
+  {
+    path: "/user-selection",
+    component: UserTypeRegistrationPage,
+    name: "User Type Selection Page",
+    protected: true,
+    hasNav: false
   },
 ];
 
