@@ -2,35 +2,37 @@ import React, { useState } from 'react';
 import NexusClearLogo from "../../images/Logos/Nexus-clear-noText.png";
 import { useAuthenticatedUserContext } from '../../contexts/AuthenticatedUserContext';
 
-import { auth, db } from "../../config/firebase";
-import { collection, getDocs, query, where, setDoc, doc } from "firebase/firestore";
+import { db } from "../../config/firebase";
+import { setDoc, doc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 
 const UserTypeRegistrationPage = () => {
     const [userType, setUserType] = useState("");
     const { authenticatedUser: currentUser } = useAuthenticatedUserContext();
-
-    const getCurrentUser = () => {
-        let uid = auth.currentUser.uid;
-        
-        const userRef = collection(db, "users");
-        const userQuery = query(userRef, where('userID', '==', uid));
-
-        return getDocs(userQuery);
-    }
+    const navigate = useNavigate();
 
     const handleSubmit = async() => {
-        const userSnapshot = await getCurrentUser();
-        const userType = userSnapshot.docs[0].data().userType;
-        const newUser = {
-            userID: userSnapshot.doc[0].data().uid,
-            email: userSnapshot.doc[0].data().email,
-            userName: userSnapshot.doc[0].data().userName,
-            phone: null,
-            profilePic: null,
-            userType: userType
+        await setDoc(doc(db,"users", currentUser.userID), {
+          ...currentUser,
+          userType:userType
+        })
+        .then(() => {
+          console.log("User type successfully changed");
+          switch(userType){
+            case "RENTAL":
+                navigate("/")
+                break;
+            case "OWNER":
+                navigate("/")
+                break;
+            case "MANAGEMENT":
+                navigate("/owner-home");
+                break;
+            default:
+                navigate("")
         }
-        setDoc(doc(db,"users", newUser.userID), newUser);
+        });
     }
 
   return (
