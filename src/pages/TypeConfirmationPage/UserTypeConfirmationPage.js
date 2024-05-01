@@ -1,38 +1,40 @@
 import React, { useState } from 'react';
 import NexusClearLogo from "../../images/Logos/Nexus-clear-noText.png";
 import { useAuthenticatedUserContext } from '../../contexts/AuthenticatedUserContext';
-
 import { db } from "../../config/firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
+import "./UserTypeConfirmationPage.css";
 
 const UserTypeRegistrationPage = () => {
     const [userType, setUserType] = useState("");
-    const { authenticatedUser: currentUser } = useAuthenticatedUserContext();
+    const { authenticatedUser: currentUser, updateAuthenticatedUser } = useAuthenticatedUserContext();
     const navigate = useNavigate();
 
     const handleSubmit = async() => {
-        await setDoc(doc(db,"users", currentUser.userID), {
-          ...currentUser,
-          userType:userType
-        })
-        .then(() => {
-          console.log("User type successfully changed");
-          switch(userType){
-            case "RENTAL":
-                navigate("/")
-                break;
-            case "OWNER":
-                navigate("/owner-home")
-                break;
-            case "MANAGEMENT":
-                navigate("/company-home");
-                break;
-            default:
-                navigate("")
+      const updatedUser = {
+        ...currentUser,
+        userType:userType
+      };
+
+      await setDoc(doc(db,"users", currentUser.userID), updatedUser)
+      .then(() => {
+        updateAuthenticatedUser(updatedUser);
+        switch(userType){
+          case "RENTAL":
+              navigate("/renter-home");
+              break;
+          case "OWNER":
+              navigate("/owner-home");
+              break;
+          case "MANAGEMENT":
+              navigate("/company-home");
+              break;
+          default:
+              navigate("/")
         }
-        });
+      });
     }
 
   return (

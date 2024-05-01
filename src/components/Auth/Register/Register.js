@@ -12,7 +12,6 @@ const Register = () => {
     const [userName, setUsername] = useState("");
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
-    // const [userPhone, setUserPhone] = useState("");
     const [userType, setUserType] = useState("");
     const navigate = useNavigate();
 
@@ -39,10 +38,10 @@ const Register = () => {
                         navigate("/")
                         break;
                     case "MANAGEMENT":
-                        navigate("");
+                        navigate("/");
                         break;
                     default:
-                        navigate("")
+                        navigate("/")
                 }
             })
             .catch((err) => {
@@ -86,13 +85,6 @@ const Register = () => {
                             <option value="PUBLIC">I don't know yet</option>
                         </select>
                     </div>
-                    {/* <TextField 
-                        className="user-phone" 
-                        size="small" 
-                        label={"Enter phone:"}
-                        value={userPhone}
-                        onChange={(e) => setUserPhone(e.target.value)}
-                    /> */}
                 </Box>
                 <Button className="register-btn" variant="contained" onClick={handleRegister}>Register</Button>
             </Box>

@@ -14,6 +14,7 @@ import MyRequests from "../pages/MyRequestsPage/MyRequests";
 import MyReservations from "../pages/MyReservationsPage/MyReservations";
 import UserTypeRegistrationPage from "../pages/TypeConfirmationPage/UserTypeConfirmationPage";
 import CompanyHome from "../pages/HomePage/Dashboards/Company/CompanyHome";
+import RentalHome from "../pages/HomePage/Dashboards/RentalHome/RentalHome";
 
 const routes = [
   {
@@ -137,7 +138,13 @@ const routes = [
     component: CompanyHome,
     name: "Company Home Page",
     protected: true,
-    hasNav: true
+    hasNav: true,
+  },
+  {
+    path: "/renter-home",
+    component: RentalHome,
+    protected: true,
+    hasNav: true,
   }
 ];
 

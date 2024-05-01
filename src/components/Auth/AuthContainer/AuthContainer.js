@@ -32,10 +32,10 @@ const AuthContainer = () => {
         .then( doc => {
           switch(doc.data().userType){
             case "RENTAL":
-                navigate("/")
+                navigate("/renter-home");
                 break;
             case "OWNER":
-                navigate("/owner-home")
+                navigate("/owner-home");
                 break;
             case "MANAGEMENT":
                 navigate("/company-home");
@@ -80,15 +80,15 @@ const AuthContainer = () => {
 
         if (!userExists) {
           await setDoc(doc(db, "users", customUserObj.userID), customUserObj)
-            .then(() => {
+            .then((res) => {
               console.log("Custom User Obj created from Google SSO obj");
               userObjectCreated = true;
+              updateAuthenticatedUser(customUserObj);
             })
             .catch(err => {
               console.log(err.message);
             });
         }
-        updateAuthenticatedUser(customUserObj);
       }).then(() => {
         setDisabled(false);
         if(userObjectCreated){
@@ -96,10 +96,10 @@ const AuthContainer = () => {
         } else {
           switch(userType){
             case "RENTAL":
-                navigate("/")
+                navigate("/renter-home");
                 break;
             case "OWNER":
-                navigate("/owner-home")
+                navigate("/owner-home");
                 break;
             case "MANAGEMENT":
                 navigate("/company-home");

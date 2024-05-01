@@ -16,6 +16,10 @@ export const rental = [
         route: '/profile'  
     },
     {
+        label: "My Rentals",
+        route: '/renter-home'
+    },
+    {
         label: "My Requests",
         route: "/my-requests"
     },
@@ -39,7 +43,7 @@ export const management = [
         route: '/property-files'
     },
     {
-        label: 'Registration',
+        label: 'Unit Token Generation',
         route: '/token'
     },
     {

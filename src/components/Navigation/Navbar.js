@@ -26,7 +26,6 @@ const NexusNavbar = (props) => {
 
     useEffect(() => {
         if (currentUser) {
-            console.log("set navigation")
             setLinks(navigation(currentUser.userType));
         }
     },[currentUser]);

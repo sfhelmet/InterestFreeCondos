@@ -1,0 +1,90 @@
+.rental-home-container {
+    background-color: var(--background); /* Dark background color */
+    color: var(--text); /* Light text color */
+}
+
+.rental-home-container  .panel-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+    
+.rental-home-container  .right-panel {
+    width: 80%; /* Two-thirds of the screen */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+}
+  
+.rental-home-container  .property-card {
+    background-color: rgba(126, 230, 239, 0.3); /* Transparent background color */
+    margin-bottom: 20px;
+    cursor: pointer;
+    flex: 1; /* Make property cards stretch to fill available space */
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+}
+  
+.rental-home-container  .property-card:hover {
+    background-color: rgba(126, 230, 239, 0.5); /* Darker transparent background color on hover */
+}
+
+.rental-home-container  .property-content {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+}
+  
+.rental-home-container .property-card img {
+    width: 20%;
+    height: auto;
+    margin-right: 20px;
+}
+  
+.rental-home-container  .property-details {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+  
+.rental-home-container  .property-details div {
+    flex: 1;
+}
+  
+.rental-home-container  .property-details h3,.property-details h4 {
+    margin-bottom: 5px;
+}
+  
+.rental-home-container .property-details p {
+    margin: 5px 0;
+}
+  
+.rental-home-container .view-more {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-bottom: 20px;
+}
+
+
+.rental-home-container .view-more-button{
+    text-decoration: none; /* Remove underline */
+    color: var(--alt_text); /* Set color to blue */
+}
+
+.rental-home-container .view-more-button::after{
+    content: "View more ⋁";
+}
+
+.rental-home-container .view-more-button:hover::after {
+    color: var(--accent1);
+    content: "View more ⋀"; /* Change text on hover */
+}
+
+.rental-home-container .logo{
+    width: 95%;
+}
+
+.rental-home-container .property-image {
+    margin-left: 20px;
+}
